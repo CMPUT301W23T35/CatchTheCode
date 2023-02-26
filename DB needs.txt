@@ -1,0 +1,21 @@
+﻿Currently supported data type( Format included). Please add other information that needs to be stored in another color. 
+
+
+Player: Primary key is  a unique ID/username( String) 
+Stores:
+* QR code scanned( also a string)
+   * Comments about a QR code(String)
+* Contact information
+* Score calculated using code scanned(float) 
+
+
+
+
+
+
+
+
+QR code: Primary key is a unique content string
+Attributes:
+* Geolocation
+* Score
