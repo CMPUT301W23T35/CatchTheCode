@@ -1,12 +1,12 @@
-#Sat Feb 25 23:03:47 MST 2023
+#Mon Feb 27 18:54:03 MST 2023
 path.3=classes2.dex
 path.2=15/classes.dex
 path.1=0/classes.dex
 path.0=classes.dex
-base.3=D\:\\jason\\3rd year winter\\Cmput301\\CatchTheCode\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
-base.2=D\:\\jason\\3rd year winter\\Cmput301\\CatchTheCode\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\15\\classes.dex
-base.1=D\:\\jason\\3rd year winter\\Cmput301\\CatchTheCode\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
-base.0=D\:\\jason\\3rd year winter\\Cmput301\\CatchTheCode\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+base.3=C\:\\Users\\wjc28\\AndroidStudioProjects\\Catch_The_Code\\CatchTheCode\\CatchTheCode\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
+base.2=C\:\\Users\\wjc28\\AndroidStudioProjects\\Catch_The_Code\\CatchTheCode\\CatchTheCode\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\15\\classes.dex
+base.1=C\:\\Users\\wjc28\\AndroidStudioProjects\\Catch_The_Code\\CatchTheCode\\CatchTheCode\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.0=C\:\\Users\\wjc28\\AndroidStudioProjects\\Catch_The_Code\\CatchTheCode\\CatchTheCode\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 renamed.3=classes4.dex
 renamed.2=classes3.dex
 renamed.1=classes2.dex
