@@ -25,6 +25,6 @@ public class modelRank {
     }
 
     public void sortRankList(){
-        1
+
     }
 }
