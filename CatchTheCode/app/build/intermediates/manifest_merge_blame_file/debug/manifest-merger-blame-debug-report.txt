@@ -6,264 +6,263 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="24"
-8-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml
+8-->D:\jason\3rd year winter\Cmput301\test\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="33" />
-9-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml
+9-->D:\jason\3rd year winter\Cmput301\test\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml
 10
 11    <!-- Although the *SdkVersion is captured in gradle build files, this is required for non gradle builds -->
 12    <!-- <uses-sdk android:minSdkVersion="14" /> -->
 13    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-13-->[com.google.firebase:firebase-firestore:24.4.3] C:\Users\wjc28\.gradle\caches\transforms-3\255215929eb7d6e0ebe3d07ac4273818\transformed\firebase-firestore-24.4.3\AndroidManifest.xml:12:5-79
-13-->[com.google.firebase:firebase-firestore:24.4.3] C:\Users\wjc28\.gradle\caches\transforms-3\255215929eb7d6e0ebe3d07ac4273818\transformed\firebase-firestore-24.4.3\AndroidManifest.xml:12:22-76
+13-->[com.google.firebase:firebase-firestore:24.4.3] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\255215929eb7d6e0ebe3d07ac4273818\transformed\firebase-firestore-24.4.3\AndroidManifest.xml:12:5-79
+13-->[com.google.firebase:firebase-firestore:24.4.3] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\255215929eb7d6e0ebe3d07ac4273818\transformed\firebase-firestore-24.4.3\AndroidManifest.xml:12:22-76
 14    <uses-permission android:name="android.permission.INTERNET" />
-14-->[com.google.firebase:firebase-firestore:24.4.3] C:\Users\wjc28\.gradle\caches\transforms-3\255215929eb7d6e0ebe3d07ac4273818\transformed\firebase-firestore-24.4.3\AndroidManifest.xml:13:5-67
-14-->[com.google.firebase:firebase-firestore:24.4.3] C:\Users\wjc28\.gradle\caches\transforms-3\255215929eb7d6e0ebe3d07ac4273818\transformed\firebase-firestore-24.4.3\AndroidManifest.xml:13:22-64
+14-->[com.google.firebase:firebase-firestore:24.4.3] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\255215929eb7d6e0ebe3d07ac4273818\transformed\firebase-firestore-24.4.3\AndroidManifest.xml:13:5-67
+14-->[com.google.firebase:firebase-firestore:24.4.3] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\255215929eb7d6e0ebe3d07ac4273818\transformed\firebase-firestore-24.4.3\AndroidManifest.xml:13:22-64
 15
 16    <uses-feature
-16-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\wjc28\.gradle\caches\transforms-3\cac067d82e677fb385689af6628aa10b\transformed\play-services-maps-18.1.0\AndroidManifest.xml:26:5-28:35
+16-->[com.google.android.gms:play-services-maps:18.1.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\cac067d82e677fb385689af6628aa10b\transformed\play-services-maps-18.1.0\AndroidManifest.xml:26:5-28:35
 17        android:glEsVersion="0x00020000"
-17-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\wjc28\.gradle\caches\transforms-3\cac067d82e677fb385689af6628aa10b\transformed\play-services-maps-18.1.0\AndroidManifest.xml:27:9-41
+17-->[com.google.android.gms:play-services-maps:18.1.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\cac067d82e677fb385689af6628aa10b\transformed\play-services-maps-18.1.0\AndroidManifest.xml:27:9-41
 18        android:required="true" />
-18-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\wjc28\.gradle\caches\transforms-3\cac067d82e677fb385689af6628aa10b\transformed\play-services-maps-18.1.0\AndroidManifest.xml:28:9-32
+18-->[com.google.android.gms:play-services-maps:18.1.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\cac067d82e677fb385689af6628aa10b\transformed\play-services-maps-18.1.0\AndroidManifest.xml:28:9-32
 19
 20    <queries>
-20-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\wjc28\.gradle\caches\transforms-3\cac067d82e677fb385689af6628aa10b\transformed\play-services-maps-18.1.0\AndroidManifest.xml:30:5-34:15
+20-->[com.google.android.gms:play-services-maps:18.1.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\cac067d82e677fb385689af6628aa10b\transformed\play-services-maps-18.1.0\AndroidManifest.xml:30:5-34:15
 21
 22        <!-- Needs to be explicitly declared on Android R+ -->
 23        <package android:name="com.google.android.apps.maps" />
-23-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\wjc28\.gradle\caches\transforms-3\cac067d82e677fb385689af6628aa10b\transformed\play-services-maps-18.1.0\AndroidManifest.xml:33:9-64
-23-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\wjc28\.gradle\caches\transforms-3\cac067d82e677fb385689af6628aa10b\transformed\play-services-maps-18.1.0\AndroidManifest.xml:33:18-61
+23-->[com.google.android.gms:play-services-maps:18.1.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\cac067d82e677fb385689af6628aa10b\transformed\play-services-maps-18.1.0\AndroidManifest.xml:33:9-64
+23-->[com.google.android.gms:play-services-maps:18.1.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\cac067d82e677fb385689af6628aa10b\transformed\play-services-maps-18.1.0\AndroidManifest.xml:33:18-61
 24    </queries>
 25
 26    <uses-permission android:name="android.permission.WAKE_LOCK" />
-26-->[com.google.android.gms:play-services-measurement-api:21.2.0] C:\Users\wjc28\.gradle\caches\transforms-3\4633c1993e83f20aef9e3f1fa8de6747\transformed\play-services-measurement-api-21.2.0\AndroidManifest.xml:24:5-68
-26-->[com.google.android.gms:play-services-measurement-api:21.2.0] C:\Users\wjc28\.gradle\caches\transforms-3\4633c1993e83f20aef9e3f1fa8de6747\transformed\play-services-measurement-api-21.2.0\AndroidManifest.xml:24:22-65
+26-->[com.google.android.gms:play-services-measurement-api:21.2.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\4633c1993e83f20aef9e3f1fa8de6747\transformed\play-services-measurement-api-21.2.0\AndroidManifest.xml:24:5-68
+26-->[com.google.android.gms:play-services-measurement-api:21.2.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\4633c1993e83f20aef9e3f1fa8de6747\transformed\play-services-measurement-api-21.2.0\AndroidManifest.xml:24:22-65
 27    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
-27-->[com.google.android.gms:play-services-measurement-api:21.2.0] C:\Users\wjc28\.gradle\caches\transforms-3\4633c1993e83f20aef9e3f1fa8de6747\transformed\play-services-measurement-api-21.2.0\AndroidManifest.xml:25:5-79
-27-->[com.google.android.gms:play-services-measurement-api:21.2.0] C:\Users\wjc28\.gradle\caches\transforms-3\4633c1993e83f20aef9e3f1fa8de6747\transformed\play-services-measurement-api-21.2.0\AndroidManifest.xml:25:22-76
+27-->[com.google.android.gms:play-services-measurement-api:21.2.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\4633c1993e83f20aef9e3f1fa8de6747\transformed\play-services-measurement-api-21.2.0\AndroidManifest.xml:25:5-79
+27-->[com.google.android.gms:play-services-measurement-api:21.2.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\4633c1993e83f20aef9e3f1fa8de6747\transformed\play-services-measurement-api-21.2.0\AndroidManifest.xml:25:22-76
 28    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
-28-->[com.google.android.gms:play-services-measurement:21.2.0] C:\Users\wjc28\.gradle\caches\transforms-3\a2b57cb72051e741e5bdd856af0851bf\transformed\play-services-measurement-21.2.0\AndroidManifest.xml:26:5-110
-28-->[com.google.android.gms:play-services-measurement:21.2.0] C:\Users\wjc28\.gradle\caches\transforms-3\a2b57cb72051e741e5bdd856af0851bf\transformed\play-services-measurement-21.2.0\AndroidManifest.xml:26:22-107
+28-->[com.google.android.gms:play-services-measurement:21.2.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\a2b57cb72051e741e5bdd856af0851bf\transformed\play-services-measurement-21.2.0\AndroidManifest.xml:26:5-110
+28-->[com.google.android.gms:play-services-measurement:21.2.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\a2b57cb72051e741e5bdd856af0851bf\transformed\play-services-measurement-21.2.0\AndroidManifest.xml:26:22-107
 29
 30    <permission
-30-->[androidx.core:core:1.9.0] C:\Users\wjc28\.gradle\caches\transforms-3\f0daf19b4b797ddd811cf3a47b53d379\transformed\core-1.9.0\AndroidManifest.xml:22:5-24:47
+30-->[androidx.core:core:1.9.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\f0daf19b4b797ddd811cf3a47b53d379\transformed\core-1.9.0\AndroidManifest.xml:22:5-24:47
 31        android:name="com.example.catchthecode.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-31-->[androidx.core:core:1.9.0] C:\Users\wjc28\.gradle\caches\transforms-3\f0daf19b4b797ddd811cf3a47b53d379\transformed\core-1.9.0\AndroidManifest.xml:23:9-81
+31-->[androidx.core:core:1.9.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\f0daf19b4b797ddd811cf3a47b53d379\transformed\core-1.9.0\AndroidManifest.xml:23:9-81
 32        android:protectionLevel="signature" />
-32-->[androidx.core:core:1.9.0] C:\Users\wjc28\.gradle\caches\transforms-3\f0daf19b4b797ddd811cf3a47b53d379\transformed\core-1.9.0\AndroidManifest.xml:24:9-44
+32-->[androidx.core:core:1.9.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\f0daf19b4b797ddd811cf3a47b53d379\transformed\core-1.9.0\AndroidManifest.xml:24:9-44
 33
 34    <uses-permission android:name="com.example.catchthecode.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
-34-->[androidx.core:core:1.9.0] C:\Users\wjc28\.gradle\caches\transforms-3\f0daf19b4b797ddd811cf3a47b53d379\transformed\core-1.9.0\AndroidManifest.xml:26:5-97
-34-->[androidx.core:core:1.9.0] C:\Users\wjc28\.gradle\caches\transforms-3\f0daf19b4b797ddd811cf3a47b53d379\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
+34-->[androidx.core:core:1.9.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\f0daf19b4b797ddd811cf3a47b53d379\transformed\core-1.9.0\AndroidManifest.xml:26:5-97
+34-->[androidx.core:core:1.9.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\f0daf19b4b797ddd811cf3a47b53d379\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
 35
 36    <application
-36-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:5:5-50:19
+36-->D:\jason\3rd year winter\Cmput301\test\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:5:5-50:19
 37        android:allowBackup="true"
-37-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:6:9-35
+37-->D:\jason\3rd year winter\Cmput301\test\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:6:9-35
 38        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-38-->[androidx.core:core:1.9.0] C:\Users\wjc28\.gradle\caches\transforms-3\f0daf19b4b797ddd811cf3a47b53d379\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
+38-->[androidx.core:core:1.9.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\f0daf19b4b797ddd811cf3a47b53d379\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
 39        android:dataExtractionRules="@xml/data_extraction_rules"
-39-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:7:9-65
+39-->D:\jason\3rd year winter\Cmput301\test\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:7:9-65
 40        android:debuggable="true"
 41        android:extractNativeLibs="false"
 42        android:fullBackupContent="@xml/backup_rules"
-42-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:8:9-54
+42-->D:\jason\3rd year winter\Cmput301\test\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:8:9-54
 43        android:icon="@mipmap/ic_launcher"
-43-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:9:9-43
+43-->D:\jason\3rd year winter\Cmput301\test\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:9:9-43
 44        android:label="@string/app_name"
-44-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:10:9-41
+44-->D:\jason\3rd year winter\Cmput301\test\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:10:9-41
 45        android:supportsRtl="true"
-45-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:11:9-35
-46        android:testOnly="true"
-47        android:theme="@style/Theme.CatchTheCode" >
-47-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:12:9-50
-48
-49        <!--
-50             TODO: Before you run your application, you need a Google Maps API key.
-51
-52             To get one, follow the directions here:
-53
-54                https://developers.google.com/maps/documentation/android-sdk/get-api-key
-55
-56             Once you have your API key (it starts with "AIza"), define a new property in your
-57             project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the
-58             "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
-59        -->
-60        <meta-data
-60-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:25:9-27:44
-61            android:name="com.google.android.geo.API_KEY"
-61-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:26:13-58
-62            android:value="YOUR_API_KEY" />
-62-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:27:13-41
-63
-64        <activity
-64-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:29:9-32:59
-65            android:name="com.example.catchthecode.MapsActivity"
-65-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:30:13-41
-66            android:exported="false"
-66-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:31:13-37
-67            android:label="@string/title_activity_maps" />
-67-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:32:13-56
-68        <activity
-68-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:33:9-41:20
-69            android:name="com.example.catchthecode.MainActivity"
-69-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:34:13-41
-70            android:exported="true" >
-70-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:35:13-36
-71            <intent-filter>
-71-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:36:13-40:29
-72                <action android:name="android.intent.action.MAIN" />
-72-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:37:17-69
-72-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:37:25-66
-73
-74                <category android:name="android.intent.category.LAUNCHER" />
-74-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:39:17-77
-74-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:39:27-74
-75            </intent-filter>
-76        </activity>
-77        <activity
-77-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:42:9-45:61
-78            android:name="com.example.catchthecode.FriendActivity"
-78-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:43:13-43
-79            android:exported="false"
-79-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:44:13-37
-80            android:label="@string/title_activity_friend" />
-80-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:45:13-58
-81        <activity
-81-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:46:9-49:65
-82            android:name="com.example.catchthecode.CollectionActivity"
-82-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:47:13-47
-83            android:exported="false"
-83-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:48:13-37
-84            android:label="@string/title_activity_collection" />
-84-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:49:13-62
-85
-86        <service
-86-->[com.google.firebase:firebase-firestore:24.4.3] C:\Users\wjc28\.gradle\caches\transforms-3\255215929eb7d6e0ebe3d07ac4273818\transformed\firebase-firestore-24.4.3\AndroidManifest.xml:16:9-22:19
-87            android:name="com.google.firebase.components.ComponentDiscoveryService"
-87-->[com.google.firebase:firebase-firestore:24.4.3] C:\Users\wjc28\.gradle\caches\transforms-3\255215929eb7d6e0ebe3d07ac4273818\transformed\firebase-firestore-24.4.3\AndroidManifest.xml:17:13-84
-88            android:directBootAware="true"
-88-->[com.google.firebase:firebase-common:20.3.0] C:\Users\wjc28\.gradle\caches\transforms-3\8c07557b616ba3438445795280fd6a32\transformed\firebase-common-20.3.0\AndroidManifest.xml:34:13-43
-89            android:exported="false" >
-89-->[com.google.firebase:firebase-firestore:24.4.3] C:\Users\wjc28\.gradle\caches\transforms-3\255215929eb7d6e0ebe3d07ac4273818\transformed\firebase-firestore-24.4.3\AndroidManifest.xml:18:13-37
-90            <meta-data
-90-->[com.google.firebase:firebase-firestore:24.4.3] C:\Users\wjc28\.gradle\caches\transforms-3\255215929eb7d6e0ebe3d07ac4273818\transformed\firebase-firestore-24.4.3\AndroidManifest.xml:19:13-21:85
-91                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
-91-->[com.google.firebase:firebase-firestore:24.4.3] C:\Users\wjc28\.gradle\caches\transforms-3\255215929eb7d6e0ebe3d07ac4273818\transformed\firebase-firestore-24.4.3\AndroidManifest.xml:20:17-111
-92                android:value="com.google.firebase.components.ComponentRegistrar" />
-92-->[com.google.firebase:firebase-firestore:24.4.3] C:\Users\wjc28\.gradle\caches\transforms-3\255215929eb7d6e0ebe3d07ac4273818\transformed\firebase-firestore-24.4.3\AndroidManifest.xml:21:17-82
-93            <meta-data
-93-->[com.google.android.gms:play-services-measurement-api:21.2.0] C:\Users\wjc28\.gradle\caches\transforms-3\4633c1993e83f20aef9e3f1fa8de6747\transformed\play-services-measurement-api-21.2.0\AndroidManifest.xml:31:13-33:85
-94                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
-94-->[com.google.android.gms:play-services-measurement-api:21.2.0] C:\Users\wjc28\.gradle\caches\transforms-3\4633c1993e83f20aef9e3f1fa8de6747\transformed\play-services-measurement-api-21.2.0\AndroidManifest.xml:32:17-139
-95                android:value="com.google.firebase.components.ComponentRegistrar" />
-95-->[com.google.android.gms:play-services-measurement-api:21.2.0] C:\Users\wjc28\.gradle\caches\transforms-3\4633c1993e83f20aef9e3f1fa8de6747\transformed\play-services-measurement-api-21.2.0\AndroidManifest.xml:33:17-82
-96            <meta-data
-96-->[com.google.firebase:firebase-installations:17.1.2] C:\Users\wjc28\.gradle\caches\transforms-3\816afcd1d160e0240bacb3172ba96ab1\transformed\firebase-installations-17.1.2\AndroidManifest.xml:17:13-19:85
-97                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
-97-->[com.google.firebase:firebase-installations:17.1.2] C:\Users\wjc28\.gradle\caches\transforms-3\816afcd1d160e0240bacb3172ba96ab1\transformed\firebase-installations-17.1.2\AndroidManifest.xml:18:17-127
-98                android:value="com.google.firebase.components.ComponentRegistrar" />
-98-->[com.google.firebase:firebase-installations:17.1.2] C:\Users\wjc28\.gradle\caches\transforms-3\816afcd1d160e0240bacb3172ba96ab1\transformed\firebase-installations-17.1.2\AndroidManifest.xml:19:17-82
-99        </service> <!-- Needs to be explicitly declared on P+ -->
-100        <uses-library
-100-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\wjc28\.gradle\caches\transforms-3\cac067d82e677fb385689af6628aa10b\transformed\play-services-maps-18.1.0\AndroidManifest.xml:39:9-41:40
-101            android:name="org.apache.http.legacy"
-101-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\wjc28\.gradle\caches\transforms-3\cac067d82e677fb385689af6628aa10b\transformed\play-services-maps-18.1.0\AndroidManifest.xml:40:13-50
-102            android:required="false" />
-102-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\wjc28\.gradle\caches\transforms-3\cac067d82e677fb385689af6628aa10b\transformed\play-services-maps-18.1.0\AndroidManifest.xml:41:13-37
-103
-104        <provider
-104-->[com.google.firebase:firebase-common:20.3.0] C:\Users\wjc28\.gradle\caches\transforms-3\8c07557b616ba3438445795280fd6a32\transformed\firebase-common-20.3.0\AndroidManifest.xml:25:9-30:39
-105            android:name="com.google.firebase.provider.FirebaseInitProvider"
-105-->[com.google.firebase:firebase-common:20.3.0] C:\Users\wjc28\.gradle\caches\transforms-3\8c07557b616ba3438445795280fd6a32\transformed\firebase-common-20.3.0\AndroidManifest.xml:26:13-77
-106            android:authorities="com.example.catchthecode.firebaseinitprovider"
-106-->[com.google.firebase:firebase-common:20.3.0] C:\Users\wjc28\.gradle\caches\transforms-3\8c07557b616ba3438445795280fd6a32\transformed\firebase-common-20.3.0\AndroidManifest.xml:27:13-72
-107            android:directBootAware="true"
-107-->[com.google.firebase:firebase-common:20.3.0] C:\Users\wjc28\.gradle\caches\transforms-3\8c07557b616ba3438445795280fd6a32\transformed\firebase-common-20.3.0\AndroidManifest.xml:28:13-43
-108            android:exported="false"
-108-->[com.google.firebase:firebase-common:20.3.0] C:\Users\wjc28\.gradle\caches\transforms-3\8c07557b616ba3438445795280fd6a32\transformed\firebase-common-20.3.0\AndroidManifest.xml:29:13-37
-109            android:initOrder="100" />
-109-->[com.google.firebase:firebase-common:20.3.0] C:\Users\wjc28\.gradle\caches\transforms-3\8c07557b616ba3438445795280fd6a32\transformed\firebase-common-20.3.0\AndroidManifest.xml:30:13-36
-110
-111        <activity
-111-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\wjc28\.gradle\caches\transforms-3\34e2d1c4cbbb2c483e60a3b26f831727\transformed\play-services-base-18.0.1\AndroidManifest.xml:20:9-22:45
-112            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-112-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\wjc28\.gradle\caches\transforms-3\34e2d1c4cbbb2c483e60a3b26f831727\transformed\play-services-base-18.0.1\AndroidManifest.xml:20:19-85
-113            android:exported="false"
-113-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\wjc28\.gradle\caches\transforms-3\34e2d1c4cbbb2c483e60a3b26f831727\transformed\play-services-base-18.0.1\AndroidManifest.xml:22:19-43
-114            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-114-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\wjc28\.gradle\caches\transforms-3\34e2d1c4cbbb2c483e60a3b26f831727\transformed\play-services-base-18.0.1\AndroidManifest.xml:21:19-78
-115
-116        <receiver
-116-->[com.google.android.gms:play-services-measurement:21.2.0] C:\Users\wjc28\.gradle\caches\transforms-3\a2b57cb72051e741e5bdd856af0851bf\transformed\play-services-measurement-21.2.0\AndroidManifest.xml:29:9-33:20
-117            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
-117-->[com.google.android.gms:play-services-measurement:21.2.0] C:\Users\wjc28\.gradle\caches\transforms-3\a2b57cb72051e741e5bdd856af0851bf\transformed\play-services-measurement-21.2.0\AndroidManifest.xml:30:13-85
-118            android:enabled="true"
-118-->[com.google.android.gms:play-services-measurement:21.2.0] C:\Users\wjc28\.gradle\caches\transforms-3\a2b57cb72051e741e5bdd856af0851bf\transformed\play-services-measurement-21.2.0\AndroidManifest.xml:31:13-35
-119            android:exported="false" >
-119-->[com.google.android.gms:play-services-measurement:21.2.0] C:\Users\wjc28\.gradle\caches\transforms-3\a2b57cb72051e741e5bdd856af0851bf\transformed\play-services-measurement-21.2.0\AndroidManifest.xml:32:13-37
-120        </receiver>
-121
-122        <service
-122-->[com.google.android.gms:play-services-measurement:21.2.0] C:\Users\wjc28\.gradle\caches\transforms-3\a2b57cb72051e741e5bdd856af0851bf\transformed\play-services-measurement-21.2.0\AndroidManifest.xml:35:9-38:40
-123            android:name="com.google.android.gms.measurement.AppMeasurementService"
-123-->[com.google.android.gms:play-services-measurement:21.2.0] C:\Users\wjc28\.gradle\caches\transforms-3\a2b57cb72051e741e5bdd856af0851bf\transformed\play-services-measurement-21.2.0\AndroidManifest.xml:36:13-84
-124            android:enabled="true"
-124-->[com.google.android.gms:play-services-measurement:21.2.0] C:\Users\wjc28\.gradle\caches\transforms-3\a2b57cb72051e741e5bdd856af0851bf\transformed\play-services-measurement-21.2.0\AndroidManifest.xml:37:13-35
-125            android:exported="false" />
-125-->[com.google.android.gms:play-services-measurement:21.2.0] C:\Users\wjc28\.gradle\caches\transforms-3\a2b57cb72051e741e5bdd856af0851bf\transformed\play-services-measurement-21.2.0\AndroidManifest.xml:38:13-37
-126        <service
-126-->[com.google.android.gms:play-services-measurement:21.2.0] C:\Users\wjc28\.gradle\caches\transforms-3\a2b57cb72051e741e5bdd856af0851bf\transformed\play-services-measurement-21.2.0\AndroidManifest.xml:39:9-43:72
-127            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
-127-->[com.google.android.gms:play-services-measurement:21.2.0] C:\Users\wjc28\.gradle\caches\transforms-3\a2b57cb72051e741e5bdd856af0851bf\transformed\play-services-measurement-21.2.0\AndroidManifest.xml:40:13-87
-128            android:enabled="true"
-128-->[com.google.android.gms:play-services-measurement:21.2.0] C:\Users\wjc28\.gradle\caches\transforms-3\a2b57cb72051e741e5bdd856af0851bf\transformed\play-services-measurement-21.2.0\AndroidManifest.xml:41:13-35
-129            android:exported="false"
-129-->[com.google.android.gms:play-services-measurement:21.2.0] C:\Users\wjc28\.gradle\caches\transforms-3\a2b57cb72051e741e5bdd856af0851bf\transformed\play-services-measurement-21.2.0\AndroidManifest.xml:42:13-37
-130            android:permission="android.permission.BIND_JOB_SERVICE" />
-130-->[com.google.android.gms:play-services-measurement:21.2.0] C:\Users\wjc28\.gradle\caches\transforms-3\a2b57cb72051e741e5bdd856af0851bf\transformed\play-services-measurement-21.2.0\AndroidManifest.xml:43:13-69
-131
-132        <meta-data
-132-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\wjc28\.gradle\caches\transforms-3\618b16313fec1b0d890112b5162e5b37\transformed\play-services-basement-18.1.0\AndroidManifest.xml:21:9-23:69
-133            android:name="com.google.android.gms.version"
-133-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\wjc28\.gradle\caches\transforms-3\618b16313fec1b0d890112b5162e5b37\transformed\play-services-basement-18.1.0\AndroidManifest.xml:22:13-58
-134            android:value="@integer/google_play_services_version" />
-134-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\wjc28\.gradle\caches\transforms-3\618b16313fec1b0d890112b5162e5b37\transformed\play-services-basement-18.1.0\AndroidManifest.xml:23:13-66
-135
-136        <provider
-136-->[androidx.emoji2:emoji2:1.2.0] C:\Users\wjc28\.gradle\caches\transforms-3\fb66bd628dff7fcf8b72e613383d5d78\transformed\emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
-137            android:name="androidx.startup.InitializationProvider"
-137-->[androidx.emoji2:emoji2:1.2.0] C:\Users\wjc28\.gradle\caches\transforms-3\fb66bd628dff7fcf8b72e613383d5d78\transformed\emoji2-1.2.0\AndroidManifest.xml:25:13-67
-138            android:authorities="com.example.catchthecode.androidx-startup"
-138-->[androidx.emoji2:emoji2:1.2.0] C:\Users\wjc28\.gradle\caches\transforms-3\fb66bd628dff7fcf8b72e613383d5d78\transformed\emoji2-1.2.0\AndroidManifest.xml:26:13-68
-139            android:exported="false" >
-139-->[androidx.emoji2:emoji2:1.2.0] C:\Users\wjc28\.gradle\caches\transforms-3\fb66bd628dff7fcf8b72e613383d5d78\transformed\emoji2-1.2.0\AndroidManifest.xml:27:13-37
-140            <meta-data
-140-->[androidx.emoji2:emoji2:1.2.0] C:\Users\wjc28\.gradle\caches\transforms-3\fb66bd628dff7fcf8b72e613383d5d78\transformed\emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
-141                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-141-->[androidx.emoji2:emoji2:1.2.0] C:\Users\wjc28\.gradle\caches\transforms-3\fb66bd628dff7fcf8b72e613383d5d78\transformed\emoji2-1.2.0\AndroidManifest.xml:30:17-75
-142                android:value="androidx.startup" />
-142-->[androidx.emoji2:emoji2:1.2.0] C:\Users\wjc28\.gradle\caches\transforms-3\fb66bd628dff7fcf8b72e613383d5d78\transformed\emoji2-1.2.0\AndroidManifest.xml:31:17-49
-143            <meta-data
-143-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\wjc28\.gradle\caches\transforms-3\b2eb98660bfd2cf45a133033cc7aed23\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:31:13-33:52
-144                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-144-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\wjc28\.gradle\caches\transforms-3\b2eb98660bfd2cf45a133033cc7aed23\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:32:17-78
-145                android:value="androidx.startup" />
-145-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\wjc28\.gradle\caches\transforms-3\b2eb98660bfd2cf45a133033cc7aed23\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:33:17-49
-146        </provider>
-147
-148        <uses-library
-148-->[androidx.window:window:1.0.0] C:\Users\wjc28\.gradle\caches\transforms-3\8efc4af8422002ee99660f3376a48e84\transformed\window-1.0.0\AndroidManifest.xml:25:9-27:40
-149            android:name="androidx.window.extensions"
-149-->[androidx.window:window:1.0.0] C:\Users\wjc28\.gradle\caches\transforms-3\8efc4af8422002ee99660f3376a48e84\transformed\window-1.0.0\AndroidManifest.xml:26:13-54
-150            android:required="false" />
-150-->[androidx.window:window:1.0.0] C:\Users\wjc28\.gradle\caches\transforms-3\8efc4af8422002ee99660f3376a48e84\transformed\window-1.0.0\AndroidManifest.xml:27:13-37
-151        <uses-library
-151-->[androidx.window:window:1.0.0] C:\Users\wjc28\.gradle\caches\transforms-3\8efc4af8422002ee99660f3376a48e84\transformed\window-1.0.0\AndroidManifest.xml:28:9-30:40
-152            android:name="androidx.window.sidecar"
-152-->[androidx.window:window:1.0.0] C:\Users\wjc28\.gradle\caches\transforms-3\8efc4af8422002ee99660f3376a48e84\transformed\window-1.0.0\AndroidManifest.xml:29:13-51
-153            android:required="false" />
-153-->[androidx.window:window:1.0.0] C:\Users\wjc28\.gradle\caches\transforms-3\8efc4af8422002ee99660f3376a48e84\transformed\window-1.0.0\AndroidManifest.xml:30:13-37
-154    </application>
-155
-156</manifest>
+45-->D:\jason\3rd year winter\Cmput301\test\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:11:9-35
+46        android:theme="@style/Theme.CatchTheCode" >
+46-->D:\jason\3rd year winter\Cmput301\test\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:12:9-50
+47
+48        <!--
+49             TODO: Before you run your application, you need a Google Maps API key.
+50
+51             To get one, follow the directions here:
+52
+53                https://developers.google.com/maps/documentation/android-sdk/get-api-key
+54
+55             Once you have your API key (it starts with "AIza"), define a new property in your
+56             project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the
+57             "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
+58        -->
+59        <meta-data
+59-->D:\jason\3rd year winter\Cmput301\test\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:25:9-27:71
+60            android:name="com.google.android.geo.API_KEY"
+60-->D:\jason\3rd year winter\Cmput301\test\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:26:13-58
+61            android:value="AIzaSyAg5z6cQCawrqepHSqIiS4U4lDDU0F90qM" />
+61-->D:\jason\3rd year winter\Cmput301\test\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:27:13-68
+62
+63        <activity
+63-->D:\jason\3rd year winter\Cmput301\test\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:29:9-32:59
+64            android:name="com.example.catchthecode.MapsActivity"
+64-->D:\jason\3rd year winter\Cmput301\test\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:30:13-41
+65            android:exported="false"
+65-->D:\jason\3rd year winter\Cmput301\test\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:31:13-37
+66            android:label="@string/title_activity_maps" />
+66-->D:\jason\3rd year winter\Cmput301\test\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:32:13-56
+67        <activity
+67-->D:\jason\3rd year winter\Cmput301\test\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:33:9-41:20
+68            android:name="com.example.catchthecode.MainActivity"
+68-->D:\jason\3rd year winter\Cmput301\test\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:34:13-41
+69            android:exported="true" >
+69-->D:\jason\3rd year winter\Cmput301\test\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:35:13-36
+70            <intent-filter>
+70-->D:\jason\3rd year winter\Cmput301\test\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:36:13-40:29
+71                <action android:name="android.intent.action.MAIN" />
+71-->D:\jason\3rd year winter\Cmput301\test\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:37:17-69
+71-->D:\jason\3rd year winter\Cmput301\test\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:37:25-66
+72
+73                <category android:name="android.intent.category.LAUNCHER" />
+73-->D:\jason\3rd year winter\Cmput301\test\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:39:17-77
+73-->D:\jason\3rd year winter\Cmput301\test\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:39:27-74
+74            </intent-filter>
+75        </activity>
+76        <activity
+76-->D:\jason\3rd year winter\Cmput301\test\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:42:9-45:61
+77            android:name="com.example.catchthecode.FriendActivity"
+77-->D:\jason\3rd year winter\Cmput301\test\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:43:13-43
+78            android:exported="false"
+78-->D:\jason\3rd year winter\Cmput301\test\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:44:13-37
+79            android:label="@string/title_activity_friend" />
+79-->D:\jason\3rd year winter\Cmput301\test\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:45:13-58
+80        <activity
+80-->D:\jason\3rd year winter\Cmput301\test\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:46:9-49:65
+81            android:name="com.example.catchthecode.CollectionActivity"
+81-->D:\jason\3rd year winter\Cmput301\test\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:47:13-47
+82            android:exported="false"
+82-->D:\jason\3rd year winter\Cmput301\test\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:48:13-37
+83            android:label="@string/title_activity_collection" />
+83-->D:\jason\3rd year winter\Cmput301\test\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:49:13-62
+84
+85        <service
+85-->[com.google.firebase:firebase-firestore:24.4.3] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\255215929eb7d6e0ebe3d07ac4273818\transformed\firebase-firestore-24.4.3\AndroidManifest.xml:16:9-22:19
+86            android:name="com.google.firebase.components.ComponentDiscoveryService"
+86-->[com.google.firebase:firebase-firestore:24.4.3] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\255215929eb7d6e0ebe3d07ac4273818\transformed\firebase-firestore-24.4.3\AndroidManifest.xml:17:13-84
+87            android:directBootAware="true"
+87-->[com.google.firebase:firebase-common:20.3.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\8c07557b616ba3438445795280fd6a32\transformed\firebase-common-20.3.0\AndroidManifest.xml:34:13-43
+88            android:exported="false" >
+88-->[com.google.firebase:firebase-firestore:24.4.3] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\255215929eb7d6e0ebe3d07ac4273818\transformed\firebase-firestore-24.4.3\AndroidManifest.xml:18:13-37
+89            <meta-data
+89-->[com.google.firebase:firebase-firestore:24.4.3] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\255215929eb7d6e0ebe3d07ac4273818\transformed\firebase-firestore-24.4.3\AndroidManifest.xml:19:13-21:85
+90                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
+90-->[com.google.firebase:firebase-firestore:24.4.3] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\255215929eb7d6e0ebe3d07ac4273818\transformed\firebase-firestore-24.4.3\AndroidManifest.xml:20:17-111
+91                android:value="com.google.firebase.components.ComponentRegistrar" />
+91-->[com.google.firebase:firebase-firestore:24.4.3] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\255215929eb7d6e0ebe3d07ac4273818\transformed\firebase-firestore-24.4.3\AndroidManifest.xml:21:17-82
+92            <meta-data
+92-->[com.google.android.gms:play-services-measurement-api:21.2.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\4633c1993e83f20aef9e3f1fa8de6747\transformed\play-services-measurement-api-21.2.0\AndroidManifest.xml:31:13-33:85
+93                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+93-->[com.google.android.gms:play-services-measurement-api:21.2.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\4633c1993e83f20aef9e3f1fa8de6747\transformed\play-services-measurement-api-21.2.0\AndroidManifest.xml:32:17-139
+94                android:value="com.google.firebase.components.ComponentRegistrar" />
+94-->[com.google.android.gms:play-services-measurement-api:21.2.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\4633c1993e83f20aef9e3f1fa8de6747\transformed\play-services-measurement-api-21.2.0\AndroidManifest.xml:33:17-82
+95            <meta-data
+95-->[com.google.firebase:firebase-installations:17.1.2] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\816afcd1d160e0240bacb3172ba96ab1\transformed\firebase-installations-17.1.2\AndroidManifest.xml:17:13-19:85
+96                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+96-->[com.google.firebase:firebase-installations:17.1.2] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\816afcd1d160e0240bacb3172ba96ab1\transformed\firebase-installations-17.1.2\AndroidManifest.xml:18:17-127
+97                android:value="com.google.firebase.components.ComponentRegistrar" />
+97-->[com.google.firebase:firebase-installations:17.1.2] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\816afcd1d160e0240bacb3172ba96ab1\transformed\firebase-installations-17.1.2\AndroidManifest.xml:19:17-82
+98        </service> <!-- Needs to be explicitly declared on P+ -->
+99        <uses-library
+99-->[com.google.android.gms:play-services-maps:18.1.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\cac067d82e677fb385689af6628aa10b\transformed\play-services-maps-18.1.0\AndroidManifest.xml:39:9-41:40
+100            android:name="org.apache.http.legacy"
+100-->[com.google.android.gms:play-services-maps:18.1.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\cac067d82e677fb385689af6628aa10b\transformed\play-services-maps-18.1.0\AndroidManifest.xml:40:13-50
+101            android:required="false" />
+101-->[com.google.android.gms:play-services-maps:18.1.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\cac067d82e677fb385689af6628aa10b\transformed\play-services-maps-18.1.0\AndroidManifest.xml:41:13-37
+102
+103        <provider
+103-->[com.google.firebase:firebase-common:20.3.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\8c07557b616ba3438445795280fd6a32\transformed\firebase-common-20.3.0\AndroidManifest.xml:25:9-30:39
+104            android:name="com.google.firebase.provider.FirebaseInitProvider"
+104-->[com.google.firebase:firebase-common:20.3.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\8c07557b616ba3438445795280fd6a32\transformed\firebase-common-20.3.0\AndroidManifest.xml:26:13-77
+105            android:authorities="com.example.catchthecode.firebaseinitprovider"
+105-->[com.google.firebase:firebase-common:20.3.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\8c07557b616ba3438445795280fd6a32\transformed\firebase-common-20.3.0\AndroidManifest.xml:27:13-72
+106            android:directBootAware="true"
+106-->[com.google.firebase:firebase-common:20.3.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\8c07557b616ba3438445795280fd6a32\transformed\firebase-common-20.3.0\AndroidManifest.xml:28:13-43
+107            android:exported="false"
+107-->[com.google.firebase:firebase-common:20.3.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\8c07557b616ba3438445795280fd6a32\transformed\firebase-common-20.3.0\AndroidManifest.xml:29:13-37
+108            android:initOrder="100" />
+108-->[com.google.firebase:firebase-common:20.3.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\8c07557b616ba3438445795280fd6a32\transformed\firebase-common-20.3.0\AndroidManifest.xml:30:13-36
+109
+110        <activity
+110-->[com.google.android.gms:play-services-base:18.0.1] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\34e2d1c4cbbb2c483e60a3b26f831727\transformed\play-services-base-18.0.1\AndroidManifest.xml:20:9-22:45
+111            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+111-->[com.google.android.gms:play-services-base:18.0.1] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\34e2d1c4cbbb2c483e60a3b26f831727\transformed\play-services-base-18.0.1\AndroidManifest.xml:20:19-85
+112            android:exported="false"
+112-->[com.google.android.gms:play-services-base:18.0.1] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\34e2d1c4cbbb2c483e60a3b26f831727\transformed\play-services-base-18.0.1\AndroidManifest.xml:22:19-43
+113            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+113-->[com.google.android.gms:play-services-base:18.0.1] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\34e2d1c4cbbb2c483e60a3b26f831727\transformed\play-services-base-18.0.1\AndroidManifest.xml:21:19-78
+114
+115        <receiver
+115-->[com.google.android.gms:play-services-measurement:21.2.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\a2b57cb72051e741e5bdd856af0851bf\transformed\play-services-measurement-21.2.0\AndroidManifest.xml:29:9-33:20
+116            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+116-->[com.google.android.gms:play-services-measurement:21.2.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\a2b57cb72051e741e5bdd856af0851bf\transformed\play-services-measurement-21.2.0\AndroidManifest.xml:30:13-85
+117            android:enabled="true"
+117-->[com.google.android.gms:play-services-measurement:21.2.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\a2b57cb72051e741e5bdd856af0851bf\transformed\play-services-measurement-21.2.0\AndroidManifest.xml:31:13-35
+118            android:exported="false" >
+118-->[com.google.android.gms:play-services-measurement:21.2.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\a2b57cb72051e741e5bdd856af0851bf\transformed\play-services-measurement-21.2.0\AndroidManifest.xml:32:13-37
+119        </receiver>
+120
+121        <service
+121-->[com.google.android.gms:play-services-measurement:21.2.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\a2b57cb72051e741e5bdd856af0851bf\transformed\play-services-measurement-21.2.0\AndroidManifest.xml:35:9-38:40
+122            android:name="com.google.android.gms.measurement.AppMeasurementService"
+122-->[com.google.android.gms:play-services-measurement:21.2.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\a2b57cb72051e741e5bdd856af0851bf\transformed\play-services-measurement-21.2.0\AndroidManifest.xml:36:13-84
+123            android:enabled="true"
+123-->[com.google.android.gms:play-services-measurement:21.2.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\a2b57cb72051e741e5bdd856af0851bf\transformed\play-services-measurement-21.2.0\AndroidManifest.xml:37:13-35
+124            android:exported="false" />
+124-->[com.google.android.gms:play-services-measurement:21.2.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\a2b57cb72051e741e5bdd856af0851bf\transformed\play-services-measurement-21.2.0\AndroidManifest.xml:38:13-37
+125        <service
+125-->[com.google.android.gms:play-services-measurement:21.2.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\a2b57cb72051e741e5bdd856af0851bf\transformed\play-services-measurement-21.2.0\AndroidManifest.xml:39:9-43:72
+126            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+126-->[com.google.android.gms:play-services-measurement:21.2.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\a2b57cb72051e741e5bdd856af0851bf\transformed\play-services-measurement-21.2.0\AndroidManifest.xml:40:13-87
+127            android:enabled="true"
+127-->[com.google.android.gms:play-services-measurement:21.2.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\a2b57cb72051e741e5bdd856af0851bf\transformed\play-services-measurement-21.2.0\AndroidManifest.xml:41:13-35
+128            android:exported="false"
+128-->[com.google.android.gms:play-services-measurement:21.2.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\a2b57cb72051e741e5bdd856af0851bf\transformed\play-services-measurement-21.2.0\AndroidManifest.xml:42:13-37
+129            android:permission="android.permission.BIND_JOB_SERVICE" />
+129-->[com.google.android.gms:play-services-measurement:21.2.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\a2b57cb72051e741e5bdd856af0851bf\transformed\play-services-measurement-21.2.0\AndroidManifest.xml:43:13-69
+130
+131        <meta-data
+131-->[com.google.android.gms:play-services-basement:18.1.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\618b16313fec1b0d890112b5162e5b37\transformed\play-services-basement-18.1.0\AndroidManifest.xml:21:9-23:69
+132            android:name="com.google.android.gms.version"
+132-->[com.google.android.gms:play-services-basement:18.1.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\618b16313fec1b0d890112b5162e5b37\transformed\play-services-basement-18.1.0\AndroidManifest.xml:22:13-58
+133            android:value="@integer/google_play_services_version" />
+133-->[com.google.android.gms:play-services-basement:18.1.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\618b16313fec1b0d890112b5162e5b37\transformed\play-services-basement-18.1.0\AndroidManifest.xml:23:13-66
+134
+135        <provider
+135-->[androidx.emoji2:emoji2:1.2.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\fb66bd628dff7fcf8b72e613383d5d78\transformed\emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+136            android:name="androidx.startup.InitializationProvider"
+136-->[androidx.emoji2:emoji2:1.2.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\fb66bd628dff7fcf8b72e613383d5d78\transformed\emoji2-1.2.0\AndroidManifest.xml:25:13-67
+137            android:authorities="com.example.catchthecode.androidx-startup"
+137-->[androidx.emoji2:emoji2:1.2.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\fb66bd628dff7fcf8b72e613383d5d78\transformed\emoji2-1.2.0\AndroidManifest.xml:26:13-68
+138            android:exported="false" >
+138-->[androidx.emoji2:emoji2:1.2.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\fb66bd628dff7fcf8b72e613383d5d78\transformed\emoji2-1.2.0\AndroidManifest.xml:27:13-37
+139            <meta-data
+139-->[androidx.emoji2:emoji2:1.2.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\fb66bd628dff7fcf8b72e613383d5d78\transformed\emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+140                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+140-->[androidx.emoji2:emoji2:1.2.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\fb66bd628dff7fcf8b72e613383d5d78\transformed\emoji2-1.2.0\AndroidManifest.xml:30:17-75
+141                android:value="androidx.startup" />
+141-->[androidx.emoji2:emoji2:1.2.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\fb66bd628dff7fcf8b72e613383d5d78\transformed\emoji2-1.2.0\AndroidManifest.xml:31:17-49
+142            <meta-data
+142-->[androidx.lifecycle:lifecycle-process:2.4.1] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\b2eb98660bfd2cf45a133033cc7aed23\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:31:13-33:52
+143                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+143-->[androidx.lifecycle:lifecycle-process:2.4.1] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\b2eb98660bfd2cf45a133033cc7aed23\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:32:17-78
+144                android:value="androidx.startup" />
+144-->[androidx.lifecycle:lifecycle-process:2.4.1] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\b2eb98660bfd2cf45a133033cc7aed23\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:33:17-49
+145        </provider>
+146
+147        <uses-library
+147-->[androidx.window:window:1.0.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\8efc4af8422002ee99660f3376a48e84\transformed\window-1.0.0\AndroidManifest.xml:25:9-27:40
+148            android:name="androidx.window.extensions"
+148-->[androidx.window:window:1.0.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\8efc4af8422002ee99660f3376a48e84\transformed\window-1.0.0\AndroidManifest.xml:26:13-54
+149            android:required="false" />
+149-->[androidx.window:window:1.0.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\8efc4af8422002ee99660f3376a48e84\transformed\window-1.0.0\AndroidManifest.xml:27:13-37
+150        <uses-library
+150-->[androidx.window:window:1.0.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\8efc4af8422002ee99660f3376a48e84\transformed\window-1.0.0\AndroidManifest.xml:28:9-30:40
+151            android:name="androidx.window.sidecar"
+151-->[androidx.window:window:1.0.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\8efc4af8422002ee99660f3376a48e84\transformed\window-1.0.0\AndroidManifest.xml:29:13-51
+152            android:required="false" />
+152-->[androidx.window:window:1.0.0] D:\jason\3rd year winter\Cmput301\lab4\CMPUT301T35-lab4\caches\transforms-3\8efc4af8422002ee99660f3376a48e84\transformed\window-1.0.0\AndroidManifest.xml:30:13-37
+153    </application>
+154
+155</manifest>
