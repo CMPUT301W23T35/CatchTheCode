@@ -5,8 +5,11 @@ import static android.content.ContentValues.TAG;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -30,24 +33,38 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main_page);
 
+        // button with android:id="@+id/map" leads to MapsActivity
+        Button mapButton = (Button) findViewById(R.id.map);
+        mapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, MapsActivity.class);
+                startActivity(intent);
+            }
+        });
+        
+        // button with android:id="@+id/friend" leads to FriendActivity
+        Button friendButton = (Button) findViewById(R.id.friend);
+        friendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, FriendActivity.class);
+                startActivity(intent);
+            }
+        });
 
-        // This line is needed in every function to access database
-
-
-
-        // If you want to create a user, you need to have the following
-        // Primary key: a unique username/ID
-        // You need to store user information using hash map. First one is key, second is value
-        Map<String,Object> user1 = new HashMap<>();
-        Map<String,Object> user2 = new HashMap<>();
-        user1.put("username", "Ada1");
-        user1.put("Favourite food", "steak");
-        user2.put("username", "slime");
-
-        AddWithID(user1);
-        fetchUser("users/Jame1");
+        // button with android:id="@+id/collection" leads to CollectionActivity
+        Button collectionButton = (Button) findViewById(R.id.collection);
+        collectionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CollectionActivity.class);
+                startActivity(intent);
+            }
+        });
+        
     }
 
     // call this function when you want to fetch

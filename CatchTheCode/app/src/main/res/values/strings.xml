@@ -15,5 +15,26 @@
     <string name="QR2_text">Congratulations!\nYou find a new QR Code\nQR Score:</string>
     <string name="QR1_text">Congratulations!\nYou are the first one to scan this QR Code\nQR Score:</string>
     <string name="without_location_text">QR Code Saved Without Location</string>
+    <string name="friend" />
+    <string name="map" />
+    <string name="swit" />
+    <string name="scan_qr_code" />
+    <string name="my_profile" />
+    <string name="collection" />
+    <string name="rank_title" />
+    <string name="icon" />
+    <string name="dynamic" />
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="title_activity_profile">ProfileActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_friend" />
+    <string name="title_activity_collection" />
 
 </resources>
