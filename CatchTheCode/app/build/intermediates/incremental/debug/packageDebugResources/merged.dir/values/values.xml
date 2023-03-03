@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:ns1="http://schemas.android.com/tools">
     <color name="black">#FF000000</color>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
@@ -7,14 +7,37 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="white">#FFFFFFFF</color>
-    <string name="app_name">CatchTheCode</string>
+    <string name="QR1_text">Congratulations!\nYou are the first one to scan this QR Code\nQR Score:</string>
+    <string name="QR2_text">Congratulations!\nYou find a new QR Code\nQR Score:</string>
+    <string name="QR3_text">You have already scanned this QR Code on</string>
+    <string name="app_name" ns1:ignore="Typos">qr1</string>
+    <string name="back">Back</string>
+    <string name="catchthecode">CatchTheCode</string>
+    <string name="collection"/>
     <string name="default_web_client_id" translatable="false">663838273859-4u6n9c7dsfncddu793pbkks3hk1o9dk3.apps.googleusercontent.com</string>
+    <string name="dynamic"/>
+    <string name="friend"/>
     <string name="gcm_defaultSenderId" translatable="false">663838273859</string>
+    <string name="go_to_my_collection">Go To My Collection</string>
     <string name="google_api_key" translatable="false">AIzaSyB_6__uhW_5wSo2x2fQlTK8dQchC75Nhs8</string>
     <string name="google_app_id" translatable="false">1:663838273859:android:c44d248c6bc9187c273ff6</string>
     <string name="google_crash_reporting_api_key" translatable="false">AIzaSyB_6__uhW_5wSo2x2fQlTK8dQchC75Nhs8</string>
     <string name="google_storage_bucket" translatable="false">ctcdb-1d60c.appspot.com</string>
+    <string name="icon"/>
+    <string name="logout">logout</string>
+    <string name="map"/>
+    <string name="my_profile"/>
     <string name="project_id" translatable="false">ctcdb-1d60c</string>
+    <string name="qr_code_not_found_or_qr_code_not_detected">QR Code not found or QR Code not detected</string>
+    <string name="rank_title"/>
+    <string name="retake_qr_code">Retake QR Code</string>
+    <string name="save_with_location">Save with location</string>
+    <string name="save_without_location">Save without location</string>
+    <string name="scan_qr_code"/>
+    <string name="swit"/>
+    <string name="take_another_one">Take Another One</string>
+    <string name="with_location_text">QR Code Saved With Location</string>
+    <string name="without_location_text">QR Code Saved Without Location</string>
     <style name="Theme.CatchTheCode" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         
         <item name="colorPrimary">@color/purple_500</item>

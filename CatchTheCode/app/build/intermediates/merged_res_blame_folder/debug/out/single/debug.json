@@ -52,6 +52,10 @@
         "source": "com.example.catchthecode.app-main-35:/mipmap-mdpi/ic_launcher_round.webp"
     },
     {
+        "merged": "com.example.catchthecode.app-merged_res-33:/layout_main_page.xml.flat",
+        "source": "com.example.catchthecode.app-main-35:/layout/main_page.xml"
+    },
+    {
         "merged": "com.example.catchthecode.app-merged_res-33:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
         "source": "com.example.catchthecode.app-main-35:/mipmap-xxhdpi/ic_launcher_round.webp"
     },
@@ -66,9 +70,5 @@
     {
         "merged": "com.example.catchthecode.app-merged_res-33:/mipmap-anydpi-v33_ic_launcher.xml.flat",
         "source": "com.example.catchthecode.app-main-35:/mipmap-anydpi-v33/ic_launcher.xml"
-    },
-    {
-        "merged": "com.example.catchthecode.app-merged_res-33:/layout_activity_main.xml.flat",
-        "source": "com.example.catchthecode.app-main-35:/layout/activity_main.xml"
     }
 ]

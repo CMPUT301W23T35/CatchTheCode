@@ -6,9 +6,9 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="24"
-8-->C:\Users\wjc28\AndroidStudioProjects\Catch_The_Code\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml
+8-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="33" />
-9-->C:\Users\wjc28\AndroidStudioProjects\Catch_The_Code\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml
+9-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml
 10
 11    <!-- Although the *SdkVersion is captured in gradle build files, this is required for non gradle builds -->
 12    <!-- <uses-sdk android:minSdkVersion="14" /> -->
@@ -40,41 +40,41 @@
 23-->[androidx.core:core:1.9.0] C:\Users\wjc28\.gradle\caches\transforms-3\2a6b8d47231ddcb1817ffe241541665b\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
 24
 25    <application
-25-->C:\Users\wjc28\AndroidStudioProjects\Catch_The_Code\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:5:5-23:19
+25-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:5:5-23:19
 26        android:allowBackup="true"
-26-->C:\Users\wjc28\AndroidStudioProjects\Catch_The_Code\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:6:9-35
+26-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:6:9-35
 27        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 27-->[androidx.core:core:1.9.0] C:\Users\wjc28\.gradle\caches\transforms-3\2a6b8d47231ddcb1817ffe241541665b\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
 28        android:dataExtractionRules="@xml/data_extraction_rules"
-28-->C:\Users\wjc28\AndroidStudioProjects\Catch_The_Code\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:7:9-65
+28-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:7:9-65
 29        android:debuggable="true"
 30        android:extractNativeLibs="false"
 31        android:fullBackupContent="@xml/backup_rules"
-31-->C:\Users\wjc28\AndroidStudioProjects\Catch_The_Code\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:8:9-54
+31-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:8:9-54
 32        android:icon="@mipmap/ic_launcher"
-32-->C:\Users\wjc28\AndroidStudioProjects\Catch_The_Code\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:9:9-43
+32-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:9:9-43
 33        android:label="@string/app_name"
-33-->C:\Users\wjc28\AndroidStudioProjects\Catch_The_Code\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:10:9-41
+33-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:10:9-41
 34        android:supportsRtl="true"
-34-->C:\Users\wjc28\AndroidStudioProjects\Catch_The_Code\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:11:9-35
+34-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:11:9-35
 35        android:testOnly="true"
 36        android:theme="@style/Theme.CatchTheCode" >
-36-->C:\Users\wjc28\AndroidStudioProjects\Catch_The_Code\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:12:9-50
+36-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:12:9-50
 37        <activity
-37-->C:\Users\wjc28\AndroidStudioProjects\Catch_The_Code\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:14:9-22:20
+37-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:14:9-22:20
 38            android:name="com.example.catchthecode.MainActivity"
-38-->C:\Users\wjc28\AndroidStudioProjects\Catch_The_Code\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:15:13-41
+38-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:15:13-41
 39            android:exported="true" >
-39-->C:\Users\wjc28\AndroidStudioProjects\Catch_The_Code\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:16:13-36
+39-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:16:13-36
 40            <intent-filter>
-40-->C:\Users\wjc28\AndroidStudioProjects\Catch_The_Code\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:17:13-21:29
+40-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:17:13-21:29
 41                <action android:name="android.intent.action.MAIN" />
-41-->C:\Users\wjc28\AndroidStudioProjects\Catch_The_Code\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:18:17-69
-41-->C:\Users\wjc28\AndroidStudioProjects\Catch_The_Code\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:18:25-66
+41-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:18:17-69
+41-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:18:25-66
 42
 43                <category android:name="android.intent.category.LAUNCHER" />
-43-->C:\Users\wjc28\AndroidStudioProjects\Catch_The_Code\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:20:17-77
-43-->C:\Users\wjc28\AndroidStudioProjects\Catch_The_Code\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:20:27-74
+43-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:20:17-77
+43-->C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:20:27-74
 44            </intent-filter>
 45        </activity>
 46
