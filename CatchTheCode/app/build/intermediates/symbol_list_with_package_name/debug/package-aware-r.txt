@@ -3044,6 +3044,7 @@ id collapseActionView
 id collection
 id collection_page_divider
 id collection_rank
+id comments
 id compress
 id confirm_button
 id constraint
@@ -3085,6 +3086,8 @@ id disablePostScroll
 id disableScroll
 id disjoint
 id divider
+id divider2
+id divider3
 id divider_main
 id dragAnticlockwise
 id dragClockwise
@@ -3155,6 +3158,9 @@ id ignore
 id ignoreRequest
 id image
 id imageButton
+id imageView
+id imageView2
+id imageView3
 id immediateStop
 id included
 id indeterminate
@@ -3293,9 +3299,13 @@ id profile
 id progress_circular
 id progress_horizontal
 id radio
+id rank_number
+id rank_qrcode
 id ranking
 id ratio
 id rectangles
+id resultsList
+id resultsText
 id returnButton
 id reverseSawtooth
 id right
@@ -3317,6 +3327,8 @@ id scrollIndicatorDown
 id scrollIndicatorUp
 id scrollView
 id scrollable
+id searchButton
+id searchEditText
 id search_badge
 id search_bar
 id search_bar_text_view
@@ -3568,7 +3580,9 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_maps
+layout collection_comment
 layout collection_page
+layout collections_member
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -3586,6 +3600,7 @@ layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout friend_page
+layout friend_search_list
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title

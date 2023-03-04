@@ -4,7 +4,7 @@
             "outputFile": "com.example.catchthecode.app-mergeDebugResources-44:/values-en-rXC/values-en-rXC.xml",
             "map": [
                 {
-                    "source": "D:\\jason\\3rd year winter\\Cmput301\\lab4\\CMPUT301T35-lab4\\caches\\transforms-3\\18202c214ab563dbed10e8bb39142a86\\transformed\\appcompat-1.6.1\\res\\values-en-rXC\\values-en-rXC.xml",
+                    "source": "/Users/mingbo/.gradle/caches/transforms-3/18202c214ab563dbed10e8bb39142a86/transformed/appcompat-1.6.1/res/values-en-rXC/values-en-rXC.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "D:\\jason\\3rd year winter\\Cmput301\\lab4\\CMPUT301T35-lab4\\caches\\transforms-3\\f0daf19b4b797ddd811cf3a47b53d379\\transformed\\core-1.9.0\\res\\values-en-rXC\\values-en-rXC.xml",
+                    "source": "/Users/mingbo/.gradle/caches/transforms-3/f0daf19b4b797ddd811cf3a47b53d379/transformed/core-1.9.0/res/values-en-rXC/values-en-rXC.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

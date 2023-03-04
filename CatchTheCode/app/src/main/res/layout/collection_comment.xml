@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/returnButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:text="CatchTheCode"
+        android:textSize="20sp"
+        />
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="409dp"
+        android:layout_height="3dp"
+        android:background="?android:attr/listDivider"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="60dp" />
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="27dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="8dp"
+        android:layout_gravity="end"
+        app:srcCompat="?attr/actionModeShareDrawable" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="101dp"
+        android:layout_height="93dp"
+        android:layout_marginTop="8dp"
+        android:layout_gravity="center"
+        app:srcCompat="@android:drawable/ic_dialog_dialer" />
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        app:srcCompat="@android:drawable/ic_delete" />
+    <View
+        android:paddingTop="10sp"
+        android:id="@+id/divider3"
+        android:layout_width="409dp"
+        android:layout_height="3dp"
+        android:background="?android:attr/listDivider"
+        tools:background="@color/black"
+        />
+    <ListView
+        android:layout_width="match_parent"
+        android:id="@+id/comments"
+        android:layout_height="300sp"/>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="50sp"/>
+    <TextView
+        android:layout_width="300sp"
+        android:layout_height="60sp"
+        android:layout_gravity="center|top"
+        android:hint="30 words maximum..." />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:text="Comment"
+        android:paddingEnd="40sp"
+        android:paddingTop="20sp"
+        />
+
+
+</LinearLayout>
