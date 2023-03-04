@@ -23,6 +23,8 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.auth.User;
 
+import org.checkerframework.checker.units.qual.K;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -64,7 +66,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        
+
+        HashMap<String,Object> code = new HashMap<>();
+        code.put("name","QRs");
+        code.put("id", "123");
+        code.put("Latitude", "53.521331248 ");
+        code.put("Altitude", "-113.521331248");
+        addQrCode(code);
     }
 
     // call this function when you want to fetch
@@ -178,6 +186,25 @@ public class MainActivity extends AppCompatActivity {
                         Log.d(TAG, "Deletion failed");
                     }
                 });
+    }
+
+    // Call this function to add a QR code to DB(adds under the QR part)
+    public void addQrCode(Map code){
+        db.collection("QRs").document(String.valueOf(code.get("id")))
+                .set(code)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "DocumentSnapshot successfully written!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error writing document", e);
+                    }
+                });
+
     }
 
 
