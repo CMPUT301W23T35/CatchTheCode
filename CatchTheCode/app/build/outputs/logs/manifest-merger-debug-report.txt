@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:2:1-52:12
-INJECTED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:2:1-52:12
-INJECTED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:2:1-52:12
-INJECTED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:2:1-52:12
+ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:2:1-54:12
+INJECTED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:2:1-54:12
+INJECTED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:2:1-54:12
+INJECTED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:2:1-54:12
 MERGED from [androidx.databinding:viewbinding:7.4.1] C:\Users\wjc28\.gradle\caches\transforms-3\531def941d4c38b04e1091e00d3ed30d\transformed\viewbinding-7.4.1\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.navigation:navigation-ui:2.5.3] C:\Users\wjc28\.gradle\caches\transforms-3\ba480d91703e675eb96913c6d763b8df\transformed\navigation-ui-2.5.3\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.material:material:1.8.0] C:\Users\wjc28\.gradle\caches\transforms-3\f2c5b79e41fd70f682d85338753ab2ab\transformed\material-1.8.0\AndroidManifest.xml:17:1-26:12
@@ -82,27 +82,35 @@ MERGED from [androidx.print:print:1.0.0] C:\Users\wjc28\.gradle\caches\transform
 MERGED from [androidx.annotation:annotation-experimental:1.3.0] C:\Users\wjc28\.gradle\caches\transforms-3\7dc0b41c8eb68fd099adb03f3159ec10\transformed\annotation-experimental-1.3.0\AndroidManifest.xml:17:1-22:12
 MERGED from [io.grpc:grpc-android:1.50.2] C:\Users\wjc28\.gradle\caches\transforms-3\67b5d64e84bc6ea11828131cd44f22b7\transformed\grpc-android-1.50.2\AndroidManifest.xml:2:1-11:12
 MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] C:\Users\wjc28\.gradle\caches\transforms-3\18df94c92f95dd7af6eec319bd84cc8e\transformed\protolite-well-known-types-18.0.0\AndroidManifest.xml:2:1-11:12
-INJECTED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:2:1-52:12
-INJECTED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:2:1-52:12
-INJECTED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:2:1-52:12
+INJECTED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:2:1-54:12
+INJECTED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:2:1-54:12
+INJECTED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:2:1-54:12
 	package
 		INJECTED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:2:1-52:12
+		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:2:1-54:12
 		INJECTED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:2:1-52:12
+		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:2:1-54:12
 		INJECTED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml
 	xmlns:tools
 		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:2:1-52:12
+		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:2:1-54:12
 		INJECTED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:5:5-79
+	android:name
+		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:5:22-76
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:6:5-81
+	android:name
+		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:6:22-78
 application
-ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:5:5-50:19
+ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:7:5-52:19
 MERGED from [com.google.android.material:material:1.8.0] C:\Users\wjc28\.gradle\caches\transforms-3\f2c5b79e41fd70f682d85338753ab2ab\transformed\material-1.8.0\AndroidManifest.xml:24:5-20
 MERGED from [com.google.android.material:material:1.8.0] C:\Users\wjc28\.gradle\caches\transforms-3\f2c5b79e41fd70f682d85338753ab2ab\transformed\material-1.8.0\AndroidManifest.xml:24:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\wjc28\.gradle\caches\transforms-3\bae7be8c4d30e10ff1dba6187fd11cf4\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
@@ -158,67 +166,67 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\wj
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.9.0] C:\Users\wjc28\.gradle\caches\transforms-3\f0daf19b4b797ddd811cf3a47b53d379\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
 	android:supportsRtl
-		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:11:9-35
+		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:13:9-35
 	android:label
-		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:10:9-41
+		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:12:9-41
 	android:fullBackupContent
-		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:8:9-54
+		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:10:9-54
 	tools:targetApi
-		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:13:9-29
+		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:15:9-29
 	android:icon
-		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:9:9-43
+		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:11:9-43
 	android:allowBackup
-		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:6:9-35
+		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:8:9-35
 	android:theme
-		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:12:9-50
+		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:14:9-50
 	android:dataExtractionRules
-		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:7:9-65
+		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:9:9-65
 meta-data#com.google.android.geo.API_KEY
-ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:25:9-27:71
+ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:27:9-29:71
 	android:value
-		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:27:13-68
+		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:29:13-68
 	android:name
-		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:26:13-58
+		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:28:13-58
 activity#com.example.catchthecode.MapsActivity
-ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:29:9-32:59
+ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:31:9-34:59
 	android:label
-		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:32:13-56
+		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:34:13-56
 	android:exported
-		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:31:13-37
+		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:33:13-37
 	android:name
-		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:30:13-41
+		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:32:13-41
 activity#com.example.catchthecode.MainActivity
-ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:33:9-41:20
+ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:35:9-43:20
 	android:exported
-		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:35:13-36
+		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:37:13-36
 	android:name
-		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:34:13-41
+		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:36:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:36:13-40:29
+ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:38:13-42:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:37:17-69
+ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:39:17-69
 	android:name
-		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:37:25-66
+		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:39:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:39:17-77
+ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:41:17-77
 	android:name
-		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:39:27-74
+		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:41:27-74
 activity#com.example.catchthecode.FriendActivity
-ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:42:9-45:61
+ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:44:9-47:61
 	android:label
-		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:45:13-58
+		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:47:13-58
 	android:exported
-		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:44:13-37
+		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:46:13-37
 	android:name
-		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:43:13-43
+		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:45:13-43
 activity#com.example.catchthecode.CollectionActivity
-ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:46:9-49:65
+ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:48:9-51:65
 	android:label
-		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:49:13-62
+		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:51:13-62
 	android:exported
-		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:48:13-37
+		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:50:13-37
 	android:name
-		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:47:13-47
+		ADDED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml:49:13-47
 uses-sdk
 INJECTED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\wjc28\AndroidStudioProjects\CatchTheCode\CatchTheCode\app\src\main\AndroidManifest.xml
