@@ -3296,6 +3296,8 @@ id radio
 id ranking
 id ratio
 id rectangles
+id resultsList
+id resultsText
 id returnButton
 id reverseSawtooth
 id right
@@ -3317,6 +3319,8 @@ id scrollIndicatorDown
 id scrollIndicatorUp
 id scrollView
 id scrollable
+id searchButton
+id searchEditText
 id search_badge
 id search_bar
 id search_bar_text_view
@@ -3568,6 +3572,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_maps
+layout collection_comment
 layout collection_page
 layout custom_dialog
 layout design_bottom_navigation_item
@@ -3586,6 +3591,7 @@ layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout friend_page
+layout friend_search
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title
