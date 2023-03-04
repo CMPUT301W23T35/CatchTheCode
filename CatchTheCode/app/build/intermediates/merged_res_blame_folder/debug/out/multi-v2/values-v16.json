@@ -4,7 +4,7 @@
             "outputFile": "com.example.catchthecode.app-mergeDebugResources-44:/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "D:\\jason\\3rd year winter\\Cmput301\\lab4\\CMPUT301T35-lab4\\caches\\transforms-3\\18202c214ab563dbed10e8bb39142a86\\transformed\\appcompat-1.6.1\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\wjc28\\.gradle\\caches\\transforms-3\\18202c214ab563dbed10e8bb39142a86\\transformed\\appcompat-1.6.1\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "D:\\jason\\3rd year winter\\Cmput301\\lab4\\CMPUT301T35-lab4\\caches\\transforms-3\\f0daf19b4b797ddd811cf3a47b53d379\\transformed\\core-1.9.0\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\wjc28\\.gradle\\caches\\transforms-3\\f0daf19b4b797ddd811cf3a47b53d379\\transformed\\core-1.9.0\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
