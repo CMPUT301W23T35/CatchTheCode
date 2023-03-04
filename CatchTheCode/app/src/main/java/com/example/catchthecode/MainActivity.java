@@ -70,7 +70,8 @@ public class MainActivity extends AppCompatActivity {
         HashMap<String,Object> code = new HashMap<>();
         code.put("name","QRs");
         code.put("id", "123");
-        code.put("Latitude", "53.521331248 -113.521331248");
+        code.put("Latitude", "53.521331248 ");
+        code.put("Altitude", "-113.521331248");
         addQrCode(code);
     }
 
