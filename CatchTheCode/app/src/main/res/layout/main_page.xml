@@ -53,13 +53,13 @@
         android:id="@+id/scan"
         android:layout_width="225dp"
         android:layout_height="56dp"
+        android:layout_marginBottom="16dp"
         android:text="scan_qr_code"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.559"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.958" />
+        app:layout_constraintTop_toBottomOf="@+id/ranking"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/logout_main"
@@ -94,16 +94,16 @@
 
     <ListView
         android:id="@+id/ranking"
-        android:layout_width="161dp"
-        android:layout_height="230dp"
+        android:layout_width="166dp"
+        android:layout_height="317dp"
         android:layout_marginTop="32dp"
         android:background="@color/cardview_dark_background"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/ranking"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.934"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Scoreboard"
-        app:layout_constraintVertical_bias="0.284" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/label"
@@ -164,16 +164,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TextSizeCheck" />
-
-    <Button
-        android:id="@+id/search_button_main"
-        android:layout_width="128dp"
-        android:layout_height="57dp"
-        android:layout_marginEnd="32dp"
-        android:text="Search"
-        app:layout_constraintBottom_toTopOf="@+id/ranking"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/collection"
-        app:layout_constraintTop_toBottomOf="@+id/Scoreboard" />
 </androidx.constraintlayout.widget.ConstraintLayout>
