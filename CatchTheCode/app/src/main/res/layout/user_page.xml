@@ -8,12 +8,11 @@
 
     <TextView
         android:id="@+id/info"
-        android:layout_width="219dp"
+        android:layout_width="match_parent"
         android:layout_height="49dp"
         android:background="#B8B1B1"
         android:clickable="true"
         android:shadowColor="#9A9595"
-        android:text="Rank Info"
         android:textAlignment="center"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
