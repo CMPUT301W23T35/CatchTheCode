@@ -92,7 +92,18 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="TextSizeCheck" />
 
-
+    <ListView
+        android:id="@+id/ranking"
+        android:layout_width="166dp"
+        android:layout_height="317dp"
+        android:layout_marginTop="32dp"
+        android:background="@color/cardview_dark_background"
+        app:layout_constraintBottom_toBottomOf="@id/ranking"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.934"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Scoreboard"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/label"

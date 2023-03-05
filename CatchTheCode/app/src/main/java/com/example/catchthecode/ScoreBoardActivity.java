@@ -7,9 +7,6 @@ import android.content.Intent;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
-import android.util.TypedValue;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -77,15 +74,7 @@ public class ScoreBoardActivity extends AppCompatActivity {
                     }
                     final ListView playerList = findViewById(R.id.userList);
                     //Log.d(TAG, listUsers.get(1));
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(ScoreBoardActivity.this, simple_list_item_1, listUsers){
-                        @Override
-                        public View getView(int position, View convertView, ViewGroup parent) {
-                            View view = super.getView(position, convertView, parent);
-                            TextView textView = view.findViewById(android.R.id.text1);
-                            textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
-                            return view;
-                        }
-                    };
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(ScoreBoardActivity.this, simple_list_item_1, listUsers);
                     playerList.setAdapter(adapter);
 
                 } else {
