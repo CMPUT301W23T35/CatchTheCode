@@ -67,7 +67,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        HashMap<String,Object> code = new HashMap<>();
+        Button ScoreBoardButton = (Button) findViewById(R.id.Scoreboard);
+        ScoreBoardButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ScoreBoardActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     // call this function when you want to fetch

@@ -49,6 +49,11 @@
             android:name=".CollectionActivity"
             android:exported="false"
             android:label="@string/title_activity_collection" />
+        <activity
+            android:name=".ScoreBoardActivity"
+            android:exported="false"
+            android:label="@string/title_activity_collection" />
+
     </application>
 
 </manifest>
