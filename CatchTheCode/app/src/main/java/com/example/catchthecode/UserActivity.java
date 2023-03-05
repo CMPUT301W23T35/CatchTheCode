@@ -1,19 +1,16 @@
 package com.example.catchthecode;
 
-// the activity that show the users' collections
-// it follows the collection_page.xml
+// the activity that show the users' friends
+// it follows the friend_page.xml
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class CollectionActivity extends AppCompatActivity {
+public class UserActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.collection_page);
-
-
+        setContentView(R.layout.user_page);
     }
 }

@@ -11,17 +11,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.firestore.auth.User;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -45,12 +40,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         
-        // button with android:id="@+id/friend" leads to FriendActivity
-        Button friendButton = (Button) findViewById(R.id.friend);
+        // button with android:id="@+id/friend" leads to UserActivity
+        Button friendButton = (Button) findViewById(R.id.profile);
         friendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, FriendActivity.class);
+                Intent intent = new Intent(MainActivity.this, UserActivity.class);
                 startActivity(intent);
             }
         });
@@ -64,7 +59,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        
+
+        Button ScoreBoardButton = (Button) findViewById(R.id.Scoreboard);
+        ScoreBoardButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ScoreBoardActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     // call this function when you want to fetch
@@ -178,6 +182,25 @@ public class MainActivity extends AppCompatActivity {
                         Log.d(TAG, "Deletion failed");
                     }
                 });
+    }
+
+    // Call this function to add a QR code to DB(adds under the QR part)
+    public void addQrCode(Map code){
+        db.collection("QRs").document(String.valueOf(code.get("id")))
+                .set(code)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "DocumentSnapshot successfully written!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error writing document", e);
+                    }
+                });
+
     }
 
 
