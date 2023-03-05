@@ -42,7 +42,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".FriendActivity"
+            android:name=".UserActivity"
             android:exported="false"
             android:label="@string/title_activity_friend" />
         <activity

@@ -71,9 +71,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Log.d("userLong", String.valueOf(userLong));
         LatLng userLocation = new LatLng(userLat, userLong);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15));
-        // 53.521331248 -113.521331248 add a marker to University of Alberta
-        // LatLng university = new LatLng(53.521331248, -113.521331248);
-        // mMap.addMarker(new MarkerOptions().position(university).title("University of Alberta"));
 
         // add all QR codes stored in the database to the map
         addAllQRs(mMap);
