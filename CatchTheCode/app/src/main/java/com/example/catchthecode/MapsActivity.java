@@ -103,13 +103,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     double lon = Double.parseDouble(lonString);
                     int score = Integer.parseInt(scoreString);
                     // add a marker to the map
+
                     LatLng qr = new LatLng(lat, lon);
-                    mMap.addMarker(new MarkerOptions()
-                            .position(qr)
-                            .title(String.valueOf(score)));
-                    Log.d("QR", "QR added");
+                    addMarkerOnMap(mMap, qr, score);
                 }
             }
         });
     }
+
+    public void addMarkerOnMap(GoogleMap googleMap, LatLng qr, int score) {
+        mMap = googleMap;
+        mMap.addMarker(new MarkerOptions()
+                .position(qr)
+                .title(String.valueOf(score)));
+        Log.d("QR", "QR added");
+    }
+
 }
