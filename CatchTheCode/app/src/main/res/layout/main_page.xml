@@ -11,55 +11,36 @@
         android:id="@+id/map"
         android:layout_width="128dp"
         android:layout_height="57dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="24dp"
         android:text="MAP"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.886"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logout_main" />
 
-    <Button
-        android:id="@+id/friend"
-        android:layout_width="128dp"
-        android:layout_height="57dp"
-        android:layout_marginEnd="32dp"
-        android:text="FRIEND"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/defalt_image"
-        app:layout_constraintTop_toBottomOf="@+id/map" />
-
-    <Button
-        android:id="@+id/swit"
-        android:layout_width="128dp"
-        android:layout_height="57dp"
-        android:layout_marginEnd="32dp"
-        android:text="SWIT"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/profile"
-        app:layout_constraintTop_toBottomOf="@+id/friend" />
     <Button
         android:id="@+id/Scoreboard"
         android:layout_width="128dp"
         android:layout_height="57dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
         android:text="Board"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/profile"
-        app:layout_constraintTop_toBottomOf="@+id/swit" />
+        app:layout_constraintTop_toBottomOf="@+id/map" />
 
     <Button
         android:id="@+id/scan"
         android:layout_width="225dp"
         android:layout_height="56dp"
-        android:layout_marginBottom="16dp"
         android:text="scan_qr_code"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.559"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ranking"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.958" />
 
     <Button
         android:id="@+id/logout_main"
@@ -75,7 +56,7 @@
         android:layout_width="130dp"
         android:layout_height="55dp"
         android:layout_marginStart="20dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="8dp"
         android:text="my_profile"
         app:layout_constraintBottom_toTopOf="@+id/collection"
         app:layout_constraintStart_toStartOf="parent"
@@ -86,24 +67,11 @@
         android:layout_width="130dp"
         android:layout_height="55dp"
         android:layout_marginStart="20dp"
-        android:layout_marginBottom="388dp"
+        android:layout_marginBottom="372dp"
         android:text="collection"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="TextSizeCheck" />
-
-    <ListView
-        android:id="@+id/ranking"
-        android:layout_width="166dp"
-        android:layout_height="317dp"
-        android:layout_marginTop="32dp"
-        android:background="@color/cardview_dark_background"
-        app:layout_constraintBottom_toBottomOf="@id/ranking"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.934"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Scoreboard"
-        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/label"
@@ -112,9 +80,7 @@
         android:layout_marginEnd="76dp"
         android:text="rank_title"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ranking"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
         android:id="@+id/defalt_image"
@@ -125,6 +91,10 @@
         android:contentDescription="@string/icon"
         app:layout_constraintBottom_toTopOf="@+id/profile"
         app:layout_constraintEnd_toStartOf="@+id/map"
+        app:layout_constraintHorizontal_bias="0.941"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.95"
         tools:ignore="ImageContrastCheck"
         tools:srcCompat="@tools:sample/avatars" />
 
@@ -135,33 +105,24 @@
         android:layout_marginBottom="12dp"
         android:contentDescription="@string/dynamic"
         app:layout_constraintBottom_toTopOf="@+id/scan"
-        app:layout_constraintEnd_toStartOf="@+id/ranking"
-        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.081"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/collection"
-        app:layout_constraintVertical_bias="0.677"
+        app:layout_constraintVertical_bias="0.68"
         app:srcCompat="@android:mipmap/sym_def_app_icon"
         tools:ignore="ImageContrastCheck" />
 
-    <View
-        android:id="@+id/divider_main"
-        android:layout_width="409dp"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider"
+    <Button
+        android:id="@+id/search_button_main"
+        android:layout_width="128dp"
+        android:layout_height="57dp"
+        android:layout_marginEnd="32dp"
+        android:text="Search"
         app:layout_constraintBottom_toTopOf="@+id/scan"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.072" />
-
-    <Button
-        android:id="@+id/title"
-        android:layout_width="173dp"
-        android:layout_height="51dp"
-        android:text="catchthecode"
-        app:layout_constraintEnd_toStartOf="@+id/logout_main"
-        app:layout_constraintHorizontal_bias="0.006"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="TextSizeCheck" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/collection"
+        app:layout_constraintTop_toBottomOf="@+id/Scoreboard"
+        app:layout_constraintVertical_bias="0.096" />
 </androidx.constraintlayout.widget.ConstraintLayout>

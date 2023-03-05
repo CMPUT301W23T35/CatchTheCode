@@ -1,33 +1,29 @@
 package com.example.catchthecode;
 
-import static java.security.AccessController.getContext;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.location.LocationManager;
+import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.Handler;
+import android.util.Log;
+import android.view.View;
+import android.widget.RelativeLayout;
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.pm.PackageManager;
-import android.hardware.SensorEventListener;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.os.Bundle;
-import android.util.Log;
-
+import com.example.catchthecode.databinding.ActivityMapsBinding;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.OnMapsSdkInitializedCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.example.catchthecode.databinding.ActivityMapsBinding;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback{
 
@@ -62,15 +58,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 1);
         }
 
-        LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-        String locationProvider = LocationManager.NETWORK_PROVIDER;
-        android.location.Location lastKnownLocation = locationManager.getLastKnownLocation(locationProvider);
-        double userLat = lastKnownLocation.getLatitude();
-        double userLong = lastKnownLocation.getLongitude();
-        Log.d("userLat", String.valueOf(userLat));
-        Log.d("userLong", String.valueOf(userLong));
-        LatLng userLocation = new LatLng(userLat, userLong);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15));
+
+
+        View locationButton = ((View) this.findViewById(Integer.parseInt("1")).getParent()).findViewById(Integer.parseInt("2"));
+        // click on the button every 10 seconds
+        CountDownTimer mTimer = new CountDownTimer(5000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                // Do nothing
+            }
+
+            public void onFinish() {
+                locationButton.performClick();
+                this.start();  // Restart
+            }
+        }.start();
+
 
         // add all QR codes stored in the database to the map
         addAllQRs(mMap);
@@ -100,13 +103,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     double lon = Double.parseDouble(lonString);
                     int score = Integer.parseInt(scoreString);
                     // add a marker to the map
+
                     LatLng qr = new LatLng(lat, lon);
-                    mMap.addMarker(new MarkerOptions()
-                            .position(qr)
-                            .title(String.valueOf(score)));
-                    Log.d("QR", "QR added");
+                    addMarkerOnMap(mMap, qr, score);
                 }
             }
         });
     }
+
+    public void addMarkerOnMap(GoogleMap googleMap, LatLng qr, int score) {
+        mMap = googleMap;
+        mMap.addMarker(new MarkerOptions()
+                .position(qr)
+                .title(String.valueOf(score)));
+        Log.d("QR", "QR added");
+    }
+
 }
