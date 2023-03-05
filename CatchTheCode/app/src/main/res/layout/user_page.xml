@@ -118,8 +118,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.727" />
 
-    <ImageButton
-        android:id="@+id/imageButton"
+    <ImageView
+        android:id="@+id/ProfilePic"
         android:layout_width="102dp"
         android:layout_height="98dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -128,6 +128,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/friend_page_divider"
         app:layout_constraintVertical_bias="0.072"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:src="@drawable/user" />
+
+
+    <Button
+        android:id="@+id/modify_profile_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Modify Profile"
+        android:layout_gravity="bottom|left"
+        android:layout_margin="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
