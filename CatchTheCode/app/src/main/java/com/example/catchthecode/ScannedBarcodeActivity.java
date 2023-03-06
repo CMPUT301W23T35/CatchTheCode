@@ -193,10 +193,10 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
                                 intentData = "Score: " + Integer.toString(getScore(barcodes.valueAt(0).email.address));
                                 txtBarcodeValue.setText(intentData);
                                 isEmail = true;
-                                btnAction.setText("Scan");
+                                //btnAction.setText("Scan");
                             } else {
                                 isEmail = false;
-                                btnAction.setText("Scan");
+                                //btnAction.setText("Scan");
                                 intentData = "Score: " + Integer.toString(getScore(barcodes.valueAt(0).displayValue));
                                 txtBarcodeValue.setText(intentData);
                             }
