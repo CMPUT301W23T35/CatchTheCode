@@ -40,7 +40,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        
+
+        Button scanButton = (Button) findViewById(R.id.scan);
+        scanButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ScannedBarcodeActivity.class);
+                startActivity(intent);
+            }
+        });
+
         // button with android:id="@+id/friend" leads to UserActivity
         Button friendButton = (Button) findViewById(R.id.profile);
         friendButton.setOnClickListener(new View.OnClickListener() {
