@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -35,7 +36,7 @@ public class UserActivity extends AppCompatActivity {
         // Check if user is already in the firestore. Create one if not.
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("users")
-                .whereEqualTo("username", androidId)
+                .whereEqualTo("userid", androidId)
                 .get()
                 .addOnSuccessListener(querySnapshot -> {
                     if (querySnapshot != null && !querySnapshot.isEmpty()) {
@@ -45,22 +46,24 @@ public class UserActivity extends AppCompatActivity {
                         String contactInfo = documentSnapshot.getString("contactInfo");
 
                         // Sometimes user can have their id stored but not for the contact info, so we do the following
-                        if (contactInfo == null || contactInfo.isEmpty()){
+                        if (contactInfo == null || contactInfo.isEmpty() || name == null || name.isEmpty()){
                             Log.d(TAG, "Reached but not prompted");
                             AlertDialog.Builder builder = new AlertDialog.Builder(this);
                             builder.setTitle("Enter Contact Information");
                             View view = getLayoutInflater().inflate(R.layout.enter_info_page, null);
                             builder.setView(view);
                             EditText Info = view.findViewById(R.id.contactInfoText);
+                            EditText Username = view.findViewById(R.id.enterUserName);
                             builder.setPositiveButton("Save", (dialog, which) -> {
                                 String number = Info.getText().toString();
                                 Map<String, Object> user = new HashMap<>();
-                                user.put("username", androidId);
+                                user.put("username", Username.getText().toString());
                                 user.put("contactInfo", number);
+                                user.put("userid", androidId);
                                 db.collection("users").document(androidId).set(user)
                                         .addOnSuccessListener(Void -> {
                                             Log.d(TAG, "User added successfully");
-                                            id.setText(androidId);
+                                            id.setText(name);
                                             info.setText("Phone number is"+number);
                                         })
                                         .addOnFailureListener(error -> {
@@ -87,14 +90,16 @@ public class UserActivity extends AppCompatActivity {
                         View view = getLayoutInflater().inflate(R.layout.enter_info_page, null);
                         builder.setView(view);
                         EditText contactInfo = view.findViewById(R.id.contactInfoText);
+                        EditText Username = view.findViewById(R.id.enterUserName);
                         builder.setPositiveButton("Save", (dialog, which) -> {
                             String number = contactInfo.getText().toString();
                             Map<String, Object> user = new HashMap<>();
-                            user.put("username", androidId);
+                            user.put("userid", androidId);
                             user.put("contactInfo", number);
+                            user.put("username", Username.getText().toString());
                             db.collection("users").document(androidId).set(user)
                                     .addOnSuccessListener(Void -> {
-                                        id.setText(androidId);
+                                        id.setText(Username.getText().toString());
                                         info.setText("Phone number is"+number);
                                         Log.d(TAG, "User added successfully");
                                     })
@@ -114,6 +119,40 @@ public class UserActivity extends AppCompatActivity {
                     //Do nothing
                 });
 
+        // This updates user information
+        Button modifyButton = findViewById(R.id.modify_profile_button);
+        modifyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(UserActivity.this);
+                builder.setTitle("Enter Contact Information");
+                View view1 = getLayoutInflater().inflate(R.layout.enter_info_page, null);
+                builder.setView(view1);
+                EditText contactInfo = view1.findViewById(R.id.contactInfoText);
+                EditText Username = view1.findViewById(R.id.enterUserName);
+                builder.setPositiveButton("Save", (dialog, which) -> {
+                    String number = contactInfo.getText().toString();
+                    Map<String, Object> user = new HashMap<>();
+                    user.put("userid", androidId);
+                    user.put("contactInfo", number);
+                    user.put("username", Username.getText().toString());
+                    db.collection("users").document(androidId).set(user)
+                            .addOnSuccessListener(Void -> {
+                                id.setText(Username.getText().toString());
+                                info.setText("Phone number is"+number);
+                                Log.d(TAG, "User Updated successfully");
+                            })
+                            .addOnFailureListener(error -> {
+                                Log.d(TAG, "Failed to add user");
+                            });
 
+                });
+                builder.setNegativeButton("Cancel", (dialog, which) -> {
+                    // Do nothing, simply ignore it.
+                });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+            }
+        });
     }
 }

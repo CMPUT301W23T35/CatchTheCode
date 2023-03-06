@@ -11,6 +11,13 @@
         android:textStyle="bold"
         android:padding="16dp"/>
 
+    <EditText
+        android:id="@+id/enterUserName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Please enter your preferred username"
+        android:inputType="textEmailAddress"
+        android:padding="16dp"/>
 
     <EditText
         android:id="@+id/contactInfoText"
