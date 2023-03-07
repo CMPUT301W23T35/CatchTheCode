@@ -76,6 +76,11 @@
             android:name=".ScannedBarcodeActivity"
             android:exported="false"
             android:label="@string/title_activity_collection" />
+
+        <activity
+            android:name=".QRcode"
+            android:exported="false"
+            android:label="" />
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"

@@ -37,6 +37,9 @@ android {
 }
 
 dependencies {
+    implementation 'com.github.androidmads:QRGenerator:1.0.1'
+
+
     implementation 'com.android.support:multidex:1.0.3'
     implementation 'com.google.android.gms:play-services-gcm:16.1.0'
     implementation 'com.google.android.gms:play-services-vision:11.8.0'
@@ -58,4 +61,6 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:31.2.2')
     // Add the dependency for the Firebase SDK for Google Analytics
     implementation 'com.google.firebase:firebase-analytics'
+
+
 }
