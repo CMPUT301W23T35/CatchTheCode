@@ -14,6 +14,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,7 +55,6 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
         txtBarcodeValue = findViewById(R.id.txtBarcodeValue);
         surfaceView = findViewById(R.id.surfaceView);
         btnAction = findViewById(R.id.btnAction);
-
 
         btnAction.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -200,6 +200,20 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
                                 intentData = "Score: " + Integer.toString(getScore(barcodes.valueAt(0).displayValue));
                                 txtBarcodeValue.setText(intentData);
                             }
+
+                            // inflation testing
+
+                            Button enter = findViewById(R.id.test);
+                            enter.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    Intent intent = new Intent(ScannedBarcodeActivity.this, TestAct.class);
+                                    //String value = barcodes.valueAt(0).email.address;
+                                    //intent.putExtra("key", value);
+                                    startActivity(intent);
+                                }
+                            });
+
                         }
                     });
 

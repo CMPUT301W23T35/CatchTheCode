@@ -19,6 +19,10 @@ public class QRcode {
 
     private String qrVR;
 
+    public QRcode(String url, ImageView qrCodeIV) {
+        this.url = url;
+        this.qrCodeIV = qrCodeIV;
+    }
 
     public void setImageview() {
         // setting this dimensions inside our qr code
@@ -32,7 +36,8 @@ public class QRcode {
         this.qrCodeIV.setImageBitmap(bitmap);
     }
 
-    public ImageView Imageview() {
+    public ImageView getImageview() {
+        setImageview();
         return this.qrCodeIV;
     }
 

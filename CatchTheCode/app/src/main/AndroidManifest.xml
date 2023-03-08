@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
 
+
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
@@ -77,10 +78,16 @@
             android:exported="false"
             android:label="@string/title_activity_collection" />
 
-        <activity
+        <!--<activity
             android:name=".QRcode"
             android:exported="false"
-            android:label="" />
+            android:label="" />-->
+        <activity
+            android:name=".TestAct"
+            android:exported="false"
+            android:label=""/>
+
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"

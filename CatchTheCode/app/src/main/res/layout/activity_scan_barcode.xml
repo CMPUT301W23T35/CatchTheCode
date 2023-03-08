@@ -32,4 +32,12 @@
         android:layout_alignParentBottom="true"
         android:text="capture the code!!!" />
 
+    <Button
+        android:id="@+id/test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="test"
+        android:textSize="20sp" />
+
 </RelativeLayout>
