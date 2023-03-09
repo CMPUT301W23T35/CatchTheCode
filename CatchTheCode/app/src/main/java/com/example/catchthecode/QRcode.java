@@ -143,5 +143,14 @@ public class QRcode {
     public int getqrScore() {
         return this.Score;
     }
+    
+    public int gethash(){
+        int hash = 7;
+        for (int i = 0; i < this.url.length(); i++) {
+            hash = hash * 31 + this.url.charAt(i);
+            hash = hash % 1001;
+        }
+        return hash;
+    }
 
 }
