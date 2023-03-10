@@ -10,6 +10,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 // This class runs the scan failed message after scanning. (scan_fail.xml)
+/**
+ * represent the scan fail message
+ */
 public class ScanFailMsg extends AppCompatActivity {
 
     @Override
@@ -21,6 +24,9 @@ public class ScanFailMsg extends AppCompatActivity {
 
     Button btnRetake;
 
+    /**
+     * initialize the view and connect the button listeners
+     */
     private void initViews() {
 
         btnRetake = findViewById(R.id.btnRetake);
