@@ -1,7 +1,8 @@
 package com.example.catchthecode;
 
-// the activity that show the users' collections
-// it follows the collection_page.xml
+/* This class defines the collection page of the app.
+ * It shows the user the current QR code this user has collected.
+ */
 
 import android.content.Intent;
 import android.os.Bundle;
