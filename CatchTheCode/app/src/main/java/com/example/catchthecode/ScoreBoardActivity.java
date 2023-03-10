@@ -28,7 +28,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+/**
+ * represent a scoreboard activity and its functionalities
+ */
 public class ScoreBoardActivity extends AppCompatActivity {
     List<String> listUsers = new ArrayList<String>();
     @Override
@@ -36,6 +38,8 @@ public class ScoreBoardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.score_board);
         Intent intent = getIntent();
+
+        getSupportActionBar().setTitle("Unique Ranking"); // sets the title of the ranking type.
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         CollectionReference userRef = db.collection("users");
