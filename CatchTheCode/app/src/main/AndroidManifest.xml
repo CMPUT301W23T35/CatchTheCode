@@ -105,6 +105,10 @@
             android:exported="false"
             android:label=""/>
 
+        <activity
+            android:name=".SearchGeoActivity"
+            android:exported="false"
+            android:label=""/>
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"
