@@ -21,10 +21,17 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
+/*  This class defines all the controller on the main page.
+ *
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+    /* This method creates the main page and set up the buttons on the main page.
+     * Set up button listeners for each button.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,8 +97,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    // call this function when you want to fetch
-    // path is a String, containing path to a specific user
+    /* This method fetches the user information from the database.
+     * @param path: the path to the user in the database
+     */
     public void fetchUser(String path) {
         db.document(path).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
@@ -113,7 +121,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    //This method add to DB with arbitrary ID
+    /* This method adds a new user to the database.
+     * @param user: the user to be added
+     */
     public void simpleAd(Map user) {
         // Adding User to DB
         // This way, the user is added with arbitrary ID.
@@ -134,10 +144,10 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-
-    // This functions handles uploading/updateing a document.
-    // Just pass in the object, all the info will be stored in the DB and can be fetched by function above
-
+    /* This method handles uploading/updateing a document.
+     * Just pass in the object, all the info will be stored in the DB and can be fetched by function above 
+     * @param user: the user to be added
+     */
     public void AddWithID(Map user){
             db.collection("users").document(String.valueOf(user.get("username")))
                     .set(user)
@@ -156,7 +166,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-    // if you want to update without overwritting entire document, use this method
+    /* This method updates a user's information without over
+     * @param user: the user to be updated
+     * @param key: the key of the field to be updated
+     * @param value: the value of the field to be updated
+     */
     public void update(String key, String value, Map user){
         db.collection("users").document(String.valueOf(user.get("username")))
                 .update(
@@ -165,7 +179,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    // If you want to delete a user
+    /* This method deletes a user from the database.
+     * @param user: the user to be deleted
+     */
     public void deleteUser(Map user){
         db.collection("users").document(String.valueOf(user.get("username")))
                 .delete()
@@ -183,7 +199,10 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-
+    /* This method deletes a field from a user in the database.
+     * @param user: the user to be deleted
+     * @param toRemove: the field to be deleted
+     */
     public void deleteField(Map user, String toRemove){
         Map<String,Object> updates = new HashMap<>();
         updates.put(toRemove, FieldValue.delete());
@@ -203,7 +222,9 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-    // Call this function to add a QR code to DB(adds under the QR part)
+    /* This method adds a new QR code to the database.
+     * @param code: the QR code to be added
+     */
     public void addQrCode(Map code){
         db.collection("QRs").document(String.valueOf(code.get("id")))
                 .set(code)

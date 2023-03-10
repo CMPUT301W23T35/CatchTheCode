@@ -24,6 +24,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
+/* This class is used to display the map and add markers to the map
+ * 
+ */
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback{
 
@@ -32,6 +35,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private LocationManager locationManager;
     FirebaseFirestore db;
 
+    /* This method is called when the activity is created, creating the map
+     * 
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +51,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
     }
 
+    /* This method is called when the map is ready to be used
+     * @param googleMap the map
+     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -79,7 +88,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         addAllQRs(mMap);
     }
 
-    // add all QR codes stored in the database to the map
+    /* This method is used to add all QR codes stored in the database to the map
+     * @param googleMap the map
+     */
     public void addAllQRs(GoogleMap googleMap) {
         mMap = googleMap;
         db.collection("QRs").get().addOnCompleteListener(task -> {
@@ -111,6 +122,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         });
     }
 
+    /* This method is used to add a marker to the map
+     * @param googleMap the map
+     * @param qr the location of the QR code
+     * @param score the score of the QR code
+     */
     public void addMarkerOnMap(GoogleMap googleMap, LatLng qr, int score) {
         mMap = googleMap;
         mMap.addMarker(new MarkerOptions()
