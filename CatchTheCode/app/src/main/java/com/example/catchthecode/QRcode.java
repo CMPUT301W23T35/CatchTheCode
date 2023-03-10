@@ -1,10 +1,13 @@
 package com.example.catchthecode;
 
 
-
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.widget.ImageView;
+
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import androidmads.library.qrgenearator.QRGContents;
 import androidmads.library.qrgenearator.QRGEncoder;
