@@ -6,14 +6,14 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 /**
- * This class runs the search friends list page. (search_friends.xml)
+ * This class runs the search geolocation list page. (search_geo.xml)
  */
-public class SearchFriendsActivity extends AppCompatActivity {
+public class SearchGeoActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.search_friends);
+        setContentView(R.layout.search_geo);
         //initViews();
     }
 }

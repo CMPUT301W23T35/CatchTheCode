@@ -57,7 +57,7 @@
         android:layout_height="55dp"
         android:layout_marginStart="20dp"
         android:layout_marginBottom="8dp"
-        android:text="my_profile"
+        android:text="my profile"
         app:layout_constraintBottom_toTopOf="@+id/collection"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="TextSizeCheck" />
