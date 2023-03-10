@@ -1,14 +1,13 @@
 package com.example.catchthecode;
 
 import android.Manifest;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
+import android.provider.MediaStore;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.SurfaceHolder;
@@ -17,6 +16,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
@@ -27,15 +30,18 @@ import java.io.IOException;
 
 public class ScannedBarcodeActivity extends AppCompatActivity {
 
+    private static final int IMAGE_CAPTURE_CODE = 202;
     SurfaceView surfaceView;
     TextView txtBarcodeValue;
     private BarcodeDetector barcodeDetector;
     private CameraSource cameraSource;
     private static final int REQUEST_CAMERA_PERMISSION = 201;
     Button btnAction;
+    Button btnScan;
     String intentData = "";
     boolean isEmail = false;
 
+    Uri image_uri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,33 +55,89 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
         txtBarcodeValue = findViewById(R.id.txtBarcodeValue);
         surfaceView = findViewById(R.id.surfaceView);
         btnAction = findViewById(R.id.btnAction);
+        btnScan = findViewById(R.id.btnScan);
 
+
+        btnScan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ScannedBarcodeActivity.this, ScanFailMsg.class);
+                startActivity(intent);
+            }
+        });
 
         btnAction.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-//                if (intentData.length() > 0) {
-//                    if (isEmail) {
-//
-//                    }
-////                        startActivity(new Intent(ScannedBarcodeActivity.this, EmailActivity.class).putExtra("email_address", intentData));
-//                    else {
-//                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(intentData)));
-//                    }
-//                }
+            /*public void onClick(View v) {
+                if (intentData.length() > 0) {
+                    if (isEmail) {
+                    }
+                       //tartActivity(new Intent(ScannedBarcodeActivity.this, EmailActivity.class).putExtra("email_address", intentData));
+               else {
+                   startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(intentData)));
+               }
+           }*/
 
 
                 // TODO: need to store it somewher
                 //  intentdata has the string representation of the scanned qr code
 
+            public void onClick(View v){
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                    if (checkSelfPermission(Manifest.permission.CAMERA) ==
+                            PackageManager.PERMISSION_DENIED ||
+                            checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
+                            PackageManager.PERMISSION_DENIED){
 
-
-
-
-
+                        String[] permission = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                        requestPermissions(permission, REQUEST_CAMERA_PERMISSION);
+                }
+                else {
+                    // permission already granted
+                        openCamera();
+                }
             }
-        });
+            else {
+                // system os is less then marshmallow
+            }
+
+        }
+    });
+}
+    private void openCamera(){
+        ContentValues values = new ContentValues();
+        values.put(MediaStore.Images.Media.TITLE, "New Picture");
+        values.put(MediaStore.Images.Media.DESCRIPTION, "From the Camera");
+        image_uri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, image_uri);
+        startActivityForResult(cameraIntent, IMAGE_CAPTURE_CODE);
     }
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case REQUEST_CAMERA_PERMISSION:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    openCamera();
+                } else {
+                    Toast.makeText(this, "Permission Denied!", Toast.LENGTH_SHORT).show();
+                }
+                break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            if (requestCode == IMAGE_CAPTURE_CODE) {
+                // set image captured to image view
+                //imgView.setImageURI(image_uri);
+                Log.d("image_uri", image_uri.toString());
+            }
+        }
+    }
+
 
     private void initialiseDetectorsAndSources() {
 
@@ -141,15 +203,38 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
                                 intentData = "Score: " + Integer.toString(getScore(barcodes.valueAt(0).email.address));
                                 txtBarcodeValue.setText(intentData);
                                 isEmail = true;
-                                btnAction.setText("Scan");
+
                             } else {
                                 isEmail = false;
-                                btnAction.setText("Scan");
+
                                 intentData = "Score: " + Integer.toString(getScore(barcodes.valueAt(0).displayValue));
                                 txtBarcodeValue.setText(intentData);
-
                             }
+                            /*
+                            btnScan.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+
+                                    Intent intent = new Intent(ScannedBarcodeActivity.this, ScanSuccessMsg.class);
+                                    startActivity(intent);
+
+                                }
+                            });
+                            */
+                            // inflation testing
+
+                            Button enter = findViewById(R.id.btnScan);
+                            enter.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    Intent intent = new Intent(ScannedBarcodeActivity.this, TestAct.class);
+                                    //String value = barcodes.valueAt(0).email.address;
+                                    //intent.putExtra("key", value);
+                                    startActivity(intent);
+                                }
+                            });
                         }
+
                     });
 
                 }
@@ -179,7 +264,7 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
         int hash = 7;
         for (int i = 0; i < code.length(); i++) {
             hash = hash * 31 + code.charAt(i);
-            hash /= 100;
+            hash = hash % 100;
         }
         return hash;
     }
