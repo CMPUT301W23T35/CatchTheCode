@@ -15,6 +15,7 @@ public class SearchFriendsActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_friends);
+        getSupportActionBar().setTitle("Friend Search"); // setup the Title on the top left.
         //initViews();
     }
 }

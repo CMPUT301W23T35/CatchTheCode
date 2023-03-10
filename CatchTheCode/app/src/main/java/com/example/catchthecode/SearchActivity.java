@@ -19,10 +19,23 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.searching_page);
         initViews();
     }
+
     /**
      * it initialize the view and connect to button listeners
      */
     private void initViews() {
+        Button btnGeoSearch;
+
+        btnGeoSearch = findViewById(R.id.geo_search_button);
+
+        btnGeoSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SearchActivity.this, SearchGeoActivity.class);
+                startActivity(intent);
+            }
+        });
+
         Button btnNameSearch;
 
         btnNameSearch = findViewById(R.id.name_search_button);
@@ -35,5 +48,6 @@ public class SearchActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 }
