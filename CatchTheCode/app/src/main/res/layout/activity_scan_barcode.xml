@@ -6,12 +6,13 @@
 
     <SurfaceView
         android:id="@+id/surfaceView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="378dp"
+        android:layout_height="594dp"
         android:layout_above="@+id/btnAction"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_centerVertical="true" />
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="4dp" />
 
     <TextView
         android:id="@+id/txtBarcodeValue"
@@ -30,6 +31,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="53dp"
         android:text="capture the code!!!" />
+
+    <Button
+        android:id="@+id/btnScan"
+        android:layout_width="376dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnAction"
+        android:layout_marginTop="-60dp"
+        android:layout_marginBottom="10dp"
+        android:text="Scan" />
 
 </RelativeLayout>

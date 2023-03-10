@@ -37,6 +37,7 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
     private CameraSource cameraSource;
     private static final int REQUEST_CAMERA_PERMISSION = 201;
     Button btnAction;
+    Button btnScan;
     String intentData = "";
     boolean isEmail = false;
 
@@ -54,7 +55,16 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
         txtBarcodeValue = findViewById(R.id.txtBarcodeValue);
         surfaceView = findViewById(R.id.surfaceView);
         btnAction = findViewById(R.id.btnAction);
+        btnScan = findViewById(R.id.btnScan);
 
+
+        btnScan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ScannedBarcodeActivity.this, ScanFailMsg.class);
+                startActivity(intent);
+            }
+        });
 
         btnAction.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -193,14 +203,38 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
                                 intentData = "Score: " + Integer.toString(getScore(barcodes.valueAt(0).email.address));
                                 txtBarcodeValue.setText(intentData);
                                 isEmail = true;
-                                //btnAction.setText("Scan");
+
                             } else {
                                 isEmail = false;
-                                //btnAction.setText("Scan");
+
                                 intentData = "Score: " + Integer.toString(getScore(barcodes.valueAt(0).displayValue));
                                 txtBarcodeValue.setText(intentData);
                             }
+                            /*
+                            btnScan.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+
+                                    Intent intent = new Intent(ScannedBarcodeActivity.this, ScanSuccessMsg.class);
+                                    startActivity(intent);
+
+                                }
+                            });
+                            */
+                            // inflation testing
+
+                            Button enter = findViewById(R.id.btnScan);
+                            enter.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    Intent intent = new Intent(ScannedBarcodeActivity.this, TestAct.class);
+                                    //String value = barcodes.valueAt(0).email.address;
+                                    //intent.putExtra("key", value);
+                                    startActivity(intent);
+                                }
+                            });
                         }
+
                     });
 
                 }

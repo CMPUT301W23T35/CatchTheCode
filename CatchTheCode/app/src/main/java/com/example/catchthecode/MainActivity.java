@@ -79,6 +79,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button SearchButton = (Button) findViewById(R.id.search_button_main);
+        SearchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     // call this function when you want to fetch
@@ -212,12 +221,6 @@ public class MainActivity extends AppCompatActivity {
                 });
 
     }
-
-
-
-
-
-
 
 
 

@@ -11,23 +11,11 @@
         android:layout_height="59dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/geo_search_button"
-        app:layout_constraintHorizontal_bias="0.522"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider4"
-        app:layout_constraintVertical_bias="0.161"
-        app:srcCompat="@android:drawable/ic_menu_mapmode" />
-
-    <View
-        android:id="@+id/divider4"
-        android:layout_width="409dp"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.535"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.063"
-        app:layout_editor_absoluteY="49dp" />
+        app:layout_constraintVertical_bias="0.223"
+        app:srcCompat="@android:drawable/ic_menu_mapmode" />
 
     <Button
         android:id="@+id/geo_search_button"
@@ -40,8 +28,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.566"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider4"
-        app:layout_constraintVertical_bias="0.161" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.223" />
+
 
     <Button
         android:id="@+id/name_search_button"
@@ -56,9 +45,7 @@
         app:layout_constraintHorizontal_bias="0.566"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/geo_search_button"
-        app:layout_constraintVertical_bias="0.035" />
-
-
+        app:layout_constraintVertical_bias="0.026" />
 
     <ImageView
         android:id="@+id/name_search_image"
@@ -71,15 +58,4 @@
         app:layout_constraintVertical_bias="0.116"
         app:srcCompat="@android:drawable/ic_dialog_info" />
 
-    <TextView
-        android:id="@+id/return_button"
-        android:layout_width="106dp"
-        android:layout_height="37dp"
-        android:text="CatchTheCode"
-        app:layout_constraintBottom_toTopOf="@+id/divider4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.052"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
