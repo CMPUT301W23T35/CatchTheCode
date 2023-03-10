@@ -14,6 +14,7 @@ public class SearchGeoActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_geo);
+        getSupportActionBar().setTitle("Geolocation Search"); // setup the Title on the top left.
         //initViews();
     }
 }

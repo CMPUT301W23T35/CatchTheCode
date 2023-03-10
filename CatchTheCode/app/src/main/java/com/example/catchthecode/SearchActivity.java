@@ -9,6 +9,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 // This class runs the searching category(geo/name) page(searching_page.xml)
+/**
+ * This class runs the searching category(geo/name) page(searching_page.xml)
+ */
 public class SearchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -17,6 +20,9 @@ public class SearchActivity extends AppCompatActivity {
         initViews();
     }
 
+    /**
+     * it initialize the view and connect to button listeners
+     */
     private void initViews() {
         Button btnGeoSearch;
 
