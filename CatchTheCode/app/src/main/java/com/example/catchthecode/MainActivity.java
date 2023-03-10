@@ -40,7 +40,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        
+
+        Button scanButton = (Button) findViewById(R.id.scan);
+        scanButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ScannedBarcodeActivity.class);
+                startActivity(intent);
+            }
+        });
+
         // button with android:id="@+id/friend" leads to UserActivity
         Button friendButton = (Button) findViewById(R.id.profile);
         friendButton.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +75,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ScoreBoardActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button SearchButton = (Button) findViewById(R.id.search_button_main);
+        SearchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
                 startActivity(intent);
             }
         });
@@ -203,12 +221,6 @@ public class MainActivity extends AppCompatActivity {
                 });
 
     }
-
-
-
-
-
-
 
 
 
