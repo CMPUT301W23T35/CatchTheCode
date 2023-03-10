@@ -1,8 +1,11 @@
 package com.example.catchthecode;
 
 
+import static android.content.ContentValues.TAG;
+
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.util.Log;
 import android.widget.ImageView;
 
 import java.nio.charset.StandardCharsets;
@@ -24,9 +27,20 @@ public class QRcode {
 
     private int Score;
 
-    public QRcode(String url, ImageView qrCodeIV) {
+    public QRcode(String url, ImageView qrCodeIV) throws NoSuchAlgorithmException {
         this.url = url;
         this.qrCodeIV = qrCodeIV;
+        setScore();
+        setqrName();
+        setQrVR();
+        setImageview();
+    }
+
+    public QRcode(String url) throws NoSuchAlgorithmException {
+        this.url = url;
+        setScore();
+        setqrName();
+        setQrVR();
     }
 
     public void setImageview() {
@@ -42,7 +56,6 @@ public class QRcode {
     }
 
     public ImageView getImageview() {
-        setImageview();
         return this.qrCodeIV;
     }
 
@@ -102,6 +115,7 @@ public class QRcode {
                 i += j;
             }
         }
+        Log.d(TAG, "setScore: " + String.valueOf(this.Score));
 
     }
 

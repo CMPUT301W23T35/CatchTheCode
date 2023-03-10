@@ -27,6 +27,7 @@ import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 
 public class ScannedBarcodeActivity extends AppCompatActivity {
 
@@ -200,14 +201,23 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
 
                             if (barcodes.valueAt(0).email != null) {
                                 txtBarcodeValue.removeCallbacks(null);
-                                intentData = "Score: " + Integer.toString(getScore(barcodes.valueAt(0).email.address));
+                                try {
+                                    intentData = "Score: " + getScore(barcodes.valueAt(0).displayValue);
+                                } catch (NoSuchAlgorithmException e) {
+                                    e.printStackTrace();
+                                }
                                 txtBarcodeValue.setText(intentData);
                                 isEmail = true;
 
+                                // redundant
                             } else {
                                 isEmail = false;
 
-                                intentData = "Score: " + Integer.toString(getScore(barcodes.valueAt(0).displayValue));
+                                try {
+                                    intentData = "Score: " + Integer.toString(getScore(barcodes.valueAt(0).displayValue));
+                                } catch (NoSuchAlgorithmException e) {
+                                    e.printStackTrace();
+                                }
                                 txtBarcodeValue.setText(intentData);
                             }
                             /*
@@ -228,8 +238,10 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
                                 @Override
                                 public void onClick(View view) {
                                     Intent intent = new Intent(ScannedBarcodeActivity.this, TestAct.class);
-                                    //String value = barcodes.valueAt(0).email.address;
-                                    //intent.putExtra("key", value);
+
+                                    String value = barcodes.valueAt(0).displayValue;
+                                    intent.putExtra("key", value);
+
                                     startActivity(intent);
                                 }
                             });
@@ -255,9 +267,9 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
         initialiseDetectorsAndSources();
     }
 
-    protected int getScore(String code) {
+    protected int getScore(String code) throws NoSuchAlgorithmException {
 
-        // maybe an email address, maybe an url
+        /*// maybe an email address, maybe an url
         // TODO: hash function needed
         Log.d("myTag", code);
 
@@ -266,6 +278,9 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
             hash = hash * 31 + code.charAt(i);
             hash = hash % 100;
         }
-        return hash;
+        return hash;*/
+
+        QRcode input = new QRcode(code);
+        return input.getqrScore();
     }
 }
