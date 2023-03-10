@@ -6,6 +6,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 // This class runs the success message after scanning.(scan_success.xml)
+/**
+ * represent the scan success message
+ */
 public class ScanSuccessMsg extends AppCompatActivity {
 
     @Override

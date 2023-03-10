@@ -14,7 +14,9 @@ import java.security.NoSuchAlgorithmException;
 
 import androidmads.library.qrgenearator.QRGContents;
 import androidmads.library.qrgenearator.QRGEncoder;
-
+/**
+ * represent the QR code and correpsonding information
+ */
 public class QRcode {
 
     private String url;
@@ -42,7 +44,9 @@ public class QRcode {
         setqrName();
         setQrVR();
     }
-
+    /**
+     * set the view of the image
+     */
     public void setImageview() {
         // setting this dimensions inside our qr code
         // encoder to generate our qr code.
@@ -59,6 +63,9 @@ public class QRcode {
         return this.qrCodeIV;
     }
 
+    /**
+     * set the qr name
+     */
     public void setqrName() {
         int hash = this.gethash();
         this.qrName = "";
@@ -73,7 +80,9 @@ public class QRcode {
     public String getqrName(){
         return this.qrName;
     }
-
+    /**
+     * set QrVR
+     */
     public void setQrVR() {
         int hash = this.gethash();
         this.qrVR = "";
@@ -90,6 +99,9 @@ public class QRcode {
         return this.qrVR;
     }
 
+    /**
+     * set the score of the qr code
+     */
     public void setScore() throws NoSuchAlgorithmException {
         MessageDigest digest = MessageDigest.getInstance("SHA-256");
         byte[] encodedhash = digest.digest(
@@ -119,6 +131,9 @@ public class QRcode {
 
     }
 
+    /**
+     * convert the score based on hash
+     */
     public int convertScore(char c, int l) {
         switch (c) {
             case '0':
@@ -156,11 +171,17 @@ public class QRcode {
         }
         return 0;
     }
-    
+
+    /**
+     * get the current qr code score
+     */
     public int getqrScore() {
         return this.Score;
     }
-    
+
+    /**
+     * get the hash qr code score
+     */
     public int gethash(){
         int hash = 7;
         for (int i = 0; i < this.url.length(); i++) {

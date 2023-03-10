@@ -28,7 +28,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+/**
+ * represent a scoreboard activity and its functionalities
+ */
 public class ScoreBoardActivity extends AppCompatActivity {
     List<String> listUsers = new ArrayList<String>();
     @Override

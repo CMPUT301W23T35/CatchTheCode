@@ -9,6 +9,11 @@ import androidx.core.app.ActivityCompat;
 
 import java.security.NoSuchAlgorithmException;
 
+//TODO: refactor the name to "QRInfo"
+
+/**
+ * represent qr code information
+ */
 public class TestAct extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {

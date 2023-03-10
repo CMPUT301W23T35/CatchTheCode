@@ -28,7 +28,9 @@ import com.google.android.gms.vision.barcode.BarcodeDetector;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
-
+/**
+ * represent a qr code scanner that can automatically scan the qr code
+ */
 public class ScannedBarcodeActivity extends AppCompatActivity {
 
     private static final int IMAGE_CAPTURE_CODE = 202;
@@ -51,7 +53,9 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
 
         initViews();
     }
-
+    /**
+     * initialize the views and add button listeners
+     */
     private void initViews() {
         txtBarcodeValue = findViewById(R.id.txtBarcodeValue);
         surfaceView = findViewById(R.id.surfaceView);
@@ -105,6 +109,9 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
         }
     });
 }
+    /**
+     * open the camera
+     */
     private void openCamera(){
         ContentValues values = new ContentValues();
         values.put(MediaStore.Images.Media.TITLE, "New Picture");
@@ -114,6 +121,10 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
         cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, image_uri);
         startActivityForResult(cameraIntent, IMAGE_CAPTURE_CODE);
     }
+
+    /**
+     * request the permission
+     */
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
@@ -192,8 +203,6 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
             public void receiveDetections(Detector.Detections<Barcode> detections) {
                 final SparseArray<Barcode> barcodes = detections.getDetectedItems();
                 if (barcodes.size() != 0) {
-
-
                     txtBarcodeValue.post(new Runnable() {
 
                         @Override
@@ -266,7 +275,11 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
         super.onResume();
         initialiseDetectorsAndSources();
     }
-
+    /**
+     * get the score of the given qr code
+     * @param code  represent the code that to represent the code
+     * @return score    the score of the current qr code
+     */
     protected int getScore(String code) throws NoSuchAlgorithmException {
 
         /*// maybe an email address, maybe an url
