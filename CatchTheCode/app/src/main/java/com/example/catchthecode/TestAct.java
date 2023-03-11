@@ -11,9 +11,13 @@ import java.security.NoSuchAlgorithmException;
 //TODO: refactor the name to "QRInfo"
 
 /**
- * represent qr code information
+ * This class represents the QR code information.
  */
 public class TestAct extends AppCompatActivity {
+    /**
+     * Called when the activity is starting. Initializes the view and generates the QR code image.
+     * @param savedInstanceState the saved instance state bundle
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

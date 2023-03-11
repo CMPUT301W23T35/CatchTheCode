@@ -9,12 +9,17 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-// This class runs the scan failed message after scanning. (scan_fail.xml)
 /**
- * represent the scan fail message
+
+ This class represents the Scan Fail Message that is displayed after a failed QR code scan. It extends the AppCompatActivity class.
  */
 public class ScanFailMsg extends AppCompatActivity {
 
+    /**
+
+     This method is called when the activity is created. It sets the content view to scan_fail.xml and initializes the views.
+     @param savedInstanceState the saved instance state of the activity
+     */
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +30,8 @@ public class ScanFailMsg extends AppCompatActivity {
     Button btnRetake;
 
     /**
-     * initialize the view and connect the button listeners
+
+     This method initializes the view and sets up a click listener for the "Retake" button, which restarts the QR code scanner.
      */
     private void initViews() {
 

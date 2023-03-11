@@ -1,24 +1,27 @@
 package com.example.catchthecode;
-
 import android.location.Location;
+
 
 /* This class is used to store the location of the QR code.
  * 
  */
-
+/**
+ This class is used to store the location of the QR code along with the QR code itself.
+ */
 public class modelLocation {
     private Location location;
     private modelCode code;
 
-    /* This is the constructor of the class.
-     * 
+    /**
+     * Constructs an empty instance of modelLocation.
      */
     public modelLocation(){
         this.location = null;
         this.code = null;
     }
 
-    /* This is the constructor of the class.
+    /**
+     * Constructs an instance of modelLocation with a location and a QR code.
      * @param location The location of the QR code.
      * @param code The QR code.
      */
@@ -27,28 +30,32 @@ public class modelLocation {
         this.code = code;
     }
 
-    /* This method is used to get the location of the QR code.
+    /**
+     * Returns the location of the QR code.
      * @return The location of the QR code.
      */
     public Location getLocation(){
         return location;
     }
 
-    /* This method is used to get the QR code.
+    /**
+     * Returns the QR code.
      * @return The QR code.
      */
     public modelCode getCode(){
         return code;
     }
 
-    /* This method is used to set the location of the QR code.
+    /**
+     * Sets the location of the QR code.
      * @param location The location of the QR code.
      */
     public void setLocation(Location location){
         this.location = location;
     }
 
-    /* This method is used to set the QR code.
+    /**
+     * Sets the QR code.
      * @param code The QR code.
      */
     public void setCode(modelCode code){

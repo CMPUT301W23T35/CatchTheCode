@@ -54,7 +54,8 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
         initViews();
     }
     /**
-     * initialize the views and add button listeners
+
+     Initialize the views and set up button listeners.
      */
     private void initViews() {
         txtBarcodeValue = findViewById(R.id.txtBarcodeValue);
@@ -110,7 +111,10 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
     });
 }
     /**
-     * open the camera
+
+     Open the device's camera and set up a BarcodeDetector and CameraSource to scan QR codes.
+
+     If a QR code is scanned successfully, the scanned data is stored in intentData.
      */
     private void openCamera(){
         ContentValues values = new ContentValues();
@@ -138,6 +142,16 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
         }
     }
 
+    /**
+
+     This method is called when an activity you launched exits, giving you the requestCode you started it with,
+     the resultCode it returned, and any additional data from it. In this case, it is used to handle the result of
+     an image capture activity and display the captured image in an image view.
+     @param requestCode an integer request code originally supplied to startActivityForResult(),
+     which allows to identify who this result came from.
+     @param resultCode an integer result code returned by the child activity through its setResult().
+     @param data an Intent, which can return result data to the caller (various data can be attached to Intent "extras").
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -151,6 +165,14 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
     }
 
 
+    /**
+
+     This method initializes the barcode detector and camera source, starts the camera preview,
+
+     and detects barcodes in real-time using the camera source. It displays a toast message to inform
+
+     the user that the barcode scanner has started.
+     */
     private void initialiseDetectorsAndSources() {
 
         Toast.makeText(getApplicationContext(), "Barcode scanner started", Toast.LENGTH_SHORT).show();
@@ -164,6 +186,13 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
                 .setAutoFocusEnabled(true) //you should add this feature
                 .build();
 
+        /**
+
+         This method is called when the SurfaceView is created.
+         It checks if the app has the required CAMERA permission. If the permission is granted, the cameraSource starts to stream the video from the camera to the surfaceView.
+         If the permission is not granted, a request is sent to the user for the CAMERA permission.
+         @param holder the SurfaceHolder of the SurfaceView
+         */
         surfaceView.getHolder().addCallback(new SurfaceHolder.Callback() {
             @Override
             public void surfaceCreated(SurfaceHolder holder) {
@@ -182,29 +211,61 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
 
             }
 
+            /**
+
+             Called when the surface's layout or format has been changed.
+             @param holder The SurfaceHolder whose surface has changed.
+             @param format The new PixelFormat of the surface.
+             @param width The new width of the surface.
+             @param height The new height of the surface.
+             */
             @Override
             public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
             }
 
+            /**
+
+             Called when the surface is being destroyed. Stops the camera source.
+             @param holder The SurfaceHolder being destroyed.
+             */
             @Override
             public void surfaceDestroyed(SurfaceHolder holder) {
                 cameraSource.stop();
             }
         });
 
+        /**
 
+         Sets a new detector processor for the barcode detector.
+         The processor's release() method displays a toast to notify the user
+         that the barcode scanner has been stopped to prevent memory leaks.
+         The receiveDetections() method receives a collection of detected items
+         and displays their value on the txtBarcodeValue TextView.
+         If the barcode is an email, it will display the score of the email.
+         The method also sets a boolean value to determine if the scanned barcode is an email or not.
+         @param detections A collection of detected items returned from the barcode detector
+         */
         barcodeDetector.setProcessor(new Detector.Processor<Barcode>() {
             @Override
             public void release() {
                 Toast.makeText(getApplicationContext(), "To prevent memory leaks barcode scanner has been stopped", Toast.LENGTH_SHORT).show();
             }
 
+            /**
+
+             This method is called when barcode detections are received by the detector.
+             It sets the detected barcode value to the TextView and launches an activity when the scan button is clicked.
+             @param detections the detected items by the detector.
+             */
             @Override
             public void receiveDetections(Detector.Detections<Barcode> detections) {
                 final SparseArray<Barcode> barcodes = detections.getDetectedItems();
                 if (barcodes.size() != 0) {
                     txtBarcodeValue.post(new Runnable() {
 
+                        /**
+                         * This method is called when the Runnable is executed to set the barcode value to the TextView.
+                         */
                         @Override
                         public void run() {
 
@@ -276,9 +337,11 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
         initialiseDetectorsAndSources();
     }
     /**
-     * get the score of the given qr code
-     * @param code  represent the code that to represent the code
-     * @return score    the score of the current qr code
+
+     Calculates the score of a given QR code.
+     @param code the string representation of the QR code to be scored
+     @return the score of the QR code
+     @throws NoSuchAlgorithmException if the hashing algorithm used by the QRcode class is not available
      */
     protected int getScore(String code) throws NoSuchAlgorithmException {
 
