@@ -29,10 +29,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 /**
- * represent a scoreboard activity and its functionalities
+
+ Represents a scoreboard activity and its functionalities
  */
 public class ScoreBoardActivity extends AppCompatActivity {
     List<String> listUsers = new ArrayList<String>();
+    /**
+
+     Called when the activity is starting. This is where most initialization should go.
+
+     @param savedInstanceState a Bundle object containing the activity's previously saved state.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,10 +59,16 @@ public class ScoreBoardActivity extends AppCompatActivity {
         TextView[] playerViews = new TextView[] {text1,text2,text3};
 
 
-
-
         Query query = userRef.orderBy("score", Query.Direction.DESCENDING);
         query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            /**
+
+             This method is called when a Firestore query is complete, and it updates the UI based on the results.
+             If the query is successful, it iterates through the query results and populates the top 3 player scores into
+             the text views, and the rest of the players scores into the list view. It then sets the adapter for the list view.
+             If the query fails, it logs an error message.
+             @param task a Task containing the result of the Firestore query
+             */
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
@@ -86,9 +99,5 @@ public class ScoreBoardActivity extends AppCompatActivity {
                 }
             }
         });
-
-
-
-
     }
 }

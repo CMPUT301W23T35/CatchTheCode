@@ -5,12 +5,16 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-// This class runs the success message after scanning.(scan_success.xml)
 /**
- * represent the scan success message
+
+ Represents an activity to display a success message after scanning a QR code.
  */
 public class ScanSuccessMsg extends AppCompatActivity {
 
+    /**
+     * Creates the activity and sets its layout to display the success message.
+     * @param savedInstanceState contains data that was saved if the activity is being re-initialized.
+     */
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
