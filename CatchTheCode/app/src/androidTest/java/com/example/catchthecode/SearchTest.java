@@ -10,6 +10,10 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
+/**
+ The SearchTest class contains test cases for testing search functionality.
+ */
+
 public class SearchTest {
     private Solo solo;
     @Rule
