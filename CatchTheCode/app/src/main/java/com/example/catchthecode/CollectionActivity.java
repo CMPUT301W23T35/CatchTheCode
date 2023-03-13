@@ -1,12 +1,14 @@
-/**
- * This class defines the collection page of the app.
- * It shows the user the current QR code this user has collected.
- */
+
 package com.example.catchthecode;
 
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
+/**
+ * This class defines the collection page of the app.
+ * It shows the user the current QR code this user has collected.
+ */
 
 public class CollectionActivity extends AppCompatActivity {
     /**
