@@ -25,6 +25,10 @@ import static org.junit.Assert.assertNotNull;
 
 import java.util.ArrayList;
 
+/**
+ This class contains the test cases for scanning QR codes functionality in the app.
+ */
+
 public class scanTest {
     private Solo solo;
     @Rule

@@ -22,9 +22,20 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 /**
- * represent the user activity and corresponding activities
+
+ This class represents the user activity and corresponding activities.
+
+ It shows the users' friends by following the friend_page.xml layout.
  */
 public class UserActivity extends AppCompatActivity {
+    /**
+
+     Called when the activity is starting.
+
+     It initializes the user's information and updates it when needed.
+
+     @param savedInstanceState the data most recently supplied in onSaveInstanceState(Bundle)
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

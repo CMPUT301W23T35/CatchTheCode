@@ -5,9 +5,9 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-// This class runs the search friends list page. (search_friends.xml)
 /**
- * This class runs the search friends list page. (search_friends.xml)
+
+ This class runs the search friends list page. (search_friends.xml)
  */
 public class SearchFriendsActivity extends AppCompatActivity {
 

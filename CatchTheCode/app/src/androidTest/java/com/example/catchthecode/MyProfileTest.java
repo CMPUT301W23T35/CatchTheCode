@@ -23,6 +23,11 @@ import static org.junit.Assert.assertNotNull;
 
 import java.util.ArrayList;
 
+/**
+ This class represents a unit test for the CatchTheCode app.
+ The purpose of this test is to ensure that the user's profile can be modified correctly.
+ */
+
 public class MyProfileTest {
     private Solo solo;
     @Rule
