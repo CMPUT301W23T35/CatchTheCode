@@ -106,7 +106,7 @@
 
     <TextView
         android:id="@+id/highest_button_num"
-        android:layout_width="25dp"
+        android:layout_width="wrap_content"
         android:layout_height="32dp"
         android:text="0"
         android:textSize="18sp"
@@ -132,7 +132,7 @@
 
     <TextView
         android:id="@+id/lowest_button_num"
-        android:layout_width="24dp"
+        android:layout_width="wrap_content"
         android:layout_height="31dp"
         android:text="0"
         android:textSize="18sp"
