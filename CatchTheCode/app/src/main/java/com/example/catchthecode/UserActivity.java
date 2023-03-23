@@ -12,19 +12,33 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.HashMap;
 import java.util.Map;
 /**
- * represent the user activity and corresponding activities
+
+ This class represents the user activity and corresponding activities.
+
+ It shows the users' friends by following the friend_page.xml layout.
  */
 public class UserActivity extends AppCompatActivity {
+    /**
+
+     Called when the activity is starting.
+
+     It initializes the user's information and updates it when needed.
+
+     @param savedInstanceState the data most recently supplied in onSaveInstanceState(Bundle)
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +55,7 @@ public class UserActivity extends AppCompatActivity {
                 .whereEqualTo("userid", androidId)
                 .get()
                 .addOnSuccessListener(querySnapshot -> {
+                    // user exists
                     if (querySnapshot != null && !querySnapshot.isEmpty()) {
                         // User exists in database, retrieve user information
                         DocumentSnapshot documentSnapshot = querySnapshot.getDocuments().get(0);
@@ -156,5 +171,47 @@ public class UserActivity extends AppCompatActivity {
                 alertDialog.show();
             }
         });
+
+        // Fill the last two columns with value
+        TextView v1 = findViewById(R.id.hRankingNums);
+        TextView v2 = findViewById(R.id.tCodesNums);
+
+        // Get total number of codes scanned, and display it
+        db.collection("users")
+                .whereEqualTo("userid",androidId)
+                .get()
+                .addOnCompleteListener( task -> {
+                    if (task.isSuccessful()) {
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            String numcodeString = document.getString("numCode");
+                            v2.setText(numcodeString);
+                        }
+                    }
+                    else{
+                        Log.d(TAG, "Error ", task.getException());
+                    }
+                });
+        // To get the current ranking of me as a player, we decide to first sort the collections
+        // of players then check what is 'my' standing. We don't want to keep a copy of highest ranking
+        // as a field because it would require updating each time a single player scans a code
+        // which would be in-efficient
+        db.collection("users")
+                .orderBy("highest", Query.Direction.DESCENDING)
+                .get()
+                .addOnCompleteListener( task -> {
+                    int rankCounter = 1;
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        if (document.getId().equals(androidId)) {
+                            // Found the user, so output their ranking
+                            break;
+                        } else {
+                            // Increment the ranking for each user that has a higher highest value than the current user
+                            rankCounter++;
+                        }
+                    }
+                    v1.setText(String.valueOf(rankCounter));
+                });
+
+
     }
 }

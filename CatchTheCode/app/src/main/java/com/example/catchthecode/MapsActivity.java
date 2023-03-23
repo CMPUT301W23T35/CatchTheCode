@@ -1,3 +1,4 @@
+
 package com.example.catchthecode;
 
 import android.content.Context;
@@ -24,10 +25,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
-/* This class is used to display the map and add markers to the map
- * 
+/**
+ This class is used to display a map and add markers to it.
  */
-
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback{
 
     private GoogleMap mMap;
@@ -35,8 +35,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private LocationManager locationManager;
     FirebaseFirestore db;
 
-    /* This method is called when the activity is created, creating the map
-     * 
+    /**
+     * This method is called when the activity is created, creating the map.
+     *
+     * @param savedInstanceState a Bundle object containing the activity's previously saved state.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +53,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
     }
 
-    /* This method is called when the map is ready to be used
+    /**
+     * This method is called when the map is ready to be used.
+     *
      * @param googleMap the map
      */
     @Override
@@ -88,7 +92,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         addAllQRs(mMap);
     }
 
-    /* This method is used to add all QR codes stored in the database to the map
+    /**
+     * This method is used to add all QR codes stored in the database to the map.
+     *
      * @param googleMap the map
      */
     public void addAllQRs(GoogleMap googleMap) {
@@ -122,7 +128,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         });
     }
 
-    /* This method is used to add a marker to the map
+    /** This method is used to add a marker to the map
      * @param googleMap the map
      * @param qr the location of the QR code
      * @param score the score of the QR code
