@@ -5,6 +5,8 @@ import static android.content.ContentValues.TAG;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.media.Image;
+import android.net.Uri;
 import android.util.Log;
 import android.widget.ImageView;
 
@@ -29,6 +31,12 @@ public class QRcode {
 
     private int Score;
 
+    private String latitude;
+
+    private String longitude;
+
+    private Uri image;
+
     /**
      Constructs a new QRcode object with the specified URL and image view.
      Generates the QR code's name, VR, score, and image view.
@@ -43,6 +51,7 @@ public class QRcode {
         setqrName();
         setQrVR();
         setImageview();
+        setLocation("noLat", "noLon");
     }
 
     /**
@@ -57,6 +66,7 @@ public class QRcode {
         setScore();
         setqrName();
         setQrVR();
+        setLocation("noLat", "noLon");
     }
     /**
 
@@ -234,4 +244,24 @@ public class QRcode {
         return hash;
     }
 
+    public void setLocation(String lat, String lon){
+        this.latitude = lat;
+        this.longitude = lon;
+    }
+
+    public String getLatitude(){
+        return this.latitude;
+    }
+
+    public String getLongitude(){
+        return this.longitude;
+    }
+
+    public void setImage(Uri image){
+        this.image = image;
+    }
+
+    public Uri getImage(){
+        return this.image;
+    }
 }
