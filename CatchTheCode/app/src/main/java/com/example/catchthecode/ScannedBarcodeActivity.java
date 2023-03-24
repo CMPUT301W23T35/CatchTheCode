@@ -85,7 +85,7 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
            }*/
 
 
-                // TODO: need to store it somewher
+                // TODO: need to store it somewhere
                 //  intentdata has the string representation of the scanned qr code
 
             public void onClick(View v){
