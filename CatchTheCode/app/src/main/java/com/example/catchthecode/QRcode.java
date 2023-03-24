@@ -35,7 +35,7 @@ public class QRcode {
 
     private String longitude;
 
-    private Uri image;
+    private Bitmap image;
 
     /**
      Constructs a new QRcode object with the specified URL and image view.
@@ -257,11 +257,11 @@ public class QRcode {
         return this.longitude;
     }
 
-    public void setImage(Uri image){
+    public void setImage(Bitmap image){
         this.image = image;
     }
 
-    public Uri getImage(){
+    public Bitmap getImage(){
         return this.image;
     }
 }

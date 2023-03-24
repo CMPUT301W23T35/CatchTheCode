@@ -5,11 +5,13 @@ import static android.content.ContentValues.TAG;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -24,6 +26,7 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -43,8 +46,9 @@ public class TestAct extends AppCompatActivity {
     FusedLocationProviderClient fusedLocationProviderClient;
     private static final int MY_REQUEST_CODE = 1122;
     int SELECT_PICTURE = 715;
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-    CollectionReference qrRef = db.collection("QRs");
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference();
+
     QRcode test = null;
 
     /**
@@ -144,13 +148,27 @@ public class TestAct extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK){
-            if (requestCode == SELECT_PICTURE){
+            if (requestCode == SELECT_PICTURE) {
                 Uri selectedUri = data.getData();
-                if (selectedUri != null){
-                    test.setImage(selectedUri);
-                    Log.e(TAG, "check: "+test.getLatitude());
+                Bitmap img = null;
+                // turn the uri into bitmap form, and fill the QRcode object with it
+                try {
+                    img = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedUri);
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
+                test.setImage(img);
+                //ImageView qrimg = findViewById(R.id.qrimg);
+                //qrimg.setImageBitmap(test.getImage());
+
+                // the object has been filled with all necessary attributes, time to upload them
+                uploadQR(test);
+                Log.d(TAG, "after upload");
             }
         }
+    }
+
+    private void uploadQR(QRcode test) {
+        myRef.child("QRs").child("test_qr").setValue(test.getLatitude());
     }
 }
