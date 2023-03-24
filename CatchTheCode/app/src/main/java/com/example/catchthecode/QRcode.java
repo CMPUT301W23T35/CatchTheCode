@@ -5,6 +5,8 @@ import static android.content.ContentValues.TAG;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.media.Image;
+import android.net.Uri;
 import android.util.Log;
 import android.widget.ImageView;
 
@@ -29,6 +31,19 @@ public class QRcode {
 
     private int Score;
 
+    private String latitude;
+
+    private String longitude;
+
+    private Uri image;
+
+    /**
+     Constructs a new QRcode object with the specified URL and image view.
+     Generates the QR code's name, VR, score, and image view.
+     @param url the URL to encode in the QR code
+     @param qrCodeIV the ImageView in which to display the QR code
+     @throws NoSuchAlgorithmException if SHA-256 algorithm is not available
+     */
     public QRcode(String url, ImageView qrCodeIV) throws NoSuchAlgorithmException {
         this.url = url;
         this.qrCodeIV = qrCodeIV;
@@ -36,16 +51,27 @@ public class QRcode {
         setqrName();
         setQrVR();
         setImageview();
+        setLocation("noLat", "noLon");
     }
 
+    /**
+
+     Constructs a new QRcode object with the specified URL.
+     Generates the QR code's name, VR, and score.
+     @param url the URL to encode in the QR code
+     @throws NoSuchAlgorithmException if SHA-256 algorithm is not available
+     */
     public QRcode(String url) throws NoSuchAlgorithmException {
         this.url = url;
         setScore();
         setqrName();
         setQrVR();
+        setLocation("noLat", "noLon");
     }
     /**
-     * set the view of the image
+
+     Sets the image view of the QR code by generating a new QR code image
+     with the specified URL and dimensions.
      */
     public void setImageview() {
         // setting this dimensions inside our qr code
@@ -59,12 +85,18 @@ public class QRcode {
         this.qrCodeIV.setImageBitmap(bitmap);
     }
 
+    /**
+
+     Returns the image view of the QR code.
+     @return the ImageView object representing the QR code
+     */
     public ImageView getImageview() {
         return this.qrCodeIV;
     }
 
     /**
-     * set the qr name
+
+     Sets the name of the QR code by generating a string from the hash of the URL.
      */
     public void setqrName() {
         int hash = this.gethash();
@@ -77,11 +109,17 @@ public class QRcode {
         this.qrName += ((hash>>4) %2 == 0) ? "Crab":"Shark";
     }
 
+    /**
+
+     Returns the name of the QR code.
+     @return the name of the QR code as a string
+     */
     public String getqrName(){
         return this.qrName;
     }
     /**
-     * set QrVR
+
+     Set the ASCII art representation of the QR code.
      */
     public void setQrVR() {
         int hash = this.gethash();
@@ -95,12 +133,19 @@ public class QRcode {
         this.qrVR += ((hash>>9) %2 == 0) ? "  \\____/\n": "  |____|\n";
     }
 
+    /**
+
+     Get the ASCII art representation of the QR code.
+     @return ASCII art representation of the QR code.
+     */
     public String getQrVR(){
         return this.qrVR;
     }
 
     /**
-     * set the score of the qr code
+
+     Set the score of the QR code based on its URL.
+     @throws NoSuchAlgorithmException if SHA-256 algorithm is not available.
      */
     public void setScore() throws NoSuchAlgorithmException {
         MessageDigest digest = MessageDigest.getInstance("SHA-256");
@@ -132,7 +177,11 @@ public class QRcode {
     }
 
     /**
-     * convert the score based on hash
+
+     Convert the score based on hash.
+     @param c character in hexadecimal representation of the hash.
+     @param l number of occurrences of the character in the hash.
+     @return score of the character based on its frequency in the hash.
      */
     public int convertScore(char c, int l) {
         switch (c) {
@@ -173,14 +222,18 @@ public class QRcode {
     }
 
     /**
-     * get the current qr code score
+
+     Returns the current score of the QR code.
+     @return the score of the QR code
      */
     public int getqrScore() {
         return this.Score;
     }
 
     /**
-     * get the hash qr code score
+
+     Calculates and returns a hash code based on the URL of the QR code.
+     @return the hash code of the QR code
      */
     public int gethash(){
         int hash = 7;
@@ -191,4 +244,24 @@ public class QRcode {
         return hash;
     }
 
+    public void setLocation(String lat, String lon){
+        this.latitude = lat;
+        this.longitude = lon;
+    }
+
+    public String getLatitude(){
+        return this.latitude;
+    }
+
+    public String getLongitude(){
+        return this.longitude;
+    }
+
+    public void setImage(Uri image){
+        this.image = image;
+    }
+
+    public Uri getImage(){
+        return this.image;
+    }
 }
