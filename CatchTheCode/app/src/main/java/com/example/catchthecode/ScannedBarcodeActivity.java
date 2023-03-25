@@ -248,7 +248,7 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
         barcodeDetector.setProcessor(new Detector.Processor<Barcode>() {
             @Override
             public void release() {
-                Toast.makeText(getApplicationContext(), "To prevent memory leaks barcode scanner has been stopped", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), "To prevent memory leaks barcode scanner has been stopped", Toast.LENGTH_SHORT).show();
             }
 
             /**
@@ -307,11 +307,10 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
                             enter.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    Intent intent = new Intent(ScannedBarcodeActivity.this, TestAct.class);
+                                    Intent intent = new Intent(ScannedBarcodeActivity.this, ScanSuccessMsg.class);
 
                                     String value = barcodes.valueAt(0).displayValue;
                                     intent.putExtra("key", value);
-
                                     startActivity(intent);
                                 }
                             });
@@ -359,4 +358,6 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
         QRcode input = new QRcode(code);
         return input.getqrScore();
     }
+
+
 }
