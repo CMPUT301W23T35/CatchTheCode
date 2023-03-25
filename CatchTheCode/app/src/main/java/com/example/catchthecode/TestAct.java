@@ -87,9 +87,17 @@ public class TestAct extends AppCompatActivity {
 
         Button wLocation = findViewById(R.id.withLoc);
         Button woLocation = findViewById(R.id.withoutLoc);
+        Button back_button = findViewById(R.id.back_button);
+
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
 
+        back_button.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        }));
         QRcode finalTest = test;
         wLocation.setOnClickListener(new View.OnClickListener() {
             @Override
