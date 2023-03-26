@@ -40,8 +40,8 @@ public class ScanSuccessMsg extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.scan_success);
-        Button saveLocationButton = (Button) findViewById(R.id.save_location_button);
+        setContentView(R.layout.scan_success1);
+        Button saveLocationButton = (Button) findViewById(R.id.withLoc);
         client = LocationServices.getFusedLocationProviderClient(this);
         requestPermission();
         saveLocationButton.setOnClickListener(new View.OnClickListener() {
