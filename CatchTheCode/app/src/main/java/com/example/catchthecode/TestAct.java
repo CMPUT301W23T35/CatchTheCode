@@ -13,6 +13,7 @@ import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
@@ -27,12 +28,16 @@ import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.storage.FirebaseStorage;
@@ -58,6 +63,7 @@ public class TestAct extends AppCompatActivity {
     private static final int MY_REQUEST_CODE = 1122;
     int SELECT_PICTURE = 715;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    CollectionReference userRef = db.collection("users");
     CollectionReference qrRef = db.collection("QRs");
     StorageReference sr = FirebaseStorage.getInstance().getReference("QRs");
 
@@ -75,8 +81,6 @@ public class TestAct extends AppCompatActivity {
         String content = getIntent().getStringExtra("key");
         //TextView tv = findViewById(R.id.test_tv);
         //tv.setText(content);
-
-
 
         try {
             test = new QRcode(content, qr);
@@ -185,8 +189,6 @@ public class TestAct extends AppCompatActivity {
                 uploadQR(test, selectedUri);
 
 
-
-
                 /*qrRef.add(test.toMap())
                                 .addOnFailureListener(new OnFailureListener() {
                                     @Override
@@ -209,7 +211,6 @@ public class TestAct extends AppCompatActivity {
 
     private void uploadQR(QRcode input, Uri uri) {
         String name = String.valueOf(System.currentTimeMillis());
-
         StorageReference storeFile = sr.child(name + "." +getExtension(uri));
         /*storeFile.putFile(uri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -225,6 +226,7 @@ public class TestAct extends AppCompatActivity {
                     }
                 });*/
 
+        // add to the QRS database
         qrRef.document(name).set(input.toMap())
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -236,6 +238,41 @@ public class TestAct extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Log.e(TAG, "data fail");
+                    }
+                });
+
+        String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+        // add to the user database
+        userRef.document(androidId).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Log.d(TAG, "Document exists!");
+                    } else {
+                        Log.d(TAG, "Document does not exist!");
+                        // if the document does not exist
+                        userRef.document(androidId).set(new HashMap<String, Object>());
+                    }
+                } else {
+                    Log.d(TAG, "Failed with: ", task.getException());
+                }
+            }
+        });
+
+        userRef.document(androidId).update(
+                "qrLists", FieldValue.arrayUnion(name))
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Log.e(TAG, "qr added to user list");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.e(TAG, "qr failed to add to user list");
                     }
                 });
 
