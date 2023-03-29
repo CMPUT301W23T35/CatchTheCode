@@ -115,6 +115,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     String latString = document.get("latitude").toString();
                     String lonString = document.get("longitude").toString();
                     String scoreString = document.get("score").toString();
+                    // if there is no location stored in the database, noLat and noLon
+                    if(latString.equals("noLat") || lonString.equals("noLon")) {
+                        continue;
+                    }
                     // convert the String types to double and int
                     double lat = Double.parseDouble(latString);
                     double lon = Double.parseDouble(lonString);
