@@ -307,7 +307,7 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
                             enter.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    Intent intent = new Intent(ScannedBarcodeActivity.this, ScanSuccessMsg.class);
+                                    Intent intent = new Intent(ScannedBarcodeActivity.this, TestAct.class);
 
                                     String value = barcodes.valueAt(0).displayValue;
                                     intent.putExtra("key", value);

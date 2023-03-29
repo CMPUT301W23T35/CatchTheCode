@@ -10,9 +10,12 @@ import android.net.Uri;
 import android.util.Log;
 import android.widget.ImageView;
 
+import com.google.firebase.firestore.Exclude;
+
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
 
 import androidmads.library.qrgenearator.QRGContents;
 import androidmads.library.qrgenearator.QRGEncoder;
@@ -20,7 +23,6 @@ import androidmads.library.qrgenearator.QRGEncoder;
  * represent the QR code and correpsonding information
  */
 public class QRcode {
-
     private String url;
 
     private ImageView qrCodeIV;
@@ -35,7 +37,7 @@ public class QRcode {
 
     private String longitude;
 
-    private Uri image;
+    private Bitmap image;
 
     /**
      Constructs a new QRcode object with the specified URL and image view.
@@ -257,11 +259,26 @@ public class QRcode {
         return this.longitude;
     }
 
-    public void setImage(Uri image){
+    public void setImage(Bitmap image){
         this.image = image;
     }
 
-    public Uri getImage(){
+    public Bitmap getImage(){
         return this.image;
+    }
+
+    @Exclude
+    public HashMap<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("url", this.url);
+        //result.put("ImageView", this.qrCodeIV);
+        result.put("readable_name", this.qrName);
+        result.put("repr", this.qrVR);
+        result.put("score", this.Score);
+        result.put("latitude", this.latitude);
+        result.put("longitude", this.longitude);
+        //result.put("image", this.image);
+
+        return result;
     }
 }
