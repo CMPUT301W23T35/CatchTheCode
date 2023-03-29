@@ -40,8 +40,7 @@ public class ScanFailMsg extends AppCompatActivity {
         btnRetake.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ScanFailMsg.this, ScannedBarcodeActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
     }

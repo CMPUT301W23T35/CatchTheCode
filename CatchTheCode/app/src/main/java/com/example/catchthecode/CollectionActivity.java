@@ -4,6 +4,10 @@ package com.example.catchthecode;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,10 +33,37 @@ public class CollectionActivity extends AppCompatActivity {
         setContentView(R.layout.collection_page);
 
         TextView rankingNum = findViewById(R.id.current_ranking_nums);
-        TextView highest = findViewById(R.id.highest_button_num);
-        TextView lowest = findViewById(R.id.lowest_button_num);
+        //TextView highest = findViewById(R.id.highest_button_num);
+        //TextView lowest = findViewById(R.id.lowest_button_num);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+
+        // drop down menu.
+        Spinner spinner = findViewById(R.id.ranking_spinner);
+        /*
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.ranking_options, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        */
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedOption = parent.getItemAtPosition(position).toString();
+                if (selectedOption.equals("highest")) {
+                    // perform action for highest option
+                } else if (selectedOption.equals("lowest")) {
+                    // perform action for lowest option
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // do nothing
+            }
+        });
+
+
 
         // Set ranking
         db.collection("users")
@@ -43,8 +74,8 @@ public class CollectionActivity extends AppCompatActivity {
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         if (document.getId().equals(androidId)) {
                             // Found the user, so output their ranking
-                            highest.setText(String.valueOf(document.getLong("highest")));
-                            lowest.setText(String.valueOf(document.getLong("lowest")));
+                            //highest.setText(String.valueOf(document.getLong("highest")));
+                            //lowest.setText(String.valueOf(document.getLong("lowest")));
                             break;
                         } else {
                             // Increment the ranking for each user that has a higher highest value than the current user
