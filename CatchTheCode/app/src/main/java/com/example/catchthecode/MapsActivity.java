@@ -74,19 +74,26 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
         View locationButton = ((View) this.findViewById(Integer.parseInt("1")).getParent()).findViewById(Integer.parseInt("2"));
-        // click on the button every 10 seconds
-        CountDownTimer mTimer = new CountDownTimer(5000, 1000) {
+        //click on the button every 10 seconds
+//        CountDownTimer mTimer = new CountDownTimer(5000, 1000) {
+//
+//            public void onTick(long millisUntilFinished) {
+//                // Do nothing
+//            }
+//
+//            public void onFinish() {
+//                locationButton.performClick();
+//                this.start();  // Restart
+//            }
+//        }.start();
 
-            public void onTick(long millisUntilFinished) {
-                // Do nothing
-            }
-
-            public void onFinish() {
+        // click the location button after 5 seconds
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
                 locationButton.performClick();
-                this.start();  // Restart
             }
-        }.start();
-
+        }, 5000);
 
         // add all QR codes stored in the database to the map
         addAllQRs(mMap);
@@ -124,7 +131,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     double lon = Double.parseDouble(lonString);
                     int score = Integer.parseInt(scoreString);
                     // add a marker to the map
-
                     LatLng qr = new LatLng(lat, lon);
                     addMarkerOnMap(mMap, qr, score);
                 }
