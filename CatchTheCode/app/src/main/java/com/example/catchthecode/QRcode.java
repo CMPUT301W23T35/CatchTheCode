@@ -5,12 +5,17 @@ import static android.content.ContentValues.TAG;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.media.Image;
+import android.net.Uri;
 import android.util.Log;
 import android.widget.ImageView;
+
+import com.google.firebase.firestore.Exclude;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
 
 import androidmads.library.qrgenearator.QRGContents;
 import androidmads.library.qrgenearator.QRGEncoder;
@@ -18,7 +23,6 @@ import androidmads.library.qrgenearator.QRGEncoder;
  * represent the QR code and correpsonding information
  */
 public class QRcode {
-
     private String url;
 
     private ImageView qrCodeIV;
@@ -28,6 +32,12 @@ public class QRcode {
     private String qrVR;
 
     private int Score;
+
+    private String latitude;
+
+    private String longitude;
+
+    private Bitmap image;
 
     /**
      Constructs a new QRcode object with the specified URL and image view.
@@ -43,6 +53,7 @@ public class QRcode {
         setqrName();
         setQrVR();
         setImageview();
+        setLocation("noLat", "noLon");
     }
 
     /**
@@ -57,6 +68,7 @@ public class QRcode {
         setScore();
         setqrName();
         setQrVR();
+        setLocation("noLat", "noLon");
     }
     /**
 
@@ -234,4 +246,39 @@ public class QRcode {
         return hash;
     }
 
+    public void setLocation(String lat, String lon){
+        this.latitude = lat;
+        this.longitude = lon;
+    }
+
+    public String getLatitude(){
+        return this.latitude;
+    }
+
+    public String getLongitude(){
+        return this.longitude;
+    }
+
+    public void setImage(Bitmap image){
+        this.image = image;
+    }
+
+    public Bitmap getImage(){
+        return this.image;
+    }
+
+    @Exclude
+    public HashMap<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("url", this.url);
+        //result.put("ImageView", this.qrCodeIV);
+        result.put("readable_name", this.qrName);
+        result.put("repr", this.qrVR);
+        result.put("score", this.Score);
+        result.put("latitude", this.latitude);
+        result.put("longitude", this.longitude);
+        //result.put("image", this.image);
+
+        return result;
+    }
 }

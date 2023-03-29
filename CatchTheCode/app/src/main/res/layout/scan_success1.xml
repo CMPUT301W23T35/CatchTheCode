@@ -32,7 +32,7 @@
         app:layout_constraintVertical_bias="0.671" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/withLoc"
         android:layout_width="237dp"
         android:layout_height="47dp"
         android:text="Save With Location"
@@ -40,18 +40,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/qrimg"
-        app:layout_constraintVertical_bias="0.314" />
+        app:layout_constraintVertical_bias="0.165" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/withoutLoc"
         android:layout_width="237dp"
         android:layout_height="47dp"
         android:text="SAVE WITHOUT LOCATION"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/withLoc"
         app:layout_constraintVertical_bias="0.09" />
+
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="237dp"
+        android:layout_height="44dp"
+        android:text="BACK"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/withoutLoc"
+        app:layout_constraintVertical_bias="0.0" />
 
     <!--<TextView
         android:layout_width="match_parent"

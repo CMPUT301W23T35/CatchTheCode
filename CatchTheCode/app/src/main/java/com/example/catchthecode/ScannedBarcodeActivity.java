@@ -85,7 +85,7 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
            }*/
 
 
-                // TODO: need to store it somewher
+                // TODO: need to store it somewhere
                 //  intentdata has the string representation of the scanned qr code
 
             public void onClick(View v){
@@ -248,7 +248,7 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
         barcodeDetector.setProcessor(new Detector.Processor<Barcode>() {
             @Override
             public void release() {
-                Toast.makeText(getApplicationContext(), "To prevent memory leaks barcode scanner has been stopped", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), "To prevent memory leaks barcode scanner has been stopped", Toast.LENGTH_SHORT).show();
             }
 
             /**
@@ -311,7 +311,6 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
 
                                     String value = barcodes.valueAt(0).displayValue;
                                     intent.putExtra("key", value);
-
                                     startActivity(intent);
                                 }
                             });
@@ -359,4 +358,6 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
         QRcode input = new QRcode(code);
         return input.getqrScore();
     }
+
+
 }
