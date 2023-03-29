@@ -20,7 +20,7 @@ import java.util.HashMap;
 import androidmads.library.qrgenearator.QRGContents;
 import androidmads.library.qrgenearator.QRGEncoder;
 /**
- * represent the QR code and correpsonding information
+ * represent the QR code and corresponding information
  */
 public class QRcode {
     private String url;
