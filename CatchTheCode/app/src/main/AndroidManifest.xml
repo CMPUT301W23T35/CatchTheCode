@@ -97,6 +97,10 @@
             android:name=".SearchActivity"
             android:exported="false"
             android:label="" />
+        <activity
+            android:name=".FriendPageActivity"
+            android:exported="false"
+            android:label="" />
 
         <activity android:name=".SearchFriendsActivity"
             android:exported="false"
