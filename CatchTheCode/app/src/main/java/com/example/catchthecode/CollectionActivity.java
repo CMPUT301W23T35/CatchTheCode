@@ -45,6 +45,7 @@ public class CollectionActivity extends AppCompatActivity {
         TextView rankingNum = findViewById(R.id.current_ranking_nums);
         ListView listView = findViewById(R.id.collection_rank);
         ListView listScoreView = findViewById(R.id.collection_score);
+        TextView QRCodeCount = findViewById(R.id.QRCodeCount);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
 
@@ -59,6 +60,19 @@ public class CollectionActivity extends AppCompatActivity {
                         break;
                     }
                 }
+            } else {
+                Log.d("CollectionActivity", "Error getting documents: ", task.getException());
+            }
+        });
+
+        // Get the number of QR codes the user has collected
+        db.collection("users").document(androidId).get(Source.SERVER).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                List<String> qrList = (List<String>) task.getResult().get("qrLists");
+                if (qrList == null) {
+                    qrList = new ArrayList<>();
+                }
+                QRCodeCount.setText(String.valueOf(qrList.size()));
             } else {
                 Log.d("CollectionActivity", "Error getting documents: ", task.getException());
             }
