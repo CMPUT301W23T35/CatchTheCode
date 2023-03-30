@@ -6,10 +6,10 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/searchLongitude"
+        android:id="@+id/searchLatitude"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Longtitude"
+        android:hint="Latitude"
         android:inputType="text"
         android:maxLines="1"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,15 +19,15 @@
         android:padding="16dp" />
 
     <EditText
-        android:id="@+id/searchLatitude"
+        android:id="@+id/searchLongitude"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Latitude"
+        android:hint="Longitude"
         android:inputType="text"
         android:maxLines="1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchLongitude"
+        app:layout_constraintTop_toBottomOf="@+id/searchLatitude"
         app:layout_constraintBottom_toTopOf="@+id/searchButton"
         app:layout_constraintVertical_bias="0.5"
         android:padding="16dp" />
@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:text="Search"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchLatitude"
+        app:layout_constraintTop_toBottomOf="@+id/searchLongitude"
         app:layout_constraintVertical_bias="0.5"
         android:padding="16dp" />
 
