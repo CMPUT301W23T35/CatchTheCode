@@ -100,7 +100,7 @@ public class CollectionActivity extends AppCompatActivity {
                         }
                     });
                 }
-
+                
             } else {
                 Log.d("CollectionActivity", "Error getting documents: ", task.getException());
             }
@@ -112,8 +112,8 @@ public class CollectionActivity extends AppCompatActivity {
         //     intent.putExtra("name", listView.getItemAtPosition(position).toString());
         //     startActivity(intent);
         // });
-
-
+        
+        
 
 
     }
