@@ -4,9 +4,11 @@ package com.example.catchthecode;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -15,6 +17,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.Source;
+
+import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This class defines the collection page of the app.
@@ -33,57 +40,56 @@ public class CollectionActivity extends AppCompatActivity {
         setContentView(R.layout.collection_page);
 
         TextView rankingNum = findViewById(R.id.current_ranking_nums);
-        //TextView highest = findViewById(R.id.highest_button_num);
-        //TextView lowest = findViewById(R.id.lowest_button_num);
+        ListView listView = findViewById(R.id.collection_rank);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
 
-        // drop down menu.
-        Spinner spinner = findViewById(R.id.ranking_spinner);
-        /*
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.ranking_options, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        */
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedOption = parent.getItemAtPosition(position).toString();
-                if (selectedOption.equals("highest")) {
-                    // perform action for highest option
-                } else if (selectedOption.equals("lowest")) {
-                    // perform action for lowest option
+        // Get the current ranking of the user
+        db.collection("users").orderBy("score", Query.Direction.DESCENDING).get(Source.SERVER).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                int rank = 0;
+                for (QueryDocumentSnapshot document : task.getResult()) {
+                    rank++;
+                    if (document.getId().equals(androidId)) {
+                        rankingNum.setText(String.valueOf(rank));
+                        break;
+                    }
                 }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // do nothing
+            } else {
+                Log.d("CollectionActivity", "Error getting documents: ", task.getException());
             }
         });
 
-
-
-        // Set ranking
-        db.collection("users")
-                .orderBy("highest", Query.Direction.DESCENDING)
-                .get()
-                .addOnCompleteListener( task -> {
-                    int rankCounter = 1;
-                    for (QueryDocumentSnapshot document : task.getResult()) {
-                        if (document.getId().equals(androidId)) {
-                            // Found the user, so output their ranking
-                            //highest.setText(String.valueOf(document.getLong("highest")));
-                            //lowest.setText(String.valueOf(document.getLong("lowest")));
-                            break;
+        // Get the list of QR codes the user has collected from field qrLists and display them in a list view
+        db.collection("users").document(androidId).get(Source.SERVER).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                List<String> qrList = (List<String>) task.getResult().get("qrLists");
+                if (qrList == null) {
+                    qrList = new ArrayList<>();
+                }
+                // convert it to human readable name with getqrName() from QRs collection in the database
+                List<String> qrNameList = new ArrayList<>();
+                for (String qr : qrList) {
+                    db.collection("QRs").document(qr).get(Source.SERVER).addOnCompleteListener(task1 -> {
+                        if (task1.isSuccessful()) {
+                            //Log.d("CollectionActivity", task1.getResult().get("readable_name").toString());
+                            qrNameList.add(task1.getResult().get("readable_name").toString());
+                            Log.d("CollectionActivity", qrNameList.toString());
+                            ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, qrNameList);
+                            listView.setAdapter(adapter);
                         } else {
-                            // Increment the ranking for each user that has a higher highest value than the current user
-                            rankCounter++;
+                            Log.d("CollectionActivity", "Error getting documents: ", task1.getException());
                         }
-                    }
-                    rankingNum.setText(String.valueOf(rankCounter));
-                });
+                    });
+                }
+                
+            } else {
+                Log.d("CollectionActivity", "Error getting documents: ", task.getException());
+            }
+        });
+        
+        
+
 
     }
 }
