@@ -41,6 +41,7 @@ public class CollectionActivity extends AppCompatActivity {
 
         TextView rankingNum = findViewById(R.id.current_ranking_nums);
         ListView listView = findViewById(R.id.collection_rank);
+        ListView listScoreView = findViewById(R.id.collection_score);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
 
@@ -69,14 +70,31 @@ public class CollectionActivity extends AppCompatActivity {
                 }
                 // convert it to human readable name with getqrName() from QRs collection in the database
                 List<String> qrNameList = new ArrayList<>();
+                List<Integer> qrScoreList = new ArrayList<>();
                 for (String qr : qrList) {
                     db.collection("QRs").document(qr).get(Source.SERVER).addOnCompleteListener(task1 -> {
                         if (task1.isSuccessful()) {
                             //Log.d("CollectionActivity", task1.getResult().get("readable_name").toString());
                             qrNameList.add(task1.getResult().get("readable_name").toString());
+                            qrScoreList.add(Integer.parseInt(task1.getResult().get("score").toString()));
                             Log.d("CollectionActivity", qrNameList.toString());
                             ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, qrNameList);
                             listView.setAdapter(adapter);
+                            ArrayAdapter<Integer> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, qrScoreList);
+                            listScoreView.setAdapter(adapter1);
+                            // sort the list by score and sort the name list accordingly
+                            for (int i = 0; i < qrScoreList.size(); i++) {
+                                for (int j = i + 1; j < qrScoreList.size(); j++) {
+                                    if (qrScoreList.get(i) < qrScoreList.get(j)) {
+                                        int temp = qrScoreList.get(i);
+                                        qrScoreList.set(i, qrScoreList.get(j));
+                                        qrScoreList.set(j, temp);
+                                        String temp1 = qrNameList.get(i);
+                                        qrNameList.set(i, qrNameList.get(j));
+                                        qrNameList.set(j, temp1);
+                                    }
+                                }
+                            }
                         } else {
                             Log.d("CollectionActivity", "Error getting documents: ", task1.getException());
                         }
