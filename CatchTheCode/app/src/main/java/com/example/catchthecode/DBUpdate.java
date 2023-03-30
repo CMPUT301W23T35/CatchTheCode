@@ -5,6 +5,7 @@ import static android.content.ContentValues.TAG;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -29,6 +30,7 @@ public class DBUpdate extends AppCompatActivity {
             if (task.isSuccessful()) {
                 for (QueryDocumentSnapshot document : task.getResult()) {
                     String userId = document.getId();
+                    Log.d("TAG", userId);
                     ArrayList<String> qrCodes = (ArrayList<String>) document.get("qrLists");
 
                     if (qrCodes != null && !qrCodes.isEmpty()) {
@@ -86,5 +88,7 @@ public class DBUpdate extends AppCompatActivity {
             }
         });
         finish();
+
+
     }
 }
