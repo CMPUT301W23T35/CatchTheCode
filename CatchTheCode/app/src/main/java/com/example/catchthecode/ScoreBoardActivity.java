@@ -53,8 +53,8 @@ public class ScoreBoardActivity extends AppCompatActivity {
 
 
         Intent intent1 = new Intent(ScoreBoardActivity.this, DBUpdate.class);
-        startActivityForResult(intent1,1);
-        finishActivity(1);
+        startActivity(intent1);
+
 
         Intent intent = getIntent();
 
