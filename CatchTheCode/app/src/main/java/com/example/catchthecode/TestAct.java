@@ -143,6 +143,7 @@ public class TestAct extends AppCompatActivity {
 
     private void fillLastLocation(QRcode QR) {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+            Log.e(TAG, "yeahaAA");
             fusedLocationProviderClient.getLastLocation()
                     .addOnSuccessListener(new OnSuccessListener<Location>() {
                         @Override
@@ -160,13 +161,19 @@ public class TestAct extends AppCompatActivity {
 
                                 String latitude = String.valueOf(addresses.get(0).getLatitude());
                                 String longitude = String.valueOf(addresses.get(0).getLongitude());
-                                Log.d(TAG, "1 lat: "+latitude+"\tlon: "+longitude);
+                                Log.e(TAG, "1 lat: "+latitude+"\tlon: "+longitude);
                                 
                                 // fill the location info
                                 QR.setLocation(latitude, longitude);
                                 Log.e(TAG, "2 see "+QR.getLongitude());
                                 return;
                             }
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.e(TAG, "fk up");
                         }
                     });
         }
@@ -281,12 +288,8 @@ public class TestAct extends AppCompatActivity {
         // check if name is already in the current user's array
         userRef.document(androidId).get(Source.SERVER).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
-                List<String> qrList = (List<String>) task.getResult().get("qrLists");
-                boolean duplicate = false;
-                for (int i = 0; i < qrList.size(); i++) {
-                    if (name == qrList.get(i)) duplicate = true;
-                }
-                if (!duplicate) {
+                //check whether qrLists field is empty
+                if (task.getResult().get("qrLists") == null) {
                     userRef.document(androidId).update(
                                     "qrLists", FieldValue.arrayUnion(name))
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -302,6 +305,30 @@ public class TestAct extends AppCompatActivity {
                                     Log.e(TAG, "qr failed to add to user list");
                                 }
                             });
+                }
+                else{
+                    List<String> qrList = (List<String>) task.getResult().get("qrLists");
+                    boolean duplicate = false;
+                    for (int i = 0; i < qrList.size(); i++) {
+                        if (name == qrList.get(i)) duplicate = true;
+                    }
+                    if (!duplicate) {
+                        userRef.document(androidId).update(
+                                        "qrLists", FieldValue.arrayUnion(name))
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        Log.e(TAG, input.getSHA256());
+                                        Log.e(TAG, "qr added to user list");
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Log.e(TAG, "qr failed to add to user list");
+                                    }
+                                });
+                    }
                 }
             } else {
                 Log.d("CollectionActivity", "Error getting documents: ", task.getException());

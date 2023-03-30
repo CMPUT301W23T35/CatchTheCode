@@ -5,18 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="bottom"
-
+    android:background="@drawable/background1"
     android:orientation="vertical">
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:alpha="0.2"
-        android:background="@drawable/background1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/qrimg"
@@ -40,29 +30,33 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.671" />
+        android:textColor="@color/black"
+        app:layout_constraintVertical_bias="0.23" />
 
     <Button
-        android:id="@+id/withLoc"
+        android:id="@+id/withPic"
         android:layout_width="237dp"
         android:layout_height="47dp"
-        android:text="Save With Location"
+        android:text="Save With Picture"
+
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/qrimg"
-        app:layout_constraintVertical_bias="0.165" />
+        app:layout_constraintVertical_bias="0.26" />
 
     <Button
-        android:id="@+id/withoutLoc"
+        android:id="@+id/withoutPic"
         android:layout_width="237dp"
         android:layout_height="47dp"
-        android:text="SAVE WITHOUT LOCATION"
+        android:text="SAVE WITHOUT Picture"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/withLoc"
-        app:layout_constraintVertical_bias="0.09" />
+        app:layout_constraintTop_toBottomOf="@+id/withPic"
+        app:layout_constraintVertical_bias="0.172" />
 
     <Button
         android:id="@+id/back_button"
@@ -72,8 +66,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/withoutLoc"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/withoutPic"
+        app:layout_constraintVertical_bias="0.37" />
 
     <!--<TextView
         android:layout_width="match_parent"

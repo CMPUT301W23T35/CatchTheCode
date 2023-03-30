@@ -16,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -49,10 +50,20 @@ public class ScoreBoardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.score_board);
+
+
+        Intent intent1 = new Intent(ScoreBoardActivity.this, DBUpdate.class);
+        startActivity(intent1);
+
+
         Intent intent = getIntent();
 
-        getSupportActionBar().setTitle("Ranking Board"); // sets the title of the ranking type.
-
+        //getSupportActionBar().setTitle("Ranking Board"); // sets the title of the ranking type.
+        // Set the ActionBar
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setTitle("Scoreboard");
+        }
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         CollectionReference userRef = db.collection("users");
 
