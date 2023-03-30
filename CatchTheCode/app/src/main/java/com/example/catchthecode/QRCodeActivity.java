@@ -47,7 +47,7 @@ public class QRCodeActivity extends AppCompatActivity {
         //get the textView
         TextView nameText = findViewById(R.id.textViewName);
         ImageView qrImage = findViewById(R.id.imageViewQRImage);
-        TextView spaceImage = findViewById(R.id.spaceImage);
+        TextView spaceImage = findViewById(R.id.space);
         Button commentButton = findViewById(R.id.comment_button);
 
 

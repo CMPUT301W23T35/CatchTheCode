@@ -107,11 +107,11 @@ public class CollectionActivity extends AppCompatActivity {
         });
 
         // set listener on the list view to show the QR code when the user clicks on it
-        // listView.setOnItemClickListener((parent, view, position, id) -> {
-        //     Intent intent = new Intent(CollectionActivity.this, QRCodeActivity.class);
-        //     intent.putExtra("name", listView.getItemAtPosition(position).toString());
-        //     startActivity(intent);
-        // });
+         listView.setOnItemClickListener((parent, view, position, id) -> {
+             Intent intent = new Intent(CollectionActivity.this, QRCodeActivity.class);
+             intent.putExtra("name", listView.getItemAtPosition(position).toString());
+             startActivity(intent);
+         });
         
         
 
