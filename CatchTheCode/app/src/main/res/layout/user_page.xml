@@ -140,4 +140,15 @@
         android:layout_gravity="bottom|left"
         android:layout_margin="16dp" />
 
+    <Button
+        android:id="@+id/collection_button"
+        android:layout_width="181dp"
+        android:layout_height="46dp"
+        android:text="Collection"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/highestRanking"
+        app:layout_constraintVertical_bias="0.833" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
