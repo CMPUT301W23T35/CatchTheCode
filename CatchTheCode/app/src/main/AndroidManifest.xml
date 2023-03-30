@@ -102,6 +102,10 @@
             android:exported="false"
             android:label="" />
 
+        <activity
+            android:name=".DBUpdate"
+            android:exported="false"
+            android:label="" />
         <activity android:name=".SearchFriendsActivity"
             android:exported="false"
             android:label="" />
