@@ -39,6 +39,11 @@ public class QRcode {
 
     private Bitmap image;
 
+    public String getSHA256() {
+        return SHA256;
+    }
+
+    private String SHA256;
     /**
      Constructs a new QRcode object with the specified URL and image view.
      Generates the QR code's name, VR, score, and image view.
@@ -150,19 +155,9 @@ public class QRcode {
      @throws NoSuchAlgorithmException if SHA-256 algorithm is not available.
      */
     public void setScore() throws NoSuchAlgorithmException {
-        MessageDigest digest = MessageDigest.getInstance("SHA-256");
-        byte[] encodedhash = digest.digest(
-                (this.url+'\n').getBytes(StandardCharsets.UTF_8));
-        StringBuilder hexString = new StringBuilder(2 * encodedhash.length);
-        for (int i = 0; i < encodedhash.length; i++) {
-            String hex = Integer.toHexString(0xff & encodedhash[i]);
-            if(hex.length() == 1) {
-                hexString.append('0');
-            }
-            hexString.append(hex);
-        }
         this.Score = 0;
-        String s = hexString.toString();
+        setSHA256();
+        String s = getSHA256();
         int sLen =  s.length();
         for (int i = 0; i < sLen-1; i++){
             if (s.charAt(i) == s.charAt(i+1) || s.charAt(i) == '0'){
@@ -177,7 +172,21 @@ public class QRcode {
         Log.d(TAG, "setScore: " + String.valueOf(this.Score));
 
     }
-
+    public void setSHA256()  throws NoSuchAlgorithmException {
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        byte[] encodedhash = digest.digest(
+                (this.url+'\n').getBytes(StandardCharsets.UTF_8));
+        StringBuilder hexString = new StringBuilder(2 * encodedhash.length);
+        for (int i = 0; i < encodedhash.length; i++) {
+            String hex = Integer.toHexString(0xff & encodedhash[i]);
+            if(hex.length() == 1) {
+                hexString.append('0');
+            }
+            hexString.append(hex);
+        }
+        String s = hexString.toString();
+        this.SHA256 = s;
+    }
     /**
 
      Convert the score based on hash.
