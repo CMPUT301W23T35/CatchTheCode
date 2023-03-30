@@ -116,4 +116,21 @@
         app:layout_constraintStart_toEndOf="@+id/collection"
         app:layout_constraintTop_toBottomOf="@+id/Scoreboard"
         app:layout_constraintVertical_bias="0.096" />
+
+    <TextView
+        android:layout_width="146dp"
+        android:layout_height="35dp"
+
+        android:text="CatchTheCode"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.064"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.018"
+        tools:ignore="MissingConstraints" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
