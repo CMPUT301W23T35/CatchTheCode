@@ -124,6 +124,14 @@
             android:exported="false"
             android:label=""/>
 
+        <activity android:name=".QRCodeActivity"
+            android:exported="false"
+            android:label=""/>
+
+        <activity android:name=".CommentActivity"
+            android:exported="false"
+            android:label=""/>
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"
