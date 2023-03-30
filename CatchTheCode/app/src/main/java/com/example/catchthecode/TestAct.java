@@ -17,6 +17,7 @@ import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -40,6 +41,9 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.Source;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -48,6 +52,7 @@ import com.google.firebase.storage.UploadTask;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -187,22 +192,6 @@ public class TestAct extends AppCompatActivity {
 
                 // the object has been filled with all necessary attributes, time to upload them
                 uploadQR(test, selectedUri);
-
-
-                /*qrRef.add(test.toMap())
-                                .addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Log.e(TAG, "fail");
-                                    }
-                                })
-                                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                            @Override
-                                            public void onSuccess(DocumentReference documentReference) {
-                                                Log.e(TAG, "cool");
-                                            }
-                                        });*/
-
                 Log.d(TAG, "after upload");
             }
         }
@@ -213,35 +202,63 @@ public class TestAct extends AppCompatActivity {
         String name = String.valueOf(input.getSHA256());
 //        String name = String.valueOf(input.getqrName());
         StorageReference storeFile = sr.child(name + "." +getExtension(uri));
-        /*storeFile.putFile(uri)
-                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        Log.e(TAG, "img fine");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.e(TAG, "img fail");
-                    }
-                });*/
 
         // add to the QRS database
-        qrRef.document(name).set(input.toMap())
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        Log.e(TAG, "data fine");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.e(TAG, "data fail");
-                    }
-                });
 
+        // check if qr exist in the qrRef
+        qrRef.document(name).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Log.d(TAG, "Document exists!");
+                        addToUserCollection(userRef, name, input);
+                    } else {
+                        Log.d(TAG, "Document does not exist!");
+                        // if the document does not exist
+                        // create the document
+                        addToQRCollection(qrRef, name, input);
+                        addToUserCollection(userRef, name, input);
+                    }
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    input.getImage().compress(Bitmap.CompressFormat.JPEG, 50, baos);
+                    byte[] data = baos.toByteArray();
+                    UploadTask uploadTask = storeFile.putBytes(data);
+                    uploadTask.addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception exception) {
+                            // Handle unsuccessful uploads
+                            Log.e(TAG, "BMP fail");
+                        }
+                    }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
+                            Log.e(TAG, "BMP fine");
+                        }
+                    });
+                } else {
+                    Log.d(TAG, "Failed with: ", task.getException());
+                }
+            }
+        });
+
+
+    }
+
+    /***
+     * get image file extension
+     * @param uri the uri of the target image file
+     * @return the image extension
+     */
+    private String getExtension(Uri uri){
+        ContentResolver cr = getContentResolver();
+        MimeTypeMap mime = MimeTypeMap.getSingleton();
+        return mime.getExtensionFromMimeType(cr.getType(uri));
+    }
+
+    private void addToUserCollection(CollectionReference userRef, String name, QRcode input) {
         String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
         // add to the user database
         userRef.document(androidId).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -261,51 +278,51 @@ public class TestAct extends AppCompatActivity {
                 }
             }
         });
+        // check if name is already in the current user's array
+        userRef.document(androidId).get(Source.SERVER).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                List<String> qrList = (List<String>) task.getResult().get("qrLists");
+                boolean duplicate = false;
+                for (int i = 0; i < qrList.size(); i++) {
+                    if (name == qrList.get(i)) duplicate = true;
+                }
+                if (!duplicate) {
+                    userRef.document(androidId).update(
+                                    "qrLists", FieldValue.arrayUnion(name))
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+                                    Log.e(TAG, input.getSHA256());
+                                    Log.e(TAG, "qr added to user list");
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.e(TAG, "qr failed to add to user list");
+                                }
+                            });
+                }
+            } else {
+                Log.d("CollectionActivity", "Error getting documents: ", task.getException());
+            }
+        });
+    }
 
-        userRef.document(androidId).update(
-                "qrLists", FieldValue.arrayUnion(name))
+    private void addToQRCollection(CollectionReference qrRef, String name, QRcode input) {
+        qrRef.document(name).set(input.toMap())
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
-                        Log.e(TAG, input.getSHA256());
-                        Log.e(TAG, "qr added to user list");
+                        Log.e(TAG, "data fine");
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.e(TAG, "qr failed to add to user list");
+                        Log.e(TAG, "data fail");
                     }
                 });
-
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        input.getImage().compress(Bitmap.CompressFormat.JPEG, 50, baos);
-        byte[] data = baos.toByteArray();
-        UploadTask uploadTask = storeFile.putBytes(data);
-        uploadTask.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                // Handle unsuccessful uploads
-                Log.e(TAG, "BMP fail");
-            }
-        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
-                Log.e(TAG, "BMP fine");
-            }
-        });
-
-    }
-
-    /***
-     * get image file extension
-     * @param uri the uri of the target image file
-     * @return the image extension
-     */
-    private String getExtension(Uri uri){
-        ContentResolver cr = getContentResolver();
-        MimeTypeMap mime = MimeTypeMap.getSingleton();
-        return mime.getExtensionFromMimeType(cr.getType(uri));
     }
 }
+
