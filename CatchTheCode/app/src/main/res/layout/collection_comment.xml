@@ -16,7 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
-        android:id="@+id/textViewName"
+        android:id="@+id/textView6"
         android:layout_width="225dp"
         android:layout_height="50dp"
         android:text="Name of the Code"
@@ -29,7 +29,7 @@
         app:layout_constraintVertical_bias="0.101" />
 
     <ImageView
-        android:id="@+id/imageViewQRImage"
+        android:id="@+id/imageView"
         android:layout_width="101dp"
         android:layout_height="93dp"
         android:layout_gravity="center"
@@ -48,7 +48,7 @@
         android:layout_marginTop="164dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewName"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
         app:srcCompat="@android:drawable/ic_delete" />
 
     <View
@@ -63,8 +63,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.435" />
 
-    <TextView
-        android:id="@+id/spaceImage"
+    <Space
+        android:id="@+id/space"
         android:layout_width="252dp"
         android:layout_height="251dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -91,7 +91,7 @@
         android:layout_width="90dp"
         android:layout_height="85dp"
         android:layout_gravity="bottom"
-
+        android:src="@drawable/like_collection"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.286"
@@ -99,5 +99,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.947" />
 
-<!--    android:src="@drawable/like_collection"-->
+
 </androidx.constraintlayout.widget.ConstraintLayout>

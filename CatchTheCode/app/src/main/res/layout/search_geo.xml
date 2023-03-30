@@ -1,39 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/searchEditText"
-        android:layout_width="match_parent"
+        android:id="@+id/searchLatitude"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Search By Location"
+        android:hint="Latitude"
         android:inputType="text"
-        android:maxLines="1" />
+        android:maxLines="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        android:padding="16dp" />
+
+    <EditText
+        android:id="@+id/searchLongitude"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Longitude"
+        android:inputType="text"
+        android:maxLines="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchLatitude"
+        app:layout_constraintBottom_toTopOf="@+id/searchButton"
+        app:layout_constraintVertical_bias="0.5"
+        android:padding="16dp" />
 
     <Button
-        android:id="@+id/searchButton1"
+        android:id="@+id/searchButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Search"
-        android:layout_gravity="end" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchLongitude"
+        app:layout_constraintVertical_bias="0.5"
+        android:padding="16dp" />
 
-    <TextView
-        android:id="@+id/FriendsResultsList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Results:"
-        android:textSize="20sp"
-        android:paddingTop="16dp"
-        android:paddingBottom="16dp" />
-
-    <ListView
-        android:id="@+id/GeoResultsList"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

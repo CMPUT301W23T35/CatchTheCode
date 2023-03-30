@@ -31,6 +31,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback{
 
     private GoogleMap mMap;
+    private GoogleMap gMap;
     private ActivityMapsBinding binding;
     private LocationManager locationManager;
     FirebaseFirestore db;
@@ -61,7 +62,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
+        gMap = googleMap;
         // try to get the location permission
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
@@ -74,19 +75,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
         View locationButton = ((View) this.findViewById(Integer.parseInt("1")).getParent()).findViewById(Integer.parseInt("2"));
-        // click on the button every 10 seconds
-        CountDownTimer mTimer = new CountDownTimer(5000, 1000) {
 
-            public void onTick(long millisUntilFinished) {
-                // Do nothing
-            }
-
-            public void onFinish() {
+        // get Intent extra
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            // get the latitude and longitude from the intent
+            Double lat = extras.getDouble("lat");
+            Double lon = extras.getDouble("lon");
+            // log the lat and lon
+            Log.d("QR", "lat: " + lat + " lon: " + lon);
+            // search the map for nearby QR codes
+            searchGeo(lon, lat);
+        }
+        // click the location button after 5 seconds
+        else{
+            new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
                 locationButton.performClick();
-                this.start();  // Restart
             }
-        }.start();
-
+            }, 5000);
+        }
 
         // add all QR codes stored in the database to the map
         addAllQRs(mMap);
@@ -115,12 +124,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     String latString = document.get("latitude").toString();
                     String lonString = document.get("longitude").toString();
                     String scoreString = document.get("score").toString();
+                    // if there is no location stored in the database, noLat and noLon
+                    if(latString.equals("noLat") || lonString.equals("noLon")) {
+                        continue;
+                    }
                     // convert the String types to double and int
                     double lat = Double.parseDouble(latString);
                     double lon = Double.parseDouble(lonString);
                     int score = Integer.parseInt(scoreString);
                     // add a marker to the map
-
                     LatLng qr = new LatLng(lat, lon);
                     addMarkerOnMap(mMap, qr, score);
                 }
@@ -139,6 +151,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .position(qr)
                 .title(String.valueOf(score)));
         Log.d("QR", "QR added");
+    }
+
+    // based on the location, show the map for nearby QR codes
+    // used the existing gMap object, if it is not initialized, initialize it
+    public void searchGeo(double lon, double lat){
+        // initialize the gMap object with save
+        LatLng currentLocation = new LatLng(lat, lon);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 15));
     }
 
 }
