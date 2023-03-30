@@ -143,6 +143,7 @@ public class TestAct extends AppCompatActivity {
 
     private void fillLastLocation(QRcode QR) {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+            Log.e(TAG, "yeahaAA");
             fusedLocationProviderClient.getLastLocation()
                     .addOnSuccessListener(new OnSuccessListener<Location>() {
                         @Override
@@ -160,13 +161,19 @@ public class TestAct extends AppCompatActivity {
 
                                 String latitude = String.valueOf(addresses.get(0).getLatitude());
                                 String longitude = String.valueOf(addresses.get(0).getLongitude());
-                                Log.d(TAG, "1 lat: "+latitude+"\tlon: "+longitude);
+                                Log.e(TAG, "1 lat: "+latitude+"\tlon: "+longitude);
                                 
                                 // fill the location info
                                 QR.setLocation(latitude, longitude);
                                 Log.e(TAG, "2 see "+QR.getLongitude());
                                 return;
                             }
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.e(TAG, "fk up");
                         }
                     });
         }
