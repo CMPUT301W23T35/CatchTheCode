@@ -39,29 +39,14 @@ public class CollectionActivity extends AppCompatActivity {
         String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
 
         // drop down menu.
-        Spinner spinner = findViewById(R.id.ranking_spinner);
+        //Spinner spinner = findViewById(R.id.ranking_spinner);
         /*
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.ranking_options, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         */
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedOption = parent.getItemAtPosition(position).toString();
-                if (selectedOption.equals("highest")) {
-                    // perform action for highest option
-                } else if (selectedOption.equals("lowest")) {
-                    // perform action for lowest option
-                }
-            }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // do nothing
-            }
-        });
 
 
 

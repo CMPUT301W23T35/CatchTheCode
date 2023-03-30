@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_page);
-        getSupportActionBar().setTitle("CatchTheCode"); // setup the Title on the top left.
+        // getSupportActionBar().setTitle("CatchTheCode"); // setup the Title on the top left.
 
         // button with android:id="@+id/map" leads to MapsActivity
         Button mapButton = (Button) findViewById(R.id.map);
