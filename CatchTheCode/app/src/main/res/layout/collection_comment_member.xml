@@ -6,16 +6,28 @@
     android:layout_height="match_parent">
 
     <!-- Comments List -->
+<!--    <ListView-->
+<!--        android:id="@+id/commentsList"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:divider="@null"-->
+<!--        android:dividerHeight="0dp"-->
+<!--        android:listSelector="@android:color/transparent"-->
+<!--        tools:listitem="@layout/comment_item_layout"-->
+<!--        tools:layout_editor_absoluteX="0dp"-->
+<!--        tools:layout_editor_absoluteY="0dp"-->
+<!--        tools:layout_constraintBottom_toTopOf="@+id/addCommentButton"-->
+<!--        tools:layout_constraintEnd_toEndOf="parent"-->
+<!--        tools:layout_constraintStart_toStartOf="parent"-->
+<!--        tools:layout_constraintTop_toTopOf="parent" />-->
+
+
     <ListView
         android:id="@+id/commentsList"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:divider="@null"
-        android:dividerHeight="0dp"
-        android:listSelector="@android:color/transparent"
-        tools:listitem="@layout/comment_item_layout"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp"
+        android:layout_width="286dp"
+        android:layout_height="500dp"
+        android:layout_gravity="bottom"
+        android:layout_weight="1"
         tools:layout_constraintBottom_toTopOf="@+id/addCommentButton"
         tools:layout_constraintEnd_toEndOf="parent"
         tools:layout_constraintStart_toStartOf="parent"
