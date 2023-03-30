@@ -203,14 +203,15 @@ public class TestAct extends AppCompatActivity {
                                             }
                                         });*/
 
-
                 Log.d(TAG, "after upload");
             }
         }
     }
 
     private void uploadQR(QRcode input, Uri uri) {
-        String name = String.valueOf(System.currentTimeMillis());
+
+        String name = String.valueOf(input.getSHA256());
+//        String name = String.valueOf(input.getqrName());
         StorageReference storeFile = sr.child(name + "." +getExtension(uri));
         /*storeFile.putFile(uri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -266,6 +267,7 @@ public class TestAct extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
+                        Log.e(TAG, input.getSHA256());
                         Log.e(TAG, "qr added to user list");
                     }
                 })
