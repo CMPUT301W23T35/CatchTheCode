@@ -2,10 +2,8 @@ package com.example.catchthecode;
 
 import static android.content.ContentValues.TAG;
 
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,8 +12,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class DBUpdate extends AppCompatActivity {
 
@@ -32,6 +28,8 @@ public class DBUpdate extends AppCompatActivity {
                     String userId = document.getId();
                     Log.d("TAG", userId);
                     ArrayList<String> qrCodes = (ArrayList<String>) document.get("qrLists");
+                    int qrListsLength = qrCodes != null ? qrCodes.size() : 0;
+                    db.collection("users").document(userId).update("qrListsLength", qrListsLength);
 
                     if (qrCodes != null && !qrCodes.isEmpty()) {
                         // Initialize scores to 0
