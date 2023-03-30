@@ -75,7 +75,7 @@ public class ScoreBoardActivity extends AppCompatActivity {
         TextView[] playerViews = new TextView[] {text1,text2,text3};
 
         Spinner spinner = findViewById(R.id.my_spinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, new String[]{"Unique rating", "highest rating"});
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, new String[]{"Total ranking", "highest ranking"});
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
