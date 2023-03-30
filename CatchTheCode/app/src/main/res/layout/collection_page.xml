@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:text="CatchTheCode"
+        android:text="My Collection"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/collection_page_divider"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,31 +54,42 @@
         app:srcCompat="?attr/actionModeShareDrawable" />
 
     <TextView
-        android:id="@+id/my_collectioins"
-        android:layout_width="149dp"
-        android:layout_height="39dp"
-        android:clickable="false"
-        android:text="My Collections"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/divider"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.11"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/collection_page_divider"
-        app:layout_constraintVertical_bias="0.55" />
-
-    <TextView
         android:id="@+id/current_ranking_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Current Ranking:"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/divider"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/current_ranking_nums"
-        app:layout_constraintHorizontal_bias="0.717"
+        app:layout_constraintHorizontal_bias="0.673"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/my_collectioins"
-        app:layout_constraintVertical_bias="0.368" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.121" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="224dp"
+        android:text="1"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.171" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total QR Codes:"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView4"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.166" />
 
     <TextView
         android:id="@+id/current_ranking_nums"
@@ -92,63 +103,16 @@
         app:layout_constraintTop_toBottomOf="@+id/collection_page_divider"
         app:layout_constraintVertical_bias="1.0" />
 
-    <TextView
-        android:id="@+id/highest_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:text="Highest:"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider"
-        app:layout_constraintVertical_bias="0.09" />
-
-    <TextView
-        android:id="@+id/highest_button_num"
-        android:layout_width="wrap_content"
-        android:layout_height="32dp"
-        android:text="0"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.034"
-        app:layout_constraintStart_toEndOf="@+id/highest_button"
-        app:layout_constraintTop_toBottomOf="@+id/divider"
-        app:layout_constraintVertical_bias="0.092" />
-
-    <TextView
-        android:id="@+id/lowest_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="20dp"
-        android:text="Lowest:"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/highest_button"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/lowest_button_num"
-        android:layout_width="wrap_content"
-        android:layout_height="31dp"
-        android:text="0"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.044"
-        app:layout_constraintStart_toEndOf="@+id/lowest_button"
-        app:layout_constraintTop_toBottomOf="@+id/highest_button_num"
-        app:layout_constraintVertical_bias="0.027" />
-
     <ListView
         android:id="@+id/collection_rank"
-        android:layout_width="125dp"
-        android:layout_height="354dp"
-        tools:layout_editor_absoluteX="188dp"
-        tools:layout_editor_absoluteY="226dp" />
+        android:layout_width="414dp"
+        android:layout_height="426dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.809" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
