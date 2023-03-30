@@ -39,6 +39,9 @@ public class CollectionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.collection_page);
 
+        // call DBUpdate to update the database
+        DBUpdate dbUpdate = new DBUpdate();
+
         TextView rankingNum = findViewById(R.id.current_ranking_nums);
         ListView listView = findViewById(R.id.collection_rank);
         ListView listScoreView = findViewById(R.id.collection_score);
