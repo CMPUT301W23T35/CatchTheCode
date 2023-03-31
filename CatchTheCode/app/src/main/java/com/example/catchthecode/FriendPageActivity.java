@@ -26,7 +26,7 @@ public class FriendPageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.user_page);
+        setContentView(R.layout.user_page_without_modify);
 
         // Get the user ID from the intent
         String userId = getIntent().getStringExtra("userid");
