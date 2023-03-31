@@ -196,7 +196,7 @@ public class UserActivity extends AppCompatActivity {
                                                     Log.d(TAG, "Failed to add user");
                                                 });
                                         id.setText(userName);
-                                        info.setText(userName);
+                                        info.setText("Phone number is "+number);
                                     }
                                 } else {
                                     Log.e(TAG, "Error checking username: ", task.getException());
