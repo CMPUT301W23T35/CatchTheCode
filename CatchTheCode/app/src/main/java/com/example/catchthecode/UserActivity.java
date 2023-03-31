@@ -5,6 +5,7 @@ package com.example.catchthecode;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -57,6 +58,8 @@ public class UserActivity extends AppCompatActivity {
 
         // Check if user is already in the firestore. Create one if not.
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+
         db.collection("users")
                 .whereEqualTo("userid", androidId)
                 .get()
@@ -142,6 +145,9 @@ public class UserActivity extends AppCompatActivity {
                     //Do nothing
                 });
 
+
+
+
         // This updates user information
         Button modifyButton = findViewById(R.id.modify_profile_button);
         modifyButton.setOnClickListener(new View.OnClickListener() {
@@ -153,28 +159,48 @@ public class UserActivity extends AppCompatActivity {
                 builder.setView(view1);
                 EditText contactInfo = view1.findViewById(R.id.contactInfoText);
                 EditText Username = view1.findViewById(R.id.enterUserName);
-                builder.setPositiveButton("Save", (dialog, which) -> {
-                    String number = contactInfo.getText().toString();
-                    Map<String, Object> user = new HashMap<>();
-                    user.put("userid", androidId);
-                    user.put("contactInfo", number);
-                    user.put("username", Username.getText().toString());
-                    db.collection("users").document(androidId).set(user)
-                            .addOnSuccessListener(Void -> {
-                                id.setText(Username.getText().toString());
-                                info.setText("Phone number is"+number);
-                                Log.d(TAG, "User Updated successfully");
-                            })
-                            .addOnFailureListener(error -> {
-                                Log.d(TAG, "Failed to add user");
-                            });
-
-                });
+                builder.setPositiveButton("Save", null); // Set a null click listener to keep the dialog open
                 builder.setNegativeButton("Cancel", (dialog, which) -> {
                     // Do nothing, simply ignore it.
                 });
                 AlertDialog alertDialog = builder.create();
                 alertDialog.show();
+
+                // Override the positive button click listener after showing the dialog
+                alertDialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(v -> {
+                    String number = contactInfo.getText().toString();
+                    String userName = Username.getText().toString();
+                    // Check if the entered username already exists in the database
+                    db.collection("users")
+                            .whereEqualTo("username", userName)
+                            .get()
+                            .addOnCompleteListener(task -> {
+                                if (task.isSuccessful()) {
+                                    if (!task.getResult().isEmpty()) {
+                                        // Username already exists, display a toast message and prompt for another name
+                                        Toast.makeText(UserActivity.this, "Duplicate username, please enter another name", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        // Username is unique, add user to the database and dismiss the dialog
+                                        Map<String, Object> user = new HashMap<>();
+                                        user.put("userid", androidId);
+                                        user.put("contactInfo", number);
+                                        user.put("username", userName);
+                                        db.collection("users").document(androidId).set(user)
+                                                .addOnSuccessListener(Void -> {
+                                                    //id.setText(userName);
+                                                    //info.setText("Phone number is"+number);`
+                                                    Log.d(TAG, "User added successfully");
+                                                    alertDialog.dismiss();
+                                                })
+                                                .addOnFailureListener(error -> {
+                                                    Log.d(TAG, "Failed to add user");
+                                                });
+                                    }
+                                } else {
+                                    Log.e(TAG, "Error checking username: ", task.getException());
+                                }
+                            });
+                });
             }
         });
 
