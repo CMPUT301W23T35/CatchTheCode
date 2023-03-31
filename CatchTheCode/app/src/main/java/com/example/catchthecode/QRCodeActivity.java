@@ -58,12 +58,13 @@ public class QRCodeActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String name = intent.getStringExtra("name");
+        String userid = intent.getStringExtra("userid");
         //get the textView
         TextView nameText = findViewById(R.id.textViewName);
         ImageView qrImage = findViewById(R.id.imageViewQRImage);
         TextView spaceImage = findViewById(R.id.textQRString);
         Button commentButton = findViewById(R.id.comment_button);
-
+        Button deleteButton = findViewById(R.id.buttonDelete);
         ListView playerListView = findViewById(R.id.scan_players);
 
 //        DocumentReference docRef = qrRef.document(name);
@@ -183,7 +184,22 @@ public class QRCodeActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         Intent intent = new Intent(QRCodeActivity.this, CommentActivity.class);
                         intent.putExtra("name", name);
+                        intent.putExtra("id", SHACode[0]);
                         startActivity(intent);
+
+                    }
+                });
+
+                if (userid == null) {
+                    deleteButton.setClickable(false);
+                    deleteButton.setVisibility(View.INVISIBLE);
+                }
+                deleteButton.setClickable(true);
+                deleteButton.setVisibility(View.VISIBLE);
+                deleteButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
                     }
                 });
             }
