@@ -130,11 +130,20 @@ public class SearchFriendsActivity extends AppCompatActivity {
                                         @Override
                                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                                             // Get the clicked user ID from the adapter
-                                            String clickedUserId = (String) parent.getItemAtPosition(position);
+                                            String clickedUserName = (String) parent.getItemAtPosition(position);
+                                            String clickedUserId = "";
+                                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                                String userId = document.getString("userid");
+                                                String username = document.getString("username");
+                                                if (username.equals(clickedUserName.substring(10))) {
+                                                    clickedUserId = userId;
+                                                }
+                                            }
+                                            Log.d("clickedUserId", clickedUserId);
                                             // Start the new activity to display the clicked user's page
                                             Intent intent = new Intent(SearchFriendsActivity.this, FriendPageActivity.class);
                                             // Assuming the user ID is after "User id: " in the string
-                                            intent.putExtra("userid", clickedUserId.substring(9));
+                                            intent.putExtra("userid", clickedUserId);
                                             startActivity(intent);
                                         }
                                     });
