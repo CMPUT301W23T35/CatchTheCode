@@ -195,6 +195,8 @@ public class UserActivity extends AppCompatActivity {
                                                 .addOnFailureListener(error -> {
                                                     Log.d(TAG, "Failed to add user");
                                                 });
+                                        id.setText(userName);
+                                        info.setText(userName);
                                     }
                                 } else {
                                     Log.e(TAG, "Error checking username: ", task.getException());
