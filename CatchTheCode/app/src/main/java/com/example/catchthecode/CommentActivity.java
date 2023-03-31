@@ -55,7 +55,26 @@ public class CommentActivity extends AppCompatActivity {
                 for(QueryDocumentSnapshot doc: queryDocumentSnapshots)
                 {
                     if (((String) doc.getData().get("readable_name")).equals(name)) {
-                        commentList = (List<String>) doc.getData().get("comments");
+                        if (doc.getData().get("comments") == null) {
+                            commentList = new ArrayList<String>();
+//                            qrRef.document(doc.getId()).update(
+//                                            "qrLists", FieldValue.arrayUnion(name))
+//                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                                        @Override
+//                                        public void onSuccess(Void unused) {
+//                                            Log.e(TAG, "qrList field created successfully");;
+//                                        }
+//                                    })
+//                                    .addOnFailureListener(new OnFailureListener() {
+//                                        @Override
+//                                        public void onFailure(@NonNull Exception e) {
+//                                            Log.e(TAG, "comments field failed to create");
+//                                        }
+//                                    });
+                        } else {
+
+                            commentList = (List<String>) doc.getData().get("comments");
+                        }
                     }
                 }
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(getBaseContext(), android.R.layout.simple_list_item_1, commentList);
