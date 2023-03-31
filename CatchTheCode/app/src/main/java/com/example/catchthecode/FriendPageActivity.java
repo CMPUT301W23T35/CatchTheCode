@@ -63,6 +63,8 @@ public class FriendPageActivity extends AppCompatActivity {
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             ArrayList<String> qrCodes = (ArrayList<String>) document.get("qrLists");
                             int qrListsLength = qrCodes != null ? qrCodes.size() : 0;
+                            Log.d(TAG, "QR Codes: " + qrCodes);
+                            Log.d(TAG, "User ID: " + userId);
                             Log.d(TAG, "Number of codes scanned: " + qrListsLength);
                             v2.setText(String.valueOf(qrListsLength));
                         }

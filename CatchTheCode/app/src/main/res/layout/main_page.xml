@@ -8,6 +8,18 @@
     tools:context=".MainActivity">
 
 
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="166dp"
+        android:layout_height="186dp"
+        android:src="@drawable/dynamic_qr_code"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.065"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.754" />
+
     <Button
         android:id="@+id/map"
         android:layout_width="128dp"
@@ -89,21 +101,6 @@
         app:layout_constraintVertical_bias="0.95"
         tools:ignore="ImageContrastCheck"
         tools:srcCompat="@tools:sample/avatars" />
-
-    <ImageView
-        android:id="@+id/mascot"
-        android:layout_width="165dp"
-        android:layout_height="242dp"
-        android:layout_marginBottom="12dp"
-        android:contentDescription="@string/dynamic"
-        app:layout_constraintBottom_toTopOf="@+id/scan"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.081"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/collection"
-        app:layout_constraintVertical_bias="0.68"
-        app:srcCompat="@android:mipmap/sym_def_app_icon"
-        tools:ignore="ImageContrastCheck" />
 
     <Button
         android:id="@+id/search_button_main"

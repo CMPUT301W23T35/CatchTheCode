@@ -17,14 +17,14 @@ import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Switch;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -33,26 +33,18 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.Source;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -71,7 +63,8 @@ public class TestAct extends AppCompatActivity {
     CollectionReference userRef = db.collection("users");
     CollectionReference qrRef = db.collection("QRs");
     StorageReference sr = FirebaseStorage.getInstance().getReference("QRs");
-
+    final boolean[] wPic = {false};
+    final boolean[] wLoc = {false};
     QRcode test = null;
 
     /**
@@ -84,6 +77,7 @@ public class TestAct extends AppCompatActivity {
         setContentView(R.layout.scan_success1);
         ImageView qr = findViewById(R.id.qrimg);
         String content = getIntent().getStringExtra("key");
+
         //TextView tv = findViewById(R.id.test_tv);
         //tv.setText(content);
 
@@ -94,41 +88,87 @@ public class TestAct extends AppCompatActivity {
         }
         test.setImageview();
 
-        Button wLocation = findViewById(R.id.withLoc);
-        Button woLocation = findViewById(R.id.withoutLoc);
-        Button back_button = findViewById(R.id.back_button);
+        Switch location = findViewById(R.id.location_switch);
+        Switch picture = findViewById(R.id.picture_switch);
+
+        location.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                wLoc[0] = b;
+                if (wLoc[0]){
+                    Log.e(TAG, "wLoc");
+                }
+            }
+        });
+
+        picture.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                wPic[0] = b;
+                if (wPic[0]){
+                    Log.e(TAG, "wPic");
+                }
+            }
+        });
+
+        //Button wLocation = findViewById(R.id.withLoc);
+        //Button woLocation = findViewById(R.id.withoutLoc);
+        Button confirm_button = findViewById(R.id.confirm_button);
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
-
-        back_button.setOnClickListener((new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        }));
         QRcode finalTest = test;
-        wLocation.setOnClickListener(new View.OnClickListener() {
+
+        confirm_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // the user want to save the picture with location
                 // get the current location
-                fillLastLocation(finalTest);
+                if (wLoc[0]){
+                    fillLastLocation(finalTest);
+                }
                 // TODO: somehow the message order is wrong, but it works perfectly
                 Log.d(TAG, "3 "+finalTest.getLongitude());
                 // fill the image
-                chooseImage();
+                if (wPic[0]) {
+                    chooseImage();
+                }
+                else{
+                    String name = String.valueOf(finalTest.getSHA256());
+                    qrRef.document(name).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(getApplicationContext(),"Success!", Toast.LENGTH_SHORT).show();
+                                DocumentSnapshot document = task.getResult();
+                                if (document.exists()) {
+                                    Log.d(TAG, "Document exists!");
+                                    addToUserCollection(userRef, name, finalTest);
+                                } else {
+                                    Log.d(TAG, "Document does not exist!");
+                                    // if the document does not exist
+                                    // create the document
+                                    addToQRCollection(qrRef, name, finalTest);
+                                    addToUserCollection(userRef, name, finalTest);
+                                }
+                            } else {
+                                Toast.makeText(getApplicationContext(),"Ops! Something went wrong...", Toast.LENGTH_SHORT).show();
+                                Log.d(TAG, "Failed with: ", task.getException());
+                            }
+                        }
+                    });
+                }
             }
         });
 
-        woLocation.setOnClickListener(new View.OnClickListener() {
+        /*woLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // the user want to save the picture only
                 // fill the image
                 chooseImage();
             }
-        });
+        });*/
 
     }
 
