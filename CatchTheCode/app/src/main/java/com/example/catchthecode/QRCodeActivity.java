@@ -53,7 +53,7 @@ public class QRCodeActivity extends AppCompatActivity {
         TextView spaceImage = findViewById(R.id.space);
         Button commentButton = findViewById(R.id.comment_button);
 
-        ListView playerListView = findViewById(R.id.listViewPlayer);
+        ListView playerListView = findViewById(R.id.scan_players);
 
 //        DocumentReference docRef = qrRef.document(name);
 //        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {

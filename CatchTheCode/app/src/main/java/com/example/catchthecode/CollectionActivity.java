@@ -135,6 +135,10 @@ public class CollectionActivity extends AppCompatActivity {
          listView.setOnItemClickListener((parent, view, position, id) -> {
              Intent newintent = new Intent(CollectionActivity.this, QRCodeActivity.class);
              newintent.putExtra("name", listView.getItemAtPosition(position).toString());
+             // if the current android id is not the same as the one in the intent, then it is from the search friends page
+                if(userid != null){
+                    newintent.putExtra("userid", userid);
+                }
              startActivity(newintent);
          });
         
