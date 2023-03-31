@@ -77,18 +77,6 @@
         app:layout_constraintStart_toEndOf="@+id/totalCodes"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:id="@+id/friend_page_divider"
-        android:layout_width="409dp"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.086" />
-
     <TextView
         android:id="@+id/playerID"
         android:layout_width="260dp"
@@ -105,32 +93,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.17" />
 
+
     <ImageView
         android:id="@+id/ProfilePic"
         android:layout_width="102dp"
         android:layout_height="98dp"
+        android:src="@drawable/user"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/playerID"
-        app:layout_constraintHorizontal_bias="0.666"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/friend_page_divider"
-        app:layout_constraintVertical_bias="0.072"
-        android:src="@drawable/user" />
-
-
-    <Button
-        android:id="@+id/modify_profile_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|left"
-        android:layout_margin="16dp"
-        android:text="Modify Profile"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.375"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.153" />
 
     <Button
         android:id="@+id/collection_button"
