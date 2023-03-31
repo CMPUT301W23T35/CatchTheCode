@@ -184,7 +184,9 @@ public class QRCodeActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         Intent intent = new Intent(QRCodeActivity.this, CommentActivity.class);
                         intent.putExtra("name", name);
+                        intent.putExtra("id", SHACode[0]);
                         startActivity(intent);
+
                     }
                 });
 
