@@ -11,6 +11,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -29,6 +30,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -37,12 +39,16 @@ import com.google.firebase.firestore.Source;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firestore.v1.WriteResult;
 
 import java.io.File;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+
 
 public class QRCodeActivity extends AppCompatActivity {
 
@@ -194,16 +200,43 @@ public class QRCodeActivity extends AppCompatActivity {
                 }
                 deleteButton.setClickable(true);
                 deleteButton.setVisibility(View.VISIBLE);
+                Button deleteButton = findViewById(R.id.buttonDelete);
+                // Delete button in the collection_comment.xml.
                 deleteButton.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View view) {
+                    public void onClick(View v) {
+                        String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+                        DocumentReference docRef = db.collection("users").document(androidId);
+
+                        // Update the document to remove the "field_name" field
+                        Map<String, Object> updates = new HashMap<>();
+                        updates.put("qrLists", FieldValue.arrayRemove(SHACode[0]));
+
+                        docRef.update(updates)
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        Log.d(TAG, "Field deleted successfully!");
+                                        Intent intent = new Intent();
+                                        String newData = "wtf";
+                                        intent.putExtra("updatedData", newData);
+                                        setResult(RESULT_OK, intent);
+                                        finish();
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Log.e(TAG, "Error deleting field: " + e.getMessage());
+                                    }
+                                });
+
+
 
                     }
                 });
+
             }
         });
-
-
-
     }
 }

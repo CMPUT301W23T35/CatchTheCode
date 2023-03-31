@@ -29,6 +29,7 @@ import java.util.List;
  */
 
 public class CollectionActivity extends AppCompatActivity {
+    final static int REQUEST = 999;
     /**
      * Called when the activity is starting.
      * @param savedInstanceState If the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently supplied in {@link #onSaveInstanceState}.
@@ -139,11 +140,20 @@ public class CollectionActivity extends AppCompatActivity {
                 if(userid != null){
                     newintent.putExtra("userid", userid);
                 }
-             startActivity(newintent);
+             startActivityForResult(newintent, REQUEST);
+
          });
-        
-        
 
-
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST && resultCode == RESULT_OK) {
+            // Get the updated data from the Intent
+            String updatedData = data.getStringExtra("updatedData");
+            recreate();
+            // Refresh the activity
+            // ...
+        }
     }
 }
