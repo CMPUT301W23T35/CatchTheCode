@@ -116,7 +116,9 @@
         app:layout_constraintVertical_bias="0.345" />
 
     <ListView
+
         android:id="@+id/scan_players"
+
         android:layout_width="164dp"
         android:layout_height="226dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -125,6 +127,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.594" />
+<!--    <ListView-->
+<!--        android:id="@+id/listViewPlayer"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"/>-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
