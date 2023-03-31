@@ -47,7 +47,15 @@ public class CollectionActivity extends AppCompatActivity {
         ListView listScoreView = findViewById(R.id.collection_score);
         TextView QRCodeCount = findViewById(R.id.QRCodeCount);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+        // get the intent extra from the previous activity, if "userid" exists, then it is from the search friends page
+        Intent intent = getIntent();
+        String userid = intent.getStringExtra("userid");
+        String androidId;
+        if(userid != null){
+            androidId = userid;
+        }else{
+            androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+        }
 
         // Get the current ranking of the user
         db.collection("users").orderBy("score", Query.Direction.DESCENDING).get(Source.SERVER).addOnCompleteListener(task -> {
@@ -125,9 +133,13 @@ public class CollectionActivity extends AppCompatActivity {
 
         // set listener on the list view to show the QR code when the user clicks on it
          listView.setOnItemClickListener((parent, view, position, id) -> {
-             Intent intent = new Intent(CollectionActivity.this, QRCodeActivity.class);
-             intent.putExtra("name", listView.getItemAtPosition(position).toString());
-             startActivity(intent);
+             Intent newintent = new Intent(CollectionActivity.this, QRCodeActivity.class);
+             newintent.putExtra("name", listView.getItemAtPosition(position).toString());
+             // if the current android id is not the same as the one in the intent, then it is from the search friends page
+                if(userid != null){
+                    newintent.putExtra("userid", userid);
+                }
+             startActivity(newintent);
          });
         
         

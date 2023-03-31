@@ -204,7 +204,7 @@ public class UserActivity extends AppCompatActivity {
         // as a field because it would require updating each time a single player scans a code
         // which would be in-efficient
         db.collection("users")
-                .orderBy("highest", Query.Direction.DESCENDING)
+                .orderBy("score", Query.Direction.DESCENDING)
                 .get()
                 .addOnCompleteListener( task -> {
                     int rankCounter = 1;
@@ -220,6 +220,14 @@ public class UserActivity extends AppCompatActivity {
                     v1.setText(String.valueOf(rankCounter));
                 });
 
-
+        // collection_button leads to the collection page
+        Button collectionButton = findViewById(R.id.collection_button);
+        collectionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(UserActivity.this, CollectionActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
