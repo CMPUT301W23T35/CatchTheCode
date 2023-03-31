@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -138,6 +139,7 @@ public class TestAct extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                             if (task.isSuccessful()) {
+                                Toast.makeText(getApplicationContext(),"Success!", Toast.LENGTH_SHORT).show();
                                 DocumentSnapshot document = task.getResult();
                                 if (document.exists()) {
                                     Log.d(TAG, "Document exists!");
@@ -150,6 +152,7 @@ public class TestAct extends AppCompatActivity {
                                     addToUserCollection(userRef, name, finalTest);
                                 }
                             } else {
+                                Toast.makeText(getApplicationContext(),"Ops! Something went wrong...", Toast.LENGTH_SHORT).show();
                                 Log.d(TAG, "Failed with: ", task.getException());
                             }
                         }
