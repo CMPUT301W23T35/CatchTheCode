@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="53dp"
-        android:text="San with location" />
+        android:text="wasted" />
 
     <Button
         android:id="@+id/btnScan"
@@ -42,6 +42,6 @@
         android:layout_below="@+id/btnAction"
         android:layout_marginTop="-60dp"
         android:layout_marginBottom="10dp"
-        android:text=" Scan without location" />
+        android:text="Scan" />
 
 </RelativeLayout>
