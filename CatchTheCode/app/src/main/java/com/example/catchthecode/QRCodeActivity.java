@@ -10,8 +10,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Space;
 import android.widget.TextView;
 
@@ -28,6 +30,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.Source;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -36,7 +39,7 @@ public class QRCodeActivity extends AppCompatActivity {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference qrRef = db.collection("QRs");
-
+    CollectionReference userRef = db.collection("users");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +53,7 @@ public class QRCodeActivity extends AppCompatActivity {
         TextView spaceImage = findViewById(R.id.space);
         Button commentButton = findViewById(R.id.comment_button);
 
-
+        ListView playerListView = findViewById(R.id.listViewPlayer);
 
 //        DocumentReference docRef = qrRef.document(name);
 //        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -79,7 +82,7 @@ public class QRCodeActivity extends AppCompatActivity {
 //                }
 //            }
 //        });
-
+        final String[] SHACode = new String[1];
 
         qrRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -99,11 +102,36 @@ public class QRCodeActivity extends AppCompatActivity {
                             throw new RuntimeException(e);
                         }
                         current.setImageview();
+                        SHACode[0] = current.getSHA256();
                         spaceImage.setText(current.getQrVR());
                     }
                 }
             }
         });
+
+        // to find the user who contains the code
+        ArrayList<String> userList = new ArrayList<String>();
+        userRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable
+            FirebaseFirestoreException error) {
+                for(QueryDocumentSnapshot doc: queryDocumentSnapshots)
+                {
+                    String id = doc.getId();
+                    if (doc.getData().get("qrLists") == null) {
+
+                    } else {
+                        if (((ArrayList<String>) doc.getData().get("qrLists")).contains(SHACode[0])) {
+                            userList.add((String) doc.getData().get("userid"));
+                        }
+                    }
+                }
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(getBaseContext(), android.R.layout.simple_list_item_1, userList);
+                playerListView.setAdapter(adapter);
+            }
+        });
+
+
 
         commentButton.setOnClickListener(new View.OnClickListener() {
             @Override
