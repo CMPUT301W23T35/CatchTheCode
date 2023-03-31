@@ -116,7 +116,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //                        continue;
 //                    }
                     // if the object is null, continue
-                    Log.d("QR", document.getId() + " => " + document.getData());
+                    // Log.d("QR", document.getId() + " => " + document.getData());
                     if (document.get("latitude") == null || document.get("longitude") == null || document.get("score") == null) {
                         continue;
                     }
@@ -132,6 +132,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     double lat = Double.parseDouble(latString);
                     double lon = Double.parseDouble(lonString);
                     int score = Integer.parseInt(scoreString);
+                    // log the lat, lon and score
+                    Log.d("QR", "lat: " + lat + " lon: " + lon + " score: " + score);
                     // add a marker to the map
                     LatLng qr = new LatLng(lat, lon);
                     addMarkerOnMap(mMap, qr, score);
