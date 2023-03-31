@@ -140,7 +140,7 @@ public class QRCodeActivity extends AppCompatActivity {
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(QRCodeActivity.this, "Error Occured", Toast.LENGTH_SHORT);
+                                    Toast.makeText(QRCodeActivity.this, "Error Occurred", Toast.LENGTH_SHORT);
                                 }
                             });
                 } catch (Exception e) {
@@ -174,10 +174,11 @@ public class QRCodeActivity extends AppCompatActivity {
 
                             } else {
                                 if (((ArrayList<String>) doc.getData().get("qrLists")).contains(SHACode[0])) {
-                                    userList.add((String) doc.getData().get("userid"));
+                                    userList.add((String) doc.getData().get("username"));
                                 }
                             }
                         }
+
                         ArrayAdapter<String> adapter = new ArrayAdapter<>(getBaseContext(), android.R.layout.simple_list_item_1, userList);
                         playerListView.setAdapter(adapter);
                     }
@@ -196,13 +197,14 @@ public class QRCodeActivity extends AppCompatActivity {
                     }
                 });
 
-                if (userid == null) {
+                if (userid != null) {
                     deleteButton.setClickable(false);
                     deleteButton.setVisibility(View.INVISIBLE);
+                } else {
+                    deleteButton.setClickable(true);
+                    deleteButton.setVisibility(View.VISIBLE);
                 }
-                deleteButton.setClickable(true);
-                deleteButton.setVisibility(View.VISIBLE);
-                Button deleteButton = findViewById(R.id.buttonDelete);
+//                Button deleteButton = findViewById(R.id.buttonDelete);
                 // Delete button in the collection_comment.xml.
                 deleteButton.setOnClickListener(new View.OnClickListener() {
                     @Override
