@@ -95,50 +95,157 @@ public class CollectionActivity extends AppCompatActivity {
                 });
 
                 // Get the list of QR codes the user has collected from field qrLists and display them in a list view
-                db.collection("users").document(androidId).get(Source.SERVER).addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        List<String> qrList = (List<String>) task.getResult().get("qrLists");
-                        if (qrList == null) {
-                            qrList = new ArrayList<>();
-                        }
-                        // convert it to human readable name with getqrName() from QRs collection in the database
-                        List<String> qrNameList = new ArrayList<>();
-                        List<Integer> qrScoreList = new ArrayList<>();
-                        for (String qr : qrList) {
-                            db.collection("QRs").document(qr).get(Source.SERVER).addOnCompleteListener(task1 -> {
-                                if (task1.isSuccessful()) {
-                                    //Log.d("CollectionActivity", task1.getResult().get("readable_name").toString());
-                                    qrNameList.add(task1.getResult().get("readable_name").toString());
-                                    qrScoreList.add(Integer.parseInt(task1.getResult().get("score").toString()));
-                                    Log.d("CollectionActivity", qrNameList.toString());
-                                    ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, qrNameList);
-                                    listView.setAdapter(adapter);
-                                    ArrayAdapter<Integer> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, qrScoreList);
-                                    listScoreView.setAdapter(adapter1);
-                                    // sort the list by score and sort the name list accordingly
-                                    for (int i = 0; i < qrScoreList.size(); i++) {
-                                        for (int j = i + 1; j < qrScoreList.size(); j++) {
-                                            if (qrScoreList.get(i) < qrScoreList.get(j)) {
-                                                int temp = qrScoreList.get(i);
-                                                qrScoreList.set(i, qrScoreList.get(j));
-                                                qrScoreList.set(j, temp);
-                                                String temp1 = qrNameList.get(i);
-                                                qrNameList.set(i, qrNameList.get(j));
-                                                qrNameList.set(j, temp1);
-                                            }
-                                        }
+                // db.collection("users").document(androidId).get(Source.SERVER).addOnCompleteListener(task -> {
+                //     if (task.isSuccessful()) {
+                //         List<String> qrList = (List<String>) task.getResult().get("qrLists");
+                //         if (qrList == null) {
+                //             qrList = new ArrayList<>();
+                //         }
+                //         // convert it to human readable name with getqrName() from QRs collection in the database
+                //         List<String> qrNameList = new ArrayList<>();
+                //         List<Integer> qrScoreList = new ArrayList<>();
+                //         for (String qr : qrList) {
+                //             db.collection("QRs").document(qr).get(Source.SERVER).addOnCompleteListener(task1 -> {
+                //                 if (task1.isSuccessful()) {
+                //                     //Log.d("CollectionActivity", task1.getResult().get("readable_name").toString());
+                //                     qrNameList.add(task1.getResult().get("readable_name").toString());
+                //                     qrScoreList.add(Integer.parseInt(task1.getResult().get("score").toString()));
+                //                     Log.d("CollectionActivity", qrNameList.toString());
+                //                     ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, qrNameList);
+                //                     listView.setAdapter(adapter);
+                //                     ArrayAdapter<Integer> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, qrScoreList);
+                //                     listScoreView.setAdapter(adapter1);
+                //                     // sort the list by score and sort the name list accordingly
+                //                     for (int i = 0; i < qrScoreList.size(); i++) {
+                //                         for (int j = i + 1; j < qrScoreList.size(); j++) {
+                //                             if (qrScoreList.get(i) < qrScoreList.get(j)) {
+                //                                 int temp = qrScoreList.get(i);
+                //                                 qrScoreList.set(i, qrScoreList.get(j));
+                //                                 qrScoreList.set(j, temp);
+                //                                 String temp1 = qrNameList.get(i);
+                //                                 qrNameList.set(i, qrNameList.get(j));
+                //                                 qrNameList.set(j, temp1);
+                //                             }
+                //                         }
+                //                     }
+                //                 } else {
+                //                     Log.d("CollectionActivity", "Error getting documents: ", task1.getException());
+                //                 }
+                //             });
+                //         }
+
+                //     } else {
+                //         Log.d("CollectionActivity", "Error getting documents: ", task.getException());
+                //     }
+                // });
+
+                Spinner spinner = findViewById(R.id.collection_spinner);
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, new String[]{"Highest first", "Lowest first"});
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinner.setAdapter(adapter);
+
+                spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long l) {
+                        if(pos == 0){
+                            // sort from highest to lowest
+                            db.collection("users").document(androidId).get(Source.SERVER).addOnCompleteListener(task -> {
+                                if (task.isSuccessful()) {
+                                    List<String> qrList = (List<String>) task.getResult().get("qrLists");
+                                    if (qrList == null) {
+                                        qrList = new ArrayList<>();
                                     }
+                                    // convert it to human readable name with getqrName() from QRs collection in the database
+                                    List<String> qrNameList = new ArrayList<>();
+                                    List<Integer> qrScoreList = new ArrayList<>();
+                                    for (String qr : qrList) {
+                                        db.collection("QRs").document(qr).get(Source.SERVER).addOnCompleteListener(task1 -> {
+                                            if (task1.isSuccessful()) {
+                                                //Log.d("CollectionActivity", task1.getResult().get("readable_name").toString());
+                                                qrNameList.add(task1.getResult().get("readable_name").toString());
+                                                qrScoreList.add(Integer.parseInt(task1.getResult().get("score").toString()));
+                                                Log.d("CollectionActivity", qrNameList.toString());
+                                                ArrayAdapter<String> adapter = new ArrayAdapter<>(CollectionActivity.this, android.R.layout.simple_list_item_1, qrNameList);
+                                                listView.setAdapter(adapter);
+                                                ArrayAdapter<Integer> adapter1 = new ArrayAdapter<>(CollectionActivity.this, android.R.layout.simple_list_item_1, qrScoreList);
+                                                listScoreView.setAdapter(adapter1);
+                                                // sort the list by score and sort the name list accordingly
+                                                for (int i = 0; i < qrScoreList.size(); i++) {
+                                                    for (int j = i + 1; j < qrScoreList.size(); j++) {
+                                                        if (qrScoreList.get(i) < qrScoreList.get(j)) {
+                                                            int temp = qrScoreList.get(i);
+                                                            qrScoreList.set(i, qrScoreList.get(j));
+                                                            qrScoreList.set(j, temp);
+                                                            String temp1 = qrNameList.get(i);
+                                                            qrNameList.set(i, qrNameList.get(j));
+                                                            qrNameList.set(j, temp1);
+                                                        }
+                                                    }
+                                                }
+                                            } else {
+                                                Log.d("CollectionActivity", "Error getting documents: ", task1.getException());
+                                            }
+                                        });
+                                    }
+
                                 } else {
-                                    Log.d("CollectionActivity", "Error getting documents: ", task1.getException());
+                                    Log.d("CollectionActivity", "Error getting documents: ", task.getException());
                                 }
                             });
                         }
+                        else if(pos == 1){
+                            // do the same thing but sort from lowest to highest
+                            db.collection("users").document(androidId).get(Source.SERVER).addOnCompleteListener(task -> {
+                                if (task.isSuccessful()) {
+                                    List<String> qrList = (List<String>) task.getResult().get("qrLists");
+                                    if (qrList == null) {
+                                        qrList = new ArrayList<>();
+                                    }
+                                    // convert it to human readable name with getqrName() from QRs collection in the database
+                                    List<String> qrNameList = new ArrayList<>();
+                                    List<Integer> qrScoreList = new ArrayList<>();
+                                    for (String qr : qrList) {
+                                        db.collection("QRs").document(qr).get(Source.SERVER).addOnCompleteListener(task1 -> {
+                                            if (task1.isSuccessful()) {
+                                                //Log.d("CollectionActivity", task1.getResult().get("readable_name").toString());
+                                                qrNameList.add(task1.getResult().get("readable_name").toString());
+                                                qrScoreList.add(Integer.parseInt(task1.getResult().get("score").toString()));
+                                                Log.d("CollectionActivity", qrNameList.toString());
+                                                ArrayAdapter<String> adapter = new ArrayAdapter<>(CollectionActivity.this, android.R.layout.simple_list_item_1, qrNameList);
+                                                listView.setAdapter(adapter);
+                                                ArrayAdapter<Integer> adapter1 = new ArrayAdapter<>(CollectionActivity.this, android.R.layout.simple_list_item_1, qrScoreList);
+                                                listScoreView.setAdapter(adapter1);
+                                                // sort the list by score and sort the name list accordingly
+                                                for (int i = 0; i < qrScoreList.size(); i++) {
+                                                    for (int j = i + 1; j < qrScoreList.size(); j++) {
+                                                        if (qrScoreList.get(i) > qrScoreList.get(j)) {
+                                                            int temp = qrScoreList.get(i);
+                                                            qrScoreList.set(i, qrScoreList.get(j));
+                                                            qrScoreList.set(j, temp);
+                                                            String temp1 = qrNameList.get(i);
+                                                            qrNameList.set(i, qrNameList.get(j));
+                                                            qrNameList.set(j, temp1);
+                                                        }
+                                                    }
+                                                }
+                                            } else {
+                                                Log.d("CollectionActivity", "Error getting documents: ", task1.getException());
+                                            }
+                                        });
+                                    }
 
-                    } else {
-                        Log.d("CollectionActivity", "Error getting documents: ", task.getException());
+                                } else {
+                                    Log.d("CollectionActivity", "Error getting documents: ", task.getException());
+                                }
+                            });
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+                        // do nothing when nothing is selected
                     }
                 });
-
                 // set listener on the list view to show the QR code when the user clicks on it
                 listView.setOnItemClickListener((parent, view, position, id) -> {
                     Intent newintent = new Intent(CollectionActivity.this, QRCodeActivity.class);
