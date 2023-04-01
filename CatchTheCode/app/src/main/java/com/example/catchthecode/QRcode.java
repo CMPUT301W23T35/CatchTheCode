@@ -108,12 +108,90 @@ public class QRcode {
     public void setqrName() {
         int hash = this.gethash();
         this.qrName = "";
-        this.qrName += ((hash>>9) %2 == 0) ? "cool":"hot";
-        this.qrName += ((hash>>8) %2 == 0) ? "Fro": "Glo";
-        this.qrName += ((hash>>7) %2 == 0) ? "Mo": "Lo";
-        this.qrName += ((hash>>6) %2 == 0) ? "Mega":"Ultra";
-        this.qrName += ((hash>>5) %2 == 0) ? "Spectral":"Sonic";
-        this.qrName += ((hash>>4) %2 == 0) ? "Crab":"Shark";
+        switch ((hash>>10) %4){
+            case 0:
+                this.qrName += "cool";
+                break;
+            case 1:
+                this.qrName += "hot";
+                break;
+            case 2:
+                this.qrName += "warm";
+                break;
+            default:
+                this.qrName += "cold";
+                break;
+        }
+        switch ((hash>>8) %4){
+            case 0:
+                this.qrName += "milk";
+                break;
+            case 1:
+                this.qrName += "water";
+                break;
+            case 2:
+                this.qrName += "tea";
+                break;
+            default:
+                this.qrName += "coke";
+                break;
+        }
+        switch ((hash>>6) %4){
+            case 0:
+                this.qrName += "may";
+                break;
+            case 1:
+                this.qrName += "march";
+                break;
+            case 2:
+                this.qrName += "june";
+                break;
+            default:
+                this.qrName += "july";
+                break;
+        }
+        switch ((hash>>4) %4){
+            case 0:
+                this.qrName += "run";
+                break;
+            case 1:
+                this.qrName += "walk";
+                break;
+            case 2:
+                this.qrName += "fly";
+                break;
+            default:
+                this.qrName += "swim";
+                break;
+        }
+        switch ((hash>>2) %4){
+            case 0:
+                this.qrName += "mars";
+                break;
+            case 1:
+                this.qrName += "sun";
+                break;
+            case 2:
+                this.qrName += "earth";
+                break;
+            default:
+                this.qrName += "venus";
+                break;
+        }
+        switch (hash %4){
+            case 0:
+                this.qrName += "happy";
+                break;
+            case 1:
+                this.qrName += "angry";
+                break;
+            case 2:
+                this.qrName += "tired";
+                break;
+            default:
+                this.qrName += "sad";
+                break;
+        }
     }
 
     /**
@@ -131,13 +209,91 @@ public class QRcode {
     public void setQrVR() {
         int hash = this.gethash();
         this.qrVR = "";
-        this.qrVR += ((hash>>9) %2 == 0) ? "   ____\n  /    \\\n": "  ______\n  |     |\n";
-        this.qrVR += ((hash>>8) %2 == 0) ? " | _  _ |\n": " |      | \\n";
-        this.qrVR += ((hash>>7) %2 == 0) ? "\\| ,  , |/\n": "\\| o  o |/\n";
-        this.qrVR += ((hash>>6) %2 == 0) ? "@|      |@\n":"&|      |&\n";
-        this.qrVR += ((hash>>5) %2 == 0) ? "/| ^  ^ |\\\n":" |  ``  |\n";
-        this.qrVR += ((hash>>4) %2 == 0) ? " | `--` |\n":" | .--. |\n";
-        this.qrVR += ((hash>>9) %2 == 0) ? "  \\____/\n": "  |____|\n";
+        switch ((hash>>10) %4){
+            case 0:
+                this.qrVR += "  ______\n /      \\\n";
+                break;
+            case 1:
+                this.qrVR += "  ______\n |      |\n";
+                break;
+            case 2:
+                this.qrVR += "  _____\n |      \\\n";
+                break;
+            default:
+                this.qrVR += "   _____\n /      |\n";
+                break;
+        }
+        switch ((hash>>8) %4){
+            case 0:
+                this.qrVR += " | o  o |\n";
+                break;
+            case 1:
+                this.qrVR += " | _  _ |\n";
+                break;
+            case 2:
+                this.qrVR += " | ^  ^ |\n";
+                break;
+            default:
+                this.qrVR += " | *  * |\n";
+                break;
+        }
+        switch ((hash>>6) %4){
+            case 0:
+                this.qrVR += "\\| >  < |/\n";
+                break;
+            case 1:
+                this.qrVR += "\\| o  o |/\n";
+                break;
+            case 2:
+                this.qrVR += "\\| O  O |/\n";
+                break;
+            default:
+                this.qrVR += "\\| -  - |/\n";
+                break;
+        }
+        switch ((hash>>4) %4){
+            case 0:
+                this.qrVR += "@|      |@\n";
+                break;
+            case 1:
+                this.qrVR += "&|      |&\n";
+                break;
+            case 2:
+                this.qrVR += ">|      |<\n";
+                break;
+            default:
+                this.qrVR += "<|      |>\n";
+                break;
+        }
+        switch ((hash>>2) %4){
+            case 0:
+                this.qrVR += "/| o  o |\\\n";
+                break;
+            case 1:
+                this.qrVR += "/| _  _ |\\\n";
+                break;
+            case 2:
+                this.qrVR += "/| ^  ^ |\\\n";
+                break;
+            default:
+                this.qrVR += "/| *  * |\\\n";
+                break;
+        }
+        switch (hash %4){
+            case 0:
+                this.qrVR += " | `--` |\n";
+                break;
+            case 1:
+                this.qrVR += " | .--. |\n";
+                break;
+            case 2:
+                this.qrVR += " | :--: |\n";
+                break;
+            default:
+                this.qrVR += " | [--] |\n";
+                break;
+        }
+        this.qrVR += " |______|\n";
     }
 
     /**
@@ -250,7 +406,7 @@ public class QRcode {
         int hash = 7;
         for (int i = 0; i < this.url.length(); i++) {
             hash = hash * 31 + this.url.charAt(i);
-            hash = hash % 1001;
+            hash = hash % 4001;
         }
         return hash;
     }
