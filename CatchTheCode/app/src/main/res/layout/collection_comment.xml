@@ -90,9 +90,10 @@
         android:layout_height="55dp"
         android:background="@drawable/custom_button"
         android:text="Comment Your Moment"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.554"
+        app:layout_constraintHorizontal_bias="0.879"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.927" />
@@ -121,6 +122,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.767" />
+
+    <Button
+        android:id="@+id/comment_location_button"
+        android:layout_width="153dp"
+        android:layout_height="55dp"
+        android:background="@drawable/custom_button"
+        android:text="View It In Map"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.166"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.927"
+        tools:textAllCaps="false" />
     <!--    <ListView-->
     <!--        android:id="@+id/listViewPlayer"-->
     <!--        android:layout_width="match_parent"-->
