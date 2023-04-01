@@ -50,18 +50,17 @@ public class MyProfileTest {
         solo.assertCurrentActivity("Wrong activity",UserActivity.class);
         solo.clickOnButton("Modify Profile");
         solo.enterText((EditText) solo.getView(R.id.contactInfoText), "123333");
-        solo.enterText((EditText) solo.getView(R.id.enterUserName), "Jason");
+        solo.enterText((EditText) solo.getView(R.id.enterUserName), "Test");
 
 
-        Button positiveButton = solo.getButton("Save");
-        assertNotNull("Positive button not found", positiveButton);
-        solo.clickOnView(positiveButton);
+        assertTrue(solo.searchButton("Save"));
+        solo.clickOnButton("Save");
 
         TextView name = (TextView) solo.getView(R.id.playerID);
         TextView contact = (TextView) solo.getView(R.id.info);
 
 
-        assertEquals(name.getText().toString(),"Jason");
+        assertEquals(name.getText().toString(),"Test");
         assertEquals(contact.getText().toString(),"Phone number is123333");
     }
     @After
