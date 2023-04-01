@@ -33,6 +33,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -81,7 +83,7 @@ public class ScoreBoardActivity extends AppCompatActivity {
                 TextView[] playerViews = new TextView[] {text1,text2,text3};
 
                 Spinner spinner = findViewById(R.id.my_spinner);
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, new String[]{"Total ranking", "highest ranking"});
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, new String[]{"Total ranking", "highest ranking", "code count"});
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinner.setAdapter(adapter);
 
@@ -166,6 +168,59 @@ public class ScoreBoardActivity extends AppCompatActivity {
                                     }
                                 }
                             });
+                        }
+
+                        else{
+                            Query query = userRef;
+                            query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                /**
+                                 * This method is called when a Firestore query is complete, and it updates the UI based on the results.
+                                 * If the query is successful, it iterates through the query results and populates the top 3 player scores into
+                                 * the text views, and the rest of the players scores into the list view. It then sets the adapter for the list view.
+                                 * If the query fails, it logs an error message.
+                                 * @param task a Task containing the result of the Firestore query
+                                 */
+                                @Override
+                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                    List<String> listUsers = new ArrayList<String>();
+                                    if (task.isSuccessful()) {
+                                        int i = 0;
+                                        for (QueryDocumentSnapshot document : task.getResult()) {
+                                            ArrayList<String> qrLists = (ArrayList<String>) document.get("qrLists");
+                                            if (qrLists != null) {
+                                                int size = qrLists.size();
+                                                String playerId = document.getString("username");
+                                                listUsers.add("Player " + playerId + " has " + String.valueOf(size) + " QR codes");
+                                            }
+                                        }
+
+                                        // Sort the list by QR code count using a custom comparator
+                                        Collections.sort(listUsers, new Comparator<String>() {
+                                            @Override
+                                            public int compare(String o1, String o2) {
+                                                int qrCount1 = Integer.parseInt(o1.split(" ")[3]);
+                                                int qrCount2 = Integer.parseInt(o2.split(" ")[3]);
+                                                return qrCount2 - qrCount1;
+                                            }
+                                        });
+
+                                        // Populate the top 3 player scores into the text views
+                                        for (int j = 0; j < 3 && j < listUsers.size(); j++) {
+                                            String userInfo = listUsers.get(j);
+                                            playerViews[j].setText(userInfo);
+                                        }
+
+                                        // Populate the rest of the players scores into the list view using an adapter
+                                        final ListView playerList = findViewById(R.id.userList);
+                                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(ScoreBoardActivity.this, simple_list_item_1, listUsers.subList(3,listUsers.size()));
+                                        playerList.setAdapter(adapter);
+                                    } else {
+                                        Log.d(TAG, "Error getting players: ", task.getException());
+                                    }
+                                }
+                            });
+
+
                         }
                     }
 
