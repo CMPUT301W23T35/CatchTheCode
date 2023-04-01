@@ -135,33 +135,35 @@ public class TestAct extends AppCompatActivity {
                 // fill the image
                 if (wPic[0]) {
                     //chooseImage();
+
+                    // take a picture and then auto upload it
                     openCamera();
                 }
-                else{
-                    String name = String.valueOf(finalTest.getSHA256());
-                    qrRef.document(name).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(getApplicationContext(),"Success!", Toast.LENGTH_SHORT).show();
-                                DocumentSnapshot document = task.getResult();
-                                if (document.exists()) {
-                                    Log.d(TAG, "Document exists!");
-                                    addToUserCollection(userRef, name, finalTest);
-                                } else {
-                                    Log.d(TAG, "Document does not exist!");
-                                    // if the document does not exist
-                                    // create the document
-                                    addToQRCollection(qrRef, name, finalTest);
-                                    addToUserCollection(userRef, name, finalTest);
-                                }
+
+                String name = String.valueOf(finalTest.getSHA256());
+                qrRef.document(name).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(getApplicationContext(),"Success!", Toast.LENGTH_SHORT).show();
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                Log.d(TAG, "Document exists!");
+                                addToUserCollection(userRef, name, finalTest);
                             } else {
-                                Toast.makeText(getApplicationContext(),"Ops! Something went wrong...", Toast.LENGTH_SHORT).show();
-                                Log.d(TAG, "Failed with: ", task.getException());
+                                Log.d(TAG, "Document does not exist!");
+                                // if the document does not exist
+                                // create the document
+                                addToQRCollection(qrRef, name, finalTest);
+                                addToUserCollection(userRef, name, finalTest);
                             }
+                        } else {
+                            Toast.makeText(getApplicationContext(),"Ops! Something went wrong...", Toast.LENGTH_SHORT).show();
+                            Log.d(TAG, "Failed with: ", task.getException());
                         }
-                    });
-                }
+                    }
+                });
+
             }
         });
 
@@ -404,6 +406,7 @@ public class TestAct extends AppCompatActivity {
     }
 
     private void addToQRCollection(CollectionReference qrRef, String name, QRcode input) {
+        Log.e(TAG, "try to upload data");
         qrRef.document(name).set(input.toMap())
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
