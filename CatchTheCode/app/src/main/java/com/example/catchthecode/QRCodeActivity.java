@@ -73,33 +73,6 @@ public class QRCodeActivity extends AppCompatActivity {
         Button deleteButton = findViewById(R.id.buttonDelete);
         ListView playerListView = findViewById(R.id.scan_players);
 
-//        DocumentReference docRef = qrRef.document(name);
-//        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-//                if (task.isSuccessful()) {
-//                    DocumentSnapshot document = task.getResult();
-//                    if (document.exists()) {
-//                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-//                        String qrName = (String) document.getData().get("readable_name");
-//                        nameText.setText(qrName);
-//                        String url = (String) document.getData().get("url");
-//                        QRcode current;
-//                        try {
-//                            current = new QRcode(url, qrImage);
-//                        } catch (Exception e) {
-//                            throw new RuntimeException(e);
-//                        }
-//                        current.setImageview();
-//                        spaceImage.setText(current.getQrVR());
-//                    } else {
-//                        Log.d(TAG, "No such document");
-//                    }
-//                } else {
-//                    Log.d(TAG, "get failed with ", task.getException());
-//                }
-//            }
-//        });
         final String[] SHACode = new String[1];
 
         qrRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
@@ -252,6 +225,61 @@ public class QRCodeActivity extends AppCompatActivity {
 
                     }
                 });
+
+                // add a listener for button comment_location_button, pass the current longitude and latitude to the MapActivity
+                Button commentLocationButton = findViewById(R.id.comment_location_button);
+                commentLocationButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        // get the longitude and latitude from firebase for the QR code has the name "name"
+                        // pass the longitude and latitude to the MapActivity
+                        db.collection("QRs").whereEqualTo("readable_name", name).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    for (QueryDocumentSnapshot document : task.getResult()) {
+                                        Log.d(TAG, document.getId() + " => " + document.getData());
+                                        String longitude = (String) document.getData().get("longitude");
+                                        String latitude = (String) document.getData().get("latitude");
+                                        Log.e(TAG, "longitude: " + longitude);
+                                        Log.e(TAG, "latitude: " + latitude);
+                                        // if(longitude == "noLon" || latitude == "noLat") {
+                                        //     Toast.makeText(QRCodeActivity.this, "No location information", Toast.LENGTH_SHORT).show();
+                                        //     return;
+                                        // }
+                                        // else{
+                                        //     double lon = Double.parseDouble(longitude);
+                                        //     double lat = Double.parseDouble(latitude);
+                                        //     Intent intent = new Intent(QRCodeActivity.this, MapsActivity.class);
+                                        //     intent.putExtra("lon", lon);
+                                        //     intent.putExtra("lat", lat);
+                                        //     startActivity(intent);
+                                        // }
+
+                                        try{
+                                            double lon = Double.parseDouble(longitude);
+                                            double lat = Double.parseDouble(latitude);
+                                            Intent intent = new Intent(QRCodeActivity.this, MapsActivity.class);
+                                            intent.putExtra("lon", lon);
+                                            intent.putExtra("lat", lat);
+                                            startActivity(intent);
+                                        }
+                                        catch (Exception e){
+                                            // Log the exception
+                                            Log.e ("Exception", e.toString());
+                                            Toast.makeText(QRCodeActivity.this, "No location information", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                } else {
+                                    Log.d(TAG, "Error getting documents: ", task.getException());
+                                }
+                            }
+                        });
+                        //Intent intent = new Intent(QRCodeActivity.this, MapActivity.class);
+                        //startActivity(intent);
+                    }
+                });
+
 
             }
         });
