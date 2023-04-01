@@ -196,20 +196,20 @@ public class QRCodeActivity extends AppCompatActivity {
 
                     }
                 });
-                ImageView commentImage = findViewById(R.id.imageView3);
+//                ImageView commentImage = findViewById(R.id.imageView3);
                 if (userid != null) {
                     // other user's qr code
                     deleteButton.setClickable(false);
                     commentButton.setClickable(false);
                     deleteButton.setVisibility(View.INVISIBLE);
                     commentButton.setVisibility(View.INVISIBLE);
-                    commentImage.setVisibility(View.INVISIBLE);
+//                    commentImage.setVisibility(View.INVISIBLE);
                 } else {
                     deleteButton.setClickable(true);
                     deleteButton.setVisibility(View.VISIBLE);
                     commentButton.setClickable(true);
                     commentButton.setVisibility(View.VISIBLE);
-                    commentImage.setVisibility(View.VISIBLE);
+//                    commentImage.setVisibility(View.VISIBLE);
                 }
 //                Button deleteButton = findViewById(R.id.buttonDelete);
                 // Delete button in the collection_comment.xml.
