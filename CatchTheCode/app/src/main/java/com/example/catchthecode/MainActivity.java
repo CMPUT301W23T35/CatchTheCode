@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         collectionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SplashActivity.class);
+                Intent intent = new Intent(MainActivity.this, CollectionActivity.class);
                 startActivity(intent);
             }
         });

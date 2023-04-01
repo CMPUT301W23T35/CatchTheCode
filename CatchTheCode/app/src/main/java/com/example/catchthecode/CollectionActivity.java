@@ -42,7 +42,7 @@ public class CollectionActivity extends AppCompatActivity {
      * @param savedInstanceState If the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently supplied in {@link #onSaveInstanceState}.
      * @see AppCompatActivity#onCreate(Bundle)
      */
-
+    Handler handler; // handler for loading image.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

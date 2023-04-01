@@ -85,6 +85,7 @@
         android:id="@+id/QRCodeCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
         android:layout_marginEnd="244dp"
         android:text="1"
         android:textSize="18sp"
@@ -119,8 +120,9 @@
 
     <Spinner
         android:id="@+id/collection_spinner"
-        android:layout_width="157dp"
-        android:layout_height="41dp"
+        android:layout_width="196dp"
+        android:layout_height="64dp"
+        android:layout_marginRight="-5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.854"
