@@ -63,15 +63,14 @@
         android:layout_width="79dp"
         android:layout_height="35dp"
         android:layout_gravity="end"
+        android:backgroundTint="#F44336"
         android:text="Delete"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.051"
-        app:srcCompat="@android:drawable/ic_delete"
-        tools:background="@drawable/custom_button" />
+        app:layout_constraintVertical_bias="0.051" />
 
     <ImageView
         android:id="@+id/imageViewQRImage"
