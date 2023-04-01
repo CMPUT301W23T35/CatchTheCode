@@ -192,6 +192,11 @@ public class QRCodeActivity extends AppCompatActivity {
                         Intent intent = new Intent(QRCodeActivity.this, CommentActivity.class);
                         intent.putExtra("name", name);
                         intent.putExtra("id", SHACode[0]);
+                        if (userid != null) {
+                            intent.putExtra("allowComment", "0");
+                        } else {
+                            intent.putExtra("allowComment", "1");
+                        }
                         startActivity(intent);
 
                     }
@@ -200,9 +205,10 @@ public class QRCodeActivity extends AppCompatActivity {
                 if (userid != null) {
                     // other user's qr code
                     deleteButton.setClickable(false);
-                    commentButton.setClickable(false);
+                    commentButton.setText("VIEW COMMENTS");
+//                    commentButton.setClickable(false);
                     deleteButton.setVisibility(View.INVISIBLE);
-                    commentButton.setVisibility(View.INVISIBLE);
+//                    commentButton.setVisibility(View.INVISIBLE);
 //                    commentImage.setVisibility(View.INVISIBLE);
                 } else {
                     deleteButton.setClickable(true);
