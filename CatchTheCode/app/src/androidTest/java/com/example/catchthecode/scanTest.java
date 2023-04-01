@@ -49,8 +49,18 @@ public class scanTest {
     public void checkScan(){
         solo.clickOnButton("scan_qr_code");
         solo.assertCurrentActivity("Wrong activity", ScannedBarcodeActivity.class);
-        solo.clickOnButton("Scan");
-        solo.assertCurrentActivity("Wrong activity", ScanFailMsg.class);
+        if (solo.searchText("No Barcode Detected")) {
+            solo.clickOnButton("Scan");
+            solo.assertCurrentActivity("Wrong activity", ScanFailMsg.class);
+            solo.clickOnButton("Retake");
+            solo.assertCurrentActivity("Wrong activity", ScannedBarcodeActivity.class);
+        }else{
+            solo.clickOnButton("Scan");
+            solo.assertCurrentActivity("Wrong activity", TestAct.class);
+            solo.clickOnButton("Back");
+            solo.assertCurrentActivity("Wrong activity", ScannedBarcodeActivity.class);
+        }
+
     }
     @After
     public void tearDown() throws Exception{

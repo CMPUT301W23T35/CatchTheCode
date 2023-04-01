@@ -8,24 +8,25 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="16dp"
         android:text="Enter Contact Information"
-        android:textStyle="bold"
-        android:padding="16dp"/>
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/enterUserName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Please enter your preferred username"
+        android:hint="Please enter your preferred username:"
         android:inputType="textEmailAddress"
-        android:padding="16dp"/>
+        android:padding="16dp" />
 
     <EditText
         android:id="@+id/contactInfoText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter your phone number"
+        android:hint="Enter your phone number:"
         android:inputType="textEmailAddress"
-        android:padding="16dp"/>
+        android:padding="16dp" />
 
 </LinearLayout>

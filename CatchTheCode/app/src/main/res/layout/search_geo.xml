@@ -2,46 +2,51 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="@drawable/background5"
 
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/searchLatitude"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Latitude"
-        android:inputType="text"
-        android:maxLines="1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5"
-        android:padding="16dp" />
-
-    <EditText
         android:id="@+id/searchLongitude"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Longitude"
+        android:hint="Longitude:"
         android:inputType="text"
         android:maxLines="1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchLatitude"
+        android:padding="16dp"
         app:layout_constraintBottom_toTopOf="@+id/searchButton"
-        app:layout_constraintVertical_bias="0.5"
-        android:padding="16dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchLatitude"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <EditText
+        android:id="@+id/searchLatitude"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="172dp"
+        android:hint="Latitude:"
+        android:inputType="text"
+        android:maxLines="1"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/searchButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/custom_button"
+        android:padding="16dp"
         android:text="Search"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchLongitude"
-        app:layout_constraintVertical_bias="0.5"
-        android:padding="16dp" />
+        app:layout_constraintTop_toBottomOf="@+id/searchLongitude" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

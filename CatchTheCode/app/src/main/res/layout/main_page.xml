@@ -8,127 +8,137 @@
     tools:context=".MainActivity">
 
 
-    <pl.droidsonroids.gif.GifImageView
-        android:layout_width="166dp"
-        android:layout_height="186dp"
-        android:src="@drawable/dynamic_qr_code"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.065"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.754" />
-
     <Button
         android:id="@+id/map"
-        android:layout_width="128dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="24dp"
-        android:text="MAP"
+        android:layout_width="130dp"
+        android:layout_height="55dp"
+        android:background="@drawable/custom_button"
+        android:text="Map"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.886"
+        app:layout_constraintHorizontal_bias="0.882"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logout_main" />
-
-    <Button
-        android:id="@+id/Scoreboard"
-        android:layout_width="128dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
-        android:text="Board"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/profile"
-        app:layout_constraintTop_toBottomOf="@+id/map" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.647"
+        tools:textAllCaps="false" />
 
     <Button
         android:id="@+id/scan"
-        android:layout_width="225dp"
-        android:layout_height="56dp"
-        android:text="scan_qr_code"
+        android:layout_width="198dp"
+        android:layout_height="71dp"
+        android:background="@drawable/custom_background"
+        android:text="Add QR Code"
+        android:textAllCaps="false"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.559"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.958" />
+        app:layout_constraintVertical_bias="0.901" />
+
 
     <Button
         android:id="@+id/logout_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
+        android:background="@drawable/custom_button"
         android:text="@string/logout"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.941"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.016" />
 
     <Button
         android:id="@+id/profile"
         android:layout_width="130dp"
         android:layout_height="55dp"
-        android:layout_marginStart="20dp"
         android:layout_marginBottom="8dp"
-        android:text="my profile"
+        android:background="@drawable/custom_button"
+        android:text="My Profile"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toTopOf="@+id/collection"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.882"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.915"
         tools:ignore="TextSizeCheck" />
+
+    <Button
+        android:id="@+id/Scoreboard"
+        android:layout_width="130dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/custom_button"
+        android:text="Board"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.882"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/collection"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/collection"
         android:layout_width="130dp"
         android:layout_height="55dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="372dp"
-        android:text="collection"
+        android:layout_marginStart="248dp"
+        android:layout_marginBottom="460dp"
+        android:background="@drawable/custom_button"
+        android:text="Collection"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="TextSizeCheck" />
 
-    <ImageView
-        android:id="@+id/defalt_image"
-        android:layout_width="154dp"
-        android:layout_height="152dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginBottom="8dp"
-        android:contentDescription="@string/icon"
-        app:layout_constraintBottom_toTopOf="@+id/profile"
-        app:layout_constraintEnd_toStartOf="@+id/map"
-        app:layout_constraintHorizontal_bias="0.941"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.95"
-        tools:ignore="ImageContrastCheck"
-        tools:srcCompat="@tools:sample/avatars" />
-
     <Button
         android:id="@+id/search_button_main"
-        android:layout_width="128dp"
-        android:layout_height="57dp"
+        android:layout_width="130dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="32dp"
+        android:background="@drawable/custom_button"
         android:text="Search"
-        app:layout_constraintBottom_toTopOf="@+id/scan"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/collection"
         app:layout_constraintTop_toBottomOf="@+id/Scoreboard"
-        app:layout_constraintVertical_bias="0.096" />
+        app:layout_constraintVertical_bias="0.028" />
 
     <TextView
+        android:id="@+id/textView4"
         android:layout_width="146dp"
-        android:layout_height="35dp"
 
+        android:layout_height="35dp"
         android:text="CatchTheCode"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.064"
+        app:layout_constraintHorizontal_bias="0.06"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.018"
+        app:layout_constraintVertical_bias="0.035"
         tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="189dp"
+        android:layout_height="223dp"
+        android:backgroundTint="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.072"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.242"
+        app:srcCompat="@drawable/git_page" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
