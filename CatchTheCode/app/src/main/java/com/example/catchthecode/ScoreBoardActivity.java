@@ -46,10 +46,9 @@ public class ScoreBoardActivity extends AppCompatActivity {
 
 
     /**
-
-     Called when the activity is starting. This is where most initialization should go.
-
-     @param savedInstanceState a Bundle object containing the activity's previously saved state.
+     * Called when the activity is starting.
+     * @param savedInstanceState If the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently supplied in {@link #onSaveInstanceState}.
+     * @see AppCompatActivity#onCreate(Bundle)
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {

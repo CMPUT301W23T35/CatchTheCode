@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
@@ -37,9 +38,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     FirebaseFirestore db;
 
     /**
-     * This method is called when the activity is created, creating the map.
-     *
-     * @param savedInstanceState a Bundle object containing the activity's previously saved state.
+     * Called when the activity is starting.
+     * @param savedInstanceState If the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently supplied in {@link #onSaveInstanceState}.
+     * @see AppCompatActivity#onCreate(Bundle)
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
