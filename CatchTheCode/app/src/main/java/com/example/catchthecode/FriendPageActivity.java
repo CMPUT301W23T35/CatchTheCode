@@ -58,7 +58,7 @@ public class FriendPageActivity extends AppCompatActivity {
                             String name = documentSnapshot.getString("username");
                             String contactInfo = documentSnapshot.getString("contactInfo");
                             id.setText(name);
-                            info.setText("Phone number is "+ contactInfo);
+                            info.setText(contactInfo);
                         });
 
                 // Fill the last two columns with value
