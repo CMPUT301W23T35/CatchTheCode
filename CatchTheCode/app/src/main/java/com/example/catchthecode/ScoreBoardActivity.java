@@ -197,6 +197,7 @@ public class ScoreBoardActivity extends AppCompatActivity {
                                             if (qrLists != null) {
                                                 int size = qrLists.size();
                                                 String playerId = document.getString("username");
+                                                //listUsers.add(String.valueOf(size));
                                                 listUsers.add("Player " + playerId + " has " + String.valueOf(size) + " QR codes");
                                             }
                                         }
@@ -216,11 +217,12 @@ public class ScoreBoardActivity extends AppCompatActivity {
                                             String userInfo = listUsers.get(j);
                                             playerViews[j].setText(userInfo);
                                         }
-
-                                        // Populate the rest of the players scores into the list view using an adapter
-                                        final ListView playerList = findViewById(R.id.userList);
-                                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(ScoreBoardActivity.this, simple_list_item_1, listUsers.subList(3,listUsers.size()));
-                                        playerList.setAdapter(adapter);
+                                        if (listUsers.size()>3) {
+                                            // Populate the rest of the players scores into the list view using an adapter
+                                            final ListView playerList = findViewById(R.id.userList);
+                                            ArrayAdapter<String> adapter = new ArrayAdapter<String>(ScoreBoardActivity.this, simple_list_item_1, listUsers.subList(3, listUsers.size()));
+                                            playerList.setAdapter(adapter);
+                                        }
                                     } else {
                                         Log.d(TAG, "Error getting players: ", task.getException());
                                     }
