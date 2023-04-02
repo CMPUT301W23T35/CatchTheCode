@@ -162,12 +162,14 @@ public class TestAct extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(),"Ops! Something went wrong...", Toast.LENGTH_SHORT).show();
                             Log.d(TAG, "Failed with: ", task.getException());
                         }
+                        if (!wPic[0]){
+                            finish();
+                        }
                     }
                 });
 
             }
         });
-
         /*woLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -176,7 +178,6 @@ public class TestAct extends AppCompatActivity {
                 chooseImage();
             }
         });*/
-
     }
 
 
@@ -270,6 +271,7 @@ public class TestAct extends AppCompatActivity {
                 // the object has been filled with all necessary attributes, time to upload them
                 uploadPhoto(test, image_uri);
                 Log.d(TAG, "after upload");
+                finish();
             }
         }
     }
