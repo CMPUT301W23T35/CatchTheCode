@@ -27,6 +27,11 @@ import java.util.List;
 
 public class FriendPageActivity extends AppCompatActivity {
 
+    /**
+     * Called when the activity is starting.
+     * @param savedInstanceState If the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently supplied in {@link #onSaveInstanceState}.
+     * @see AppCompatActivity#onCreate(Bundle)
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -120,7 +125,10 @@ public class FriendPageActivity extends AppCompatActivity {
     }
 
 
-
+    /**
+     * update the database with the lastest information
+     * @return Task<Void></Void>
+     */
     private Task<Void> updateDatabase() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         TaskCompletionSource<Void> taskCompletionSource = new TaskCompletionSource<>();

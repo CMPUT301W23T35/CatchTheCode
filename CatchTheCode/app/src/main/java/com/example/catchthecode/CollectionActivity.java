@@ -147,6 +147,9 @@ public class CollectionActivity extends AppCompatActivity {
                 spinner.setAdapter(adapter);
 
                 spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    /**
+                     * Called when an QR code is selected
+                     */
                     @Override
                     public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long l) {
                         if(pos == 0){
@@ -242,7 +245,9 @@ public class CollectionActivity extends AppCompatActivity {
                             });
                         }
                     }
-
+                    /**
+                     * Called when nothing is selected
+                     */
                     @Override
                     public void onNothingSelected(AdapterView<?> adapterView) {
                         // do nothing when nothing is selected
@@ -283,7 +288,10 @@ public class CollectionActivity extends AppCompatActivity {
         }
     }
 
-
+    /**
+     * update the database with the lastest information
+     * @return Task<Void></Void>
+     */
     private Task<Void> updateDatabase() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         TaskCompletionSource<Void> taskCompletionSource = new TaskCompletionSource<>();

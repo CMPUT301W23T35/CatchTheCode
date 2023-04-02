@@ -57,6 +57,11 @@ public class QRCodeActivity extends AppCompatActivity {
     CollectionReference qrRef = db.collection("QRs");
     CollectionReference userRef = db.collection("users");
     StorageReference sr = FirebaseStorage.getInstance().getReference();
+    /**
+     * Called when the activity is starting.
+     * @param savedInstanceState If the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently supplied in {@link #onSaveInstanceState}.
+     * @see AppCompatActivity#onCreate(Bundle)
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +81,11 @@ public class QRCodeActivity extends AppCompatActivity {
         final String[] SHACode = new String[1];
 
         qrRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
+            /**
+             * execute the query
+             * @param queryDocumentSnapshots
+             * @param error
+             */
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable
             FirebaseFirestoreException error) {
@@ -135,6 +145,11 @@ public class QRCodeActivity extends AppCompatActivity {
 //        });
                 // to find the user who contains the code
                 ArrayList<String> userList = new ArrayList<String>();
+                /**
+                 * execute the query
+                 * @param queryDocumentSnapshots
+                 * @param error
+                 */
                 userRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable
@@ -160,6 +175,10 @@ public class QRCodeActivity extends AppCompatActivity {
 
 
                 commentButton.setOnClickListener(new View.OnClickListener() {
+                    /**
+                     * when the button is clicked, change to comment activity
+                     * @param view
+                     */
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(QRCodeActivity.this, CommentActivity.class);
@@ -193,6 +212,10 @@ public class QRCodeActivity extends AppCompatActivity {
 //                Button deleteButton = findViewById(R.id.buttonDelete);
                 // Delete button in the collection_comment.xml.
                 deleteButton.setOnClickListener(new View.OnClickListener() {
+                    /**
+                     * when the button is clicked, delete the code
+                     * @param v
+                     */
                     @Override
                     public void onClick(View v) {
                         String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
@@ -229,6 +252,10 @@ public class QRCodeActivity extends AppCompatActivity {
                 // add a listener for button comment_location_button, pass the current longitude and latitude to the MapActivity
                 Button commentLocationButton = findViewById(R.id.comment_location_button);
                 commentLocationButton.setOnClickListener(new View.OnClickListener() {
+                    /**
+                     * called when the button is clicked
+                     * @param view
+                     */
                     @Override
                     public void onClick(View view) {
                         // get the longitude and latitude from firebase for the QR code has the name "name"

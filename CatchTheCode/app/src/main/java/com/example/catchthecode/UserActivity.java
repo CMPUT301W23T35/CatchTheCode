@@ -151,6 +151,10 @@ public class UserActivity extends AppCompatActivity {
                 // This updates user information
                 Button modifyButton = findViewById(R.id.modify_profile_button);
                 modifyButton.setOnClickListener(new View.OnClickListener() {
+                    /**
+                     * called when the button is clicked
+                     * @param view
+                     */
                     @Override
                     public void onClick(View view) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(UserActivity.this);
@@ -262,7 +266,10 @@ public class UserActivity extends AppCompatActivity {
             }
         });
     }
-
+    /**
+     * update the database with the lastest information
+     * @return Task<Void></Void>
+     */
     private Task<Void> updateDatabase() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         TaskCompletionSource<Void> taskCompletionSource = new TaskCompletionSource<>();

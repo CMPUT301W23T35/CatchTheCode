@@ -71,8 +71,9 @@ public class TestAct extends AppCompatActivity {
     QRcode test = null;
 
     /**
-     * Called when the activity is starting. Initializes the view and generates the QR code image.
-     * @param savedInstanceState the saved instance state bundle
+     * Called when the activity is starting.
+     * @param savedInstanceState If the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently supplied in {@link #onSaveInstanceState}.
+     * @see AppCompatActivity#onCreate(Bundle)
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -272,7 +273,11 @@ public class TestAct extends AppCompatActivity {
             }
         }
     }
-
+    /**
+     * upload the photo to the firebase
+     * @param input the QR code to be stored
+     * @param uri the uri of the code
+     */
     private void uploadPhoto(QRcode input, Uri uri) {
 
         String name = String.valueOf(input.getSHA256());
@@ -333,7 +338,12 @@ public class TestAct extends AppCompatActivity {
         MimeTypeMap mime = MimeTypeMap.getSingleton();
         return mime.getExtensionFromMimeType(cr.getType(uri));
     }
-
+    /**
+     * upload the code to the user collection in firebase
+     * @param userRef the user reference in firebase
+     * @param name the id of the QR code
+     * @param input the object of the current QR code
+     */
     private void addToUserCollection(CollectionReference userRef, String name, QRcode input) {
         String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
         // add to the user database
@@ -365,7 +375,7 @@ public class TestAct extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Void unused) {
                                     Log.e(TAG, input.getSHA256());
-                                    Log.e(TAG, "qr added to user list");
+//                                    Log.e(TAG, "qr added to user list");
                                 }
                             })
                             .addOnFailureListener(new OnFailureListener() {
@@ -397,6 +407,8 @@ public class TestAct extends AppCompatActivity {
                                         Log.e(TAG, "qr failed to add to user list");
                                     }
                                 });
+                    } else {
+                        Toast.makeText(TestAct.this, "You have already scanned this code.", Toast.LENGTH_SHORT);
                     }
                 }
             } else {
@@ -404,7 +416,12 @@ public class TestAct extends AppCompatActivity {
             }
         });
     }
-
+    /**
+     * upload the code to the QR code collection in firebase
+     * @param qrRef the QR code reference in firebase
+     * @param name the id of the QR code
+     * @param input the object of the current QR code
+     */
     private void addToQRCollection(CollectionReference qrRef, String name, QRcode input) {
         Log.e(TAG, "try to upload data");
         qrRef.document(name).set(input.toMap())
@@ -421,6 +438,10 @@ public class TestAct extends AppCompatActivity {
                     }
                 });
     }
+
+    /**
+     * open the camera on the phone
+     */
     private void openCamera(){
         ContentValues values = new ContentValues();
         values.put(MediaStore.Images.Media.TITLE, "New Picture");

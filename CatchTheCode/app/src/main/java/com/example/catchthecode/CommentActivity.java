@@ -38,13 +38,14 @@ import java.util.HashMap;
 import java.util.List;
 
 public class CommentActivity extends AppCompatActivity {
-
-
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference qrRef = db.collection("QRs");
 
-
-
+    /**
+     * Called when the activity is starting.
+     * @param savedInstanceState If the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently supplied in {@link #onSaveInstanceState}.
+     * @see AppCompatActivity#onCreate(Bundle)
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -159,6 +160,13 @@ public class CommentActivity extends AppCompatActivity {
         });
 
     }
+
+    /**
+     * add the comment to the current QR code
+     * @param qrRef collection reference to the QR code reference in firebase
+     * @param id the id(SHA256) of the current QR code selcted
+     * @param comment the string of comment
+     */
     private void addToUserCommentCollection(CollectionReference qrRef, String id, String comment) {
         // check if name is already in the current user's array
         qrRef.document(id).get(Source.SERVER).addOnCompleteListener(task -> {
