@@ -9,16 +9,16 @@
 
     <TextView
         android:id="@+id/info"
-        android:layout_width="match_parent"
+        android:layout_width="353dp"
         android:layout_height="49dp"
         android:background="#0503A9F4"
         android:clickable="true"
         android:shadowColor="#9A9595"
         android:textAlignment="center"
-        android:textSize="16sp"
+        android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.234"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.332"
@@ -28,6 +28,7 @@
         android:id="@+id/totalCodes"
         android:layout_width="117dp"
         android:layout_height="31dp"
+        android:layout_marginLeft="-4dp"
         android:text="Total Codes:"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -41,8 +42,7 @@
         android:id="@+id/hRankingNums"
         android:layout_width="32dp"
         android:layout_height="38dp"
-        android:layout_marginLeft="-1dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="3dp"
         android:text="0"
         android:textAlignment="textStart"
         android:textSize="25sp"
@@ -57,15 +57,15 @@
         android:id="@+id/highestRanking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Highest Ranking: "
+        android:layout_marginLeft="-21dp"
+        android:text="Ranking: "
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.232"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/totalCodes"
-        app:layout_constraintVertical_bias="0.166"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintVertical_bias="0.166" />
 
     <TextView
         android:id="@+id/tCodesNums"
@@ -155,4 +155,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.142"
         app:srcCompat="@drawable/ic_launcher_foreground" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="57dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.318"
+        app:srcCompat="@android:drawable/stat_sys_phone_call" />
 </androidx.constraintlayout.widget.ConstraintLayout>
