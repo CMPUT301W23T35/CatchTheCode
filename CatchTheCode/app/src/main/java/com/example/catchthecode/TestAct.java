@@ -151,6 +151,13 @@ public class TestAct extends AppCompatActivity {
                             if (document.exists()) {
                                 Log.d(TAG, "Document exists!");
                                 addToUserCollection(userRef, name, finalTest);
+                                // update the document with new location information
+                                // only if the document in database has "nolon" for longitude and "nolat" for latitude
+                                if (document.getString("longitude").equals("noLon") && document.getString("latitude").equals("noLat")){
+                                    // update the document
+                                    qrRef.document(name).update("longitude", finalTest.getLongitude());
+                                    qrRef.document(name).update("latitude", finalTest.getLatitude());
+                                }
                             } else {
                                 Log.d(TAG, "Document does not exist!");
                                 // if the document does not exist
@@ -293,17 +300,6 @@ public class TestAct extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
-                    //DocumentSnapshot document = task.getResult();
-                    /*if (document.exists()) {
-                        Log.d(TAG, "Document exists!");
-                        addToUserCollection(userRef, name, input);
-                    } else {
-                        Log.d(TAG, "Document does not exist!");
-                        // if the document does not exist
-                        // create the document
-                        addToQRCollection(qrRef, name, input);
-                        addToUserCollection(userRef, name, input);
-                    }*/
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
                     input.getImage().compress(Bitmap.CompressFormat.JPEG, 50, baos);
                     byte[] data = baos.toByteArray();
