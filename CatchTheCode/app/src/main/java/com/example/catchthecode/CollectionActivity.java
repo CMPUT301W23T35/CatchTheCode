@@ -5,6 +5,7 @@ import static android.content.ContentValues.TAG;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
@@ -41,6 +42,7 @@ public class CollectionActivity extends AppCompatActivity {
      * @param savedInstanceState If the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently supplied in {@link #onSaveInstanceState}.
      * @see AppCompatActivity#onCreate(Bundle)
      */
+    Handler handler; // handler for loading image.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -145,6 +147,9 @@ public class CollectionActivity extends AppCompatActivity {
                 spinner.setAdapter(adapter);
 
                 spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    /**
+                     * Called when an QR code is selected
+                     */
                     @Override
                     public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long l) {
                         if(pos == 0){
@@ -240,7 +245,9 @@ public class CollectionActivity extends AppCompatActivity {
                             });
                         }
                     }
-
+                    /**
+                     * Called when nothing is selected
+                     */
                     @Override
                     public void onNothingSelected(AdapterView<?> adapterView) {
                         // do nothing when nothing is selected
@@ -281,7 +288,10 @@ public class CollectionActivity extends AppCompatActivity {
         }
     }
 
-
+    /**
+     * update the database with the lastest information
+     * @return Task<Void></Void>
+     */
     private Task<Void> updateDatabase() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         TaskCompletionSource<Void> taskCompletionSource = new TaskCompletionSource<>();

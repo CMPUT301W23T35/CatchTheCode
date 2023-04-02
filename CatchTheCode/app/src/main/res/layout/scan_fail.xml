@@ -23,18 +23,19 @@
         android:layout_height="58dp"
         android:layout_marginStart="156dp"
         android:layout_marginTop="492dp"
+        android:background="@drawable/custom_button"
         android:text="Retake"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <pl.droidsonroids.gif.GifImageView
-        android:layout_width="406dp"
-        android:layout_height="714dp"
+        android:layout_width="392dp"
+        android:layout_height="451dp"
+        android:src="@drawable/error"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/error"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 

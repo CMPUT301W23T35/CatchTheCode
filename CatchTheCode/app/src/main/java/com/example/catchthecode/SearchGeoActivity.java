@@ -32,6 +32,10 @@ public class SearchGeoActivity extends AppCompatActivity {
         // add a button listener to the search button "@+id/searchButton"
         // pass the latitude and longitude to the MapsActivity
         findViewById(R.id.searchButton).setOnClickListener(new View.OnClickListener() {
+            /**
+             * called when the button is clicked
+             * @param v
+             */
             @Override
             public void onClick(View v) {
                 // get the value from those two search bars

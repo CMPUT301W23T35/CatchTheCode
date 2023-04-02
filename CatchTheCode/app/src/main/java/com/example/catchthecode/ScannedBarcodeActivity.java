@@ -39,13 +39,18 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
     private BarcodeDetector barcodeDetector;
     private CameraSource cameraSource;
     private static final int REQUEST_CAMERA_PERMISSION = 201;
-    Button btnAction;
+    //Button btnAction;
     Button btnScan;
     String intentData = "";
     boolean isEmail = false;
 
     Uri image_uri;
 
+    /**
+     * Called when the activity is starting.
+     * @param savedInstanceState If the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently supplied in {@link #onSaveInstanceState}.
+     * @see AppCompatActivity#onCreate(Bundle)
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,13 +59,12 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
         initViews();
     }
     /**
-
      Initialize the views and set up button listeners.
      */
     private void initViews() {
         txtBarcodeValue = findViewById(R.id.txtBarcodeValue);
         surfaceView = findViewById(R.id.surfaceView);
-        btnAction = findViewById(R.id.btnAction);
+        //btnAction = findViewById(R.id.btnAction);
         btnScan = findViewById(R.id.btnScan);
 
 
@@ -72,9 +76,9 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
             }
         });
 
-        btnAction.setOnClickListener(new View.OnClickListener() {
+        /*btnAction.setOnClickListener(new View.OnClickListener() {
             @Override
-            /*public void onClick(View v) {
+            *//*public void onClick(View v) {
                 if (intentData.length() > 0) {
                     if (isEmail) {
                     }
@@ -82,7 +86,7 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
                else {
                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(intentData)));
                }
-           }*/
+           }*//*
 
 
                 // TODO: need to store it somewhere
@@ -108,7 +112,7 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
             }
 
         }
-    });
+    });*/
 }
     /**
 

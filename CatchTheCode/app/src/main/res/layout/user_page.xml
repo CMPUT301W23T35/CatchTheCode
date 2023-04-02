@@ -15,7 +15,9 @@
         android:clickable="true"
         android:shadowColor="#9A9595"
         android:textAlignment="center"
-        android:textSize="16sp"
+        android:textSize="28sp"
+        android:gravity="center"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.234"
@@ -41,6 +43,8 @@
         android:id="@+id/hRankingNums"
         android:layout_width="32dp"
         android:layout_height="38dp"
+        android:layout_marginLeft="-1dp"
+        android:layout_marginTop="5dp"
         android:text="0"
         android:textAlignment="textStart"
         android:textSize="25sp"
@@ -69,6 +73,8 @@
         android:id="@+id/tCodesNums"
         android:layout_width="33dp"
         android:layout_height="32dp"
+        android:layout_marginLeft="-1dp"
+        android:layout_marginTop="-3sp"
         android:text="0"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -110,8 +116,8 @@
 
     <Button
         android:id="@+id/modify_profile_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="127dp"
+        android:layout_height="43dp"
         android:layout_gravity="bottom|left"
         android:layout_margin="16dp"
         android:background="@drawable/custom_button"
@@ -121,7 +127,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:textAllCaps="false" />
 
     <Button
         android:id="@+id/collection_button"
@@ -129,22 +136,36 @@
         android:layout_height="58dp"
         android:background="@drawable/custom_button"
         android:text="Collection"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/highestRanking"
-        app:layout_constraintVertical_bias="0.693" />
+        app:layout_constraintVertical_bias="0.693"
+        tools:textAllCaps="false"
+        tools:textSize="20dp" />
 
     <ImageView
         android:id="@+id/imageView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="49dp"
+        android:layout_height="47dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/playerID"
-        app:layout_constraintHorizontal_bias="0.888"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.142"
-        app:srcCompat="@drawable/ic_launcher_foreground" />
+        app:layout_constraintVertical_bias="0.334"
+        app:srcCompat="@drawable/phone" />
+
+    <ImageView
+        android:layout_width="113dp"
+        android:layout_height="118dp"
+        android:src="@drawable/profile_image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.027"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.14" />
 </androidx.constraintlayout.widget.ConstraintLayout>

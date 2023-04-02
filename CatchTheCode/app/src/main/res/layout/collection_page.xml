@@ -5,17 +5,9 @@
 
 
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="424dp"
-        android:layout_height="732dp"
-        android:alpha="0.6"
-        android:background="@drawable/background9"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:layout_height="match_parent"
+    android:alpha="0.9"
+    android:background="@drawable/background9">
 
     <View
         android:id="@+id/collection_page_divider"
@@ -93,6 +85,7 @@
         android:id="@+id/QRCodeCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
         android:layout_marginEnd="244dp"
         android:text="1"
         android:textSize="18sp"
@@ -103,23 +96,23 @@
 
     <LinearLayout
         android:id="@+id/my_collection_title"
-        android:layout_width="409dp"
-        android:layout_height="583dp"
+        android:layout_width="412dp"
+        android:layout_height="581dp"
         android:orientation="horizontal"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="154dp">
+        tools:layout_editor_absoluteX="-1dp"
+        tools:layout_editor_absoluteY="156dp">
 
         <ListView
             android:id="@+id/collection_rank"
-            android:layout_width="297dp"
-            android:layout_height="582dp"
+            android:layout_width="333dp"
+            android:layout_height="435dp"
             android:layout_gravity="bottom"
             android:layout_weight="1" />
 
         <ListView
             android:id="@+id/collection_score"
-            android:layout_width="77dp"
-            android:layout_height="582dp"
+            android:layout_width="78dp"
+            android:layout_height="435dp"
             android:layout_gravity="bottom"
             android:layout_weight="1" />
 
@@ -127,8 +120,9 @@
 
     <Spinner
         android:id="@+id/collection_spinner"
-        android:layout_width="157dp"
-        android:layout_height="41dp"
+        android:layout_width="196dp"
+        android:layout_height="64dp"
+        android:layout_marginRight="-5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.854"

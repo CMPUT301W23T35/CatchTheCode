@@ -4,6 +4,7 @@ import static android.content.ContentValues.TAG;
 
 import android.Manifest;
 import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -59,6 +60,8 @@ public class TestAct extends AppCompatActivity {
     FusedLocationProviderClient fusedLocationProviderClient;
     private static final int MY_REQUEST_CODE = 1122;
     int SELECT_PICTURE = 715;
+    private static final int IMAGE_CAPTURE_CODE = 202;
+    Uri image_uri;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference userRef = db.collection("users");
     CollectionReference qrRef = db.collection("QRs");
@@ -68,8 +71,9 @@ public class TestAct extends AppCompatActivity {
     QRcode test = null;
 
     /**
-     * Called when the activity is starting. Initializes the view and generates the QR code image.
-     * @param savedInstanceState the saved instance state bundle
+     * Called when the activity is starting.
+     * @param savedInstanceState If the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently supplied in {@link #onSaveInstanceState}.
+     * @see AppCompatActivity#onCreate(Bundle)
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,36 +135,48 @@ public class TestAct extends AppCompatActivity {
                 Log.d(TAG, "3 "+finalTest.getLongitude());
                 // fill the image
                 if (wPic[0]) {
-                    chooseImage();
+                    //chooseImage();
+
+                    // take a picture and then auto upload it
+                    openCamera();
                 }
-                else{
-                    String name = String.valueOf(finalTest.getSHA256());
-                    qrRef.document(name).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(getApplicationContext(),"Success!", Toast.LENGTH_SHORT).show();
-                                DocumentSnapshot document = task.getResult();
-                                if (document.exists()) {
-                                    Log.d(TAG, "Document exists!");
-                                    addToUserCollection(userRef, name, finalTest);
-                                } else {
-                                    Log.d(TAG, "Document does not exist!");
-                                    // if the document does not exist
-                                    // create the document
-                                    addToQRCollection(qrRef, name, finalTest);
-                                    addToUserCollection(userRef, name, finalTest);
+
+                String name = String.valueOf(finalTest.getSHA256());
+                qrRef.document(name).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(getApplicationContext(),"Success!", Toast.LENGTH_SHORT).show();
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                Log.d(TAG, "Document exists!");
+                                addToUserCollection(userRef, name, finalTest);
+                                // update the document with new location information
+                                // only if the document in database has "nolon" for longitude and "nolat" for latitude
+                                if (document.getString("longitude").equals("noLon") && document.getString("latitude").equals("noLat")){
+                                    // update the document
+                                    qrRef.document(name).update("longitude", finalTest.getLongitude());
+                                    qrRef.document(name).update("latitude", finalTest.getLatitude());
                                 }
                             } else {
-                                Toast.makeText(getApplicationContext(),"Ops! Something went wrong...", Toast.LENGTH_SHORT).show();
-                                Log.d(TAG, "Failed with: ", task.getException());
+                                Log.d(TAG, "Document does not exist!");
+                                // if the document does not exist
+                                // create the document
+                                addToQRCollection(qrRef, name, finalTest);
+                                addToUserCollection(userRef, name, finalTest);
                             }
+                        } else {
+                            Toast.makeText(getApplicationContext(),"Ops! Something went wrong...", Toast.LENGTH_SHORT).show();
+                            Log.d(TAG, "Failed with: ", task.getException());
                         }
-                    });
-                }
+                        if (!wPic[0]){
+                            finish();
+                        }
+                    }
+                });
+
             }
         });
-
         /*woLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -169,7 +185,6 @@ public class TestAct extends AppCompatActivity {
                 chooseImage();
             }
         });*/
-
     }
 
 
@@ -223,7 +238,7 @@ public class TestAct extends AppCompatActivity {
     }
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK){
+        /*if (resultCode == RESULT_OK){
             if (requestCode == SELECT_PICTURE) {
                 Uri selectedUri = data.getData();
                 Bitmap img = null;
@@ -241,10 +256,38 @@ public class TestAct extends AppCompatActivity {
                 uploadQR(test, selectedUri);
                 Log.d(TAG, "after upload");
             }
+        }*/
+
+        // upload the photo right after taking it
+        if (resultCode == RESULT_OK) {
+            if (requestCode == IMAGE_CAPTURE_CODE) {
+                // set image captured to image view
+                //imgView.setImageURI(image_uri);
+                Log.d("image_uri", image_uri.toString());
+                Bitmap img = null;
+                // turn the uri into bitmap form, and fill the QRcode object with it
+                try {
+                    img = MediaStore.Images.Media.getBitmap(this.getContentResolver(), image_uri);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                test.setImage(img);
+                //ImageView qrimg = findViewById(R.id.qrimg);
+                //qrimg.setImageBitmap(test.getImage());
+
+                // the object has been filled with all necessary attributes, time to upload them
+                uploadPhoto(test, image_uri);
+                Log.d(TAG, "after upload");
+                finish();
+            }
         }
     }
-
-    private void uploadQR(QRcode input, Uri uri) {
+    /**
+     * upload the photo to the firebase
+     * @param input the QR code to be stored
+     * @param uri the uri of the code
+     */
+    private void uploadPhoto(QRcode input, Uri uri) {
 
         String name = String.valueOf(input.getSHA256());
 //        String name = String.valueOf(input.getqrName());
@@ -257,17 +300,6 @@ public class TestAct extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        Log.d(TAG, "Document exists!");
-                        addToUserCollection(userRef, name, input);
-                    } else {
-                        Log.d(TAG, "Document does not exist!");
-                        // if the document does not exist
-                        // create the document
-                        addToQRCollection(qrRef, name, input);
-                        addToUserCollection(userRef, name, input);
-                    }
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
                     input.getImage().compress(Bitmap.CompressFormat.JPEG, 50, baos);
                     byte[] data = baos.toByteArray();
@@ -304,7 +336,12 @@ public class TestAct extends AppCompatActivity {
         MimeTypeMap mime = MimeTypeMap.getSingleton();
         return mime.getExtensionFromMimeType(cr.getType(uri));
     }
-
+    /**
+     * upload the code to the user collection in firebase
+     * @param userRef the user reference in firebase
+     * @param name the id of the QR code
+     * @param input the object of the current QR code
+     */
     private void addToUserCollection(CollectionReference userRef, String name, QRcode input) {
         String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
         // add to the user database
@@ -336,7 +373,7 @@ public class TestAct extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Void unused) {
                                     Log.e(TAG, input.getSHA256());
-                                    Log.e(TAG, "qr added to user list");
+//                                    Log.e(TAG, "qr added to user list");
                                 }
                             })
                             .addOnFailureListener(new OnFailureListener() {
@@ -368,6 +405,8 @@ public class TestAct extends AppCompatActivity {
                                         Log.e(TAG, "qr failed to add to user list");
                                     }
                                 });
+                    } else {
+                        Toast.makeText(TestAct.this, "You have already scanned this code.", Toast.LENGTH_SHORT);
                     }
                 }
             } else {
@@ -375,8 +414,14 @@ public class TestAct extends AppCompatActivity {
             }
         });
     }
-
+    /**
+     * upload the code to the QR code collection in firebase
+     * @param qrRef the QR code reference in firebase
+     * @param name the id of the QR code
+     * @param input the object of the current QR code
+     */
     private void addToQRCollection(CollectionReference qrRef, String name, QRcode input) {
+        Log.e(TAG, "try to upload data");
         qrRef.document(name).set(input.toMap())
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -391,5 +436,19 @@ public class TestAct extends AppCompatActivity {
                     }
                 });
     }
+
+    /**
+     * open the camera on the phone
+     */
+    private void openCamera(){
+        ContentValues values = new ContentValues();
+        values.put(MediaStore.Images.Media.TITLE, "New Picture");
+        values.put(MediaStore.Images.Media.DESCRIPTION, "From the Camera");
+        image_uri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, image_uri);
+        startActivityForResult(cameraIntent, IMAGE_CAPTURE_CODE);
+    }
+
 }
 

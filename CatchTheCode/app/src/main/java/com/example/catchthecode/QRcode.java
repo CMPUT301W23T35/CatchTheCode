@@ -318,7 +318,7 @@ public class QRcode {
         for (int i = 0; i < sLen-1; i++){
             if (s.charAt(i) == s.charAt(i+1) || s.charAt(i) == '0'){
                 int j = 0;
-                while (s.charAt(i) == s.charAt(i+j+1)){
+                while (i+j+1 <= sLen-1 && s.charAt(i) == s.charAt(i+j+1)){
                     j++;
                 }
                 Score += convertScore(s.charAt(i), j);

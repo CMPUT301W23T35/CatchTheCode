@@ -46,10 +46,9 @@ public class ScoreBoardActivity extends AppCompatActivity {
 
 
     /**
-
-     Called when the activity is starting. This is where most initialization should go.
-
-     @param savedInstanceState a Bundle object containing the activity's previously saved state.
+     * Called when the activity is starting.
+     * @param savedInstanceState If the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently supplied in {@link #onSaveInstanceState}.
+     * @see AppCompatActivity#onCreate(Bundle)
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +82,7 @@ public class ScoreBoardActivity extends AppCompatActivity {
                 TextView[] playerViews = new TextView[] {text1,text2,text3};
 
                 Spinner spinner = findViewById(R.id.my_spinner);
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, new String[]{"Total ranking", "highest ranking", "code count"});
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, new String[]{"by total", "by unique", "by count"});
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinner.setAdapter(adapter);
 
@@ -99,6 +98,10 @@ public class ScoreBoardActivity extends AppCompatActivity {
                                     if (task.isSuccessful()) {
                                         int i = 0;
                                         for (QueryDocumentSnapshot document : task.getResult()) {
+                                            // skip all the user with score 0
+                                            if (document.getLong("highest") == 0) {
+                                                continue;
+                                            }
                                             if (i < 3) {
                                                 String playerId = document.getString("username");
                                                 long playerScore = document.getLong("highest");
@@ -143,6 +146,10 @@ public class ScoreBoardActivity extends AppCompatActivity {
                                     if (task.isSuccessful()) {
                                         int i = 0;
                                         for (QueryDocumentSnapshot document : task.getResult()) {
+                                            // skip all the user with score 0
+                                            if (document.getLong("score") == 0) {
+                                                continue;
+                                            }
                                             if (i < 3) {
                                                 String playerId = document.getString("username");
                                                 long playerScore = document.getLong("score");

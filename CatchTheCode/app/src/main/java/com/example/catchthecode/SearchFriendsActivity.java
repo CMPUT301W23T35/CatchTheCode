@@ -45,6 +45,11 @@ import java.util.Map;
  */
 public class SearchFriendsActivity extends AppCompatActivity {
 
+    /**
+     * Called when the activity is starting.
+     * @param savedInstanceState If the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently supplied in {@link #onSaveInstanceState}.
+     * @see AppCompatActivity#onCreate(Bundle)
+     */
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -127,6 +132,13 @@ public class SearchFriendsActivity extends AppCompatActivity {
 
                                     // Now, make the listview be responsive to clicks
                                     listOfUsers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                        /**
+                                         * called when an item is clicked
+                                         * @param parent
+                                         * @param view
+                                         * @param position
+                                         * @param id
+                                         */
                                         @Override
                                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                                             // Get the clicked user ID from the adapter

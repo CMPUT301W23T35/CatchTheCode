@@ -7,11 +7,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,13 +38,14 @@ import java.util.HashMap;
 import java.util.List;
 
 public class CommentActivity extends AppCompatActivity {
-
-
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference qrRef = db.collection("QRs");
 
-
-
+    /**
+     * Called when the activity is starting.
+     * @param savedInstanceState If the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently supplied in {@link #onSaveInstanceState}.
+     * @see AppCompatActivity#onCreate(Bundle)
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +53,7 @@ public class CommentActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String name = intent.getStringExtra("name");
         String id = intent.getStringExtra("id");
-
+        String allowComment = intent.getStringExtra("allowComment");
         ListView listView = findViewById(R.id.commentsList);
         Button addCommentButton = findViewById(R.id.addCommentButton);
         EditText editTextComment = findViewById(R.id.enter_comment_box);
@@ -103,10 +106,24 @@ public class CommentActivity extends AppCompatActivity {
 //            }
 //        });
 
+        if (allowComment.equals("0")) {
+            addCommentButton.setVisibility(View.INVISIBLE);
+            addCommentButton.setClickable(false);
+            editTextComment.setVisibility(View.INVISIBLE);
+            editTextComment.setClickable(false);
+        } else {
+            addCommentButton.setVisibility(View.VISIBLE);
+            addCommentButton.setClickable(true);
+            editTextComment.setVisibility(View.VISIBLE);
+            editTextComment.setClickable(true);
+        }
         addCommentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String currentComment = editTextComment.getText().toString();
+                editTextComment.getText().clear();
+                InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
                 addToUserCommentCollection(qrRef, id, currentComment);
 //                qrRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
 //                    @Override
@@ -143,6 +160,13 @@ public class CommentActivity extends AppCompatActivity {
         });
 
     }
+
+    /**
+     * add the comment to the current QR code
+     * @param qrRef collection reference to the QR code reference in firebase
+     * @param id the id(SHA256) of the current QR code selcted
+     * @param comment the string of comment
+     */
     private void addToUserCommentCollection(CollectionReference qrRef, String id, String comment) {
         // check if name is already in the current user's array
         qrRef.document(id).get(Source.SERVER).addOnCompleteListener(task -> {
