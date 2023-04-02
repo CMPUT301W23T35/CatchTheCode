@@ -14,12 +14,14 @@
         android:background="@drawable/custom_button"
         android:text="Geo-Search"
         android:textColor="@color/white"
+        android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.661"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.321" />
+        app:layout_constraintVertical_bias="0.321"
+        tools:textAllCaps="false" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -36,21 +38,25 @@
         android:id="@+id/name_search_button"
         android:layout_width="157dp"
         android:layout_height="59dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="35dp"
         android:background="@drawable/custom_button"
         android:text="Name-Search"
         android:textColor="@color/white"
+        android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.661"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/geo_search_button"
-        app:layout_constraintVertical_bias="0.03" />
+        app:layout_constraintVertical_bias="0.03"
+        tools:textAllCaps="false" />
 
     <ImageView
         android:id="@+id/name_search_image"
         android:layout_width="55dp"
         android:layout_height="45dp"
+        android:layout_marginTop="-2dp"
+        android:layout_marginRight="-5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/name_search_button"
         app:layout_constraintHorizontal_bias="0.61"

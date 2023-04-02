@@ -2,25 +2,21 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
 
-    <uses-permission android:name="android.permission.CAMERA"> </uses-permission>
+    <uses-permission android:name="android.permission.CAMERA"></uses-permission>
+
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" ></uses-permission>
-    <uses-permission android:name="android.permission.INTERNET" ></uses-permission>
-
-
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
 
     <application
         android:allowBackup="true"
@@ -31,6 +27,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CatchTheCode"
         tools:targetApi="31">
+        <activity
+            android:name=".SplashActivity"
+            android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -45,12 +44,9 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAg5z6cQCawrqepHSqIiS4U4lDDU0F90qM" />
-
-
         <meta-data
             android:name="com.google.android.gms.vision.DEPENDENCIES"
             android:value="barcode" />
-
 
         <activity
             android:name=".MapsActivity"
@@ -73,21 +69,19 @@
             android:name=".CollectionActivity"
             android:exported="false"
             android:label="@string/title_activity_collection" />
+
         <activity
             android:name=".ScoreBoardActivity"
             android:exported="false"
             android:label="@string/title_activity_collection" />
-
         <activity
             android:name=".ScannedBarcodeActivity"
             android:exported="false"
             android:label="@string/title_activity_collection" />
-
         <activity
             android:name=".ScanFailMsg"
             android:exported="false"
             android:label="" />
-
         <activity
             android:name=".SearchActivity"
             android:exported="false"
@@ -96,36 +90,36 @@
             android:name=".FriendPageActivity"
             android:exported="false"
             android:label="" />
-
         <activity
             android:name=".DBUpdate"
             android:exported="false"
             android:label="" />
-        <activity android:name=".SearchFriendsActivity"
+        <activity
+            android:name=".SearchFriendsActivity"
             android:exported="false"
             android:label="" />
-
-        <!--<activity
+        <!--
+<activity
             android:name=".QRcode"
             android:exported="false"
-            android:label="" />-->
+            android:label="" />
+        -->
         <activity
             android:name=".TestAct"
             android:exported="false"
-            android:label=""/>
-
+            android:label="" />
         <activity
             android:name=".SearchGeoActivity"
             android:exported="false"
-            android:label=""/>
-
-        <activity android:name=".QRCodeActivity"
+            android:label="" />
+        <activity
+            android:name=".QRCodeActivity"
             android:exported="false"
-            android:label=""/>
-
-        <activity android:name=".CommentActivity"
+            android:label="" />
+        <activity
+            android:name=".CommentActivity"
             android:exported="false"
-            android:label=""/>
+            android:label="" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -136,7 +130,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
         </provider>
-
     </application>
 
 </manifest>
