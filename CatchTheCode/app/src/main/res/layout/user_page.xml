@@ -161,7 +161,7 @@
     <ImageView
         android:layout_width="113dp"
         android:layout_height="118dp"
-        android:src="@drawable/profile_image"
+        android:src="@drawable/profile_image1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.027"
