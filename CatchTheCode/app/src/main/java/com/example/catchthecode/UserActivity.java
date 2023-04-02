@@ -270,6 +270,13 @@ public class UserActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        recreate();
+    }
+
     /**
      * update the database with the lastest information
      * @return Task<Void></Void>

@@ -146,7 +146,7 @@ public class TestAct extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(),"Success!", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(getApplicationContext(),"Success!", Toast.LENGTH_SHORT).show();
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
                                 Log.d(TAG, "Document exists!");
