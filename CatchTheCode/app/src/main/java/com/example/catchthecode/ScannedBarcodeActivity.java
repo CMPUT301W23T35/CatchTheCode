@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.nfc.Tag;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -286,7 +287,6 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
                                 // redundant
                             } else {
                                 isEmail = false;
-
                                 try {
                                     intentData = "Score: " + Integer.toString(getScore(barcodes.valueAt(0).displayValue));
                                 } catch (NoSuchAlgorithmException e) {
@@ -322,6 +322,9 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
 
                     });
 
+                }
+                else{
+                    txtBarcodeValue.setText("No barcode detected");
                 }
             }
         });
