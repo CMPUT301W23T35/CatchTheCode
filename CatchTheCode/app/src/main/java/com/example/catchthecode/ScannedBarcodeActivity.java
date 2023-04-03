@@ -325,6 +325,13 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
                 }
                 else{
                     txtBarcodeValue.setText("No barcode detected");
+                    btnScan.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(ScannedBarcodeActivity.this, ScanFailMsg.class);
+                            startActivity(intent);
+                        }
+                    });
                 }
             }
         });
@@ -340,7 +347,9 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        //txtBarcodeValue.setText("No barcode detected");
         initialiseDetectorsAndSources();
+
     }
     /**
 
