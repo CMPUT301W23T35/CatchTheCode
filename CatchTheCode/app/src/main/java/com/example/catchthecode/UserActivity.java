@@ -33,13 +33,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 /**
+
  This class represents the user activity and corresponding activities.
+
  It shows the users' friends by following the friend_page.xml layout.
  */
 public class UserActivity extends AppCompatActivity {
     /**
+
      Called when the activity is starting.
+
      It initializes the user's information and updates it when needed.
+
      @param savedInstanceState the data most recently supplied in onSaveInstanceState(Bundle)
      */
     @Override
@@ -52,6 +57,8 @@ public class UserActivity extends AppCompatActivity {
         TextView id = findViewById(R.id.playerID);
         TextView info = findViewById(R.id.info);
 
+        //Intent intent1 = new Intent(UserActivity.this, DBUpdate.class);
+        //startActivity(intent1);
         updateDatabase().addOnCompleteListener(task -> {
             if (task.isSuccessful()){
                 // do as normal
@@ -168,41 +175,53 @@ public class UserActivity extends AppCompatActivity {
 
                         // Override the positive button click listener after showing the dialog
                         alertDialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(v -> {
+                            String regex = "^[a-zA-Z0-9_]+$";
                             String number = contactInfo.getText().toString();
                             String userName = Username.getText().toString();
                             // Check if the entered username already exists in the database
-                            db.collection("users")
-                                    .whereEqualTo("username", userName)
-                                    .get()
-                                    .addOnCompleteListener(task -> {
-                                        if (task.isSuccessful()) {
-                                            // check whether the username already exists and check whether the current Android ID is the same as the one in the database
-                                            if (!task.getResult().isEmpty() && !task.getResult().getDocuments().get(0).getString("userid").equals(androidId)) {
-                                                // Username already exists, display a toast message and prompt for another name
-                                                Toast.makeText(UserActivity.this, "Duplicate username, please enter another name", Toast.LENGTH_SHORT).show();
+                            if (userName.matches(regex) && userName.length()<=15 && number.length()<=12 && number.length()>=8){
+                                db.collection("users")
+                                        .whereEqualTo("username", userName)
+                                        .get()
+                                        .addOnCompleteListener(task -> {
+                                            if (task.isSuccessful()) {
+                                                // check whether the username already exists and check whether the current Android ID is the same as the one in the database
+                                                if (!task.getResult().isEmpty() && !task.getResult().getDocuments().get(0).getString("userid").equals(androidId)) {
+                                                    // Username already exists, display a toast message and prompt for another name
+                                                    Toast.makeText(UserActivity.this, "Duplicate username, please enter another name", Toast.LENGTH_SHORT).show();
+                                                } else {
+                                                    // Username is unique, add user to the database and dismiss the dialog
+                                                    Map<String, Object> user = new HashMap<>();
+                                                    user.put("userid", androidId);
+                                                    user.put("contactInfo", number);
+                                                    user.put("username", userName);
+                                                    db.collection("users").document(androidId).set(user)
+                                                            .addOnSuccessListener(Void -> {
+                                                                //id.setText(userName);
+                                                                //info.setText("Phone number is"+number);`
+                                                                Log.d(TAG, "User added successfully");
+                                                                alertDialog.dismiss();
+                                                            })
+                                                            .addOnFailureListener(error -> {
+                                                                Log.d(TAG, "Failed to add user");
+                                                            });
+                                                    id.setText(userName);
+                                                    info.setText(number);
+                                                }
                                             } else {
-                                                // Username is unique, add user to the database and dismiss the dialog
-                                                Map<String, Object> user = new HashMap<>();
-                                                user.put("userid", androidId);
-                                                user.put("contactInfo", number);
-                                                user.put("username", userName);
-                                                db.collection("users").document(androidId).set(user)
-                                                        .addOnSuccessListener(Void -> {
-                                                            //id.setText(userName);
-                                                            //info.setText("Phone number is"+number);`
-                                                            Log.d(TAG, "User added successfully");
-                                                            alertDialog.dismiss();
-                                                        })
-                                                        .addOnFailureListener(error -> {
-                                                            Log.d(TAG, "Failed to add user");
-                                                        });
-                                                id.setText(userName);
-                                                info.setText(number);
+                                                Log.e(TAG, "Error checking username: ", task.getException());
                                             }
-                                        } else {
-                                            Log.e(TAG, "Error checking username: ", task.getException());
-                                        }
-                                    });
+                                        });
+                            }
+                            else if (userName.matches(regex) == false){
+                                Toast.makeText(getApplicationContext(),"Name must only include digit, underscore and letterss", Toast.LENGTH_LONG).show();
+                            }
+                            else if (userName.length() > 15){
+                                Toast.makeText(getApplicationContext(),"Name too long", Toast.LENGTH_LONG).show();
+                            }
+                            else{
+                                Toast.makeText(getApplicationContext(),"Phone number must be between 8 to 12 digits", Toast.LENGTH_LONG).show();
+                            }
                         });
                     }
                 });
@@ -227,7 +246,6 @@ public class UserActivity extends AppCompatActivity {
                                 Log.d(TAG, "Error ", task1.getException());
                             }
                         });
-
                 // To get the current ranking of me as a player, we decide to first sort the collections
                 // of players then check what is 'my' standing. We don't want to keep a copy of highest ranking
                 // as a field because it would require updating each time a single player scans a code
@@ -353,4 +371,6 @@ public class UserActivity extends AppCompatActivity {
         });
         return taskCompletionSource.getTask();
     }
+
+
 }
