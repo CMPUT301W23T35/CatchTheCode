@@ -147,7 +147,11 @@ public class UserActivity extends AppCompatActivity {
                             //Do nothing
                         });
 
-
+    /*@Override
+    public void onActivityReenter(int resultCode, Intent data) {
+        super.onActivityReenter(resultCode, data);
+        recreate();
+    }*/
                 // This updates user information
                 Button modifyButton = findViewById(R.id.modify_profile_button);
                 modifyButton.setOnClickListener(new View.OnClickListener() {
