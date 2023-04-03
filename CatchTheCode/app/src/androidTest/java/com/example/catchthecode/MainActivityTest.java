@@ -51,7 +51,7 @@ public class MainActivityTest {
     @Test
     public void checkMyProfile() {
         solo.assertCurrentActivity("Wrong activty", MainActivity.class);
-        solo.clickOnButton("my profile");
+        solo.clickOnButton("My Profile");
         solo.assertCurrentActivity("Wrong activty", UserActivity.class);
         solo.goBack();
     }
@@ -59,7 +59,7 @@ public class MainActivityTest {
     @Test
     public void checkCollectionButton() {
         solo.assertCurrentActivity("Wrong activty", MainActivity.class);
-        solo.clickOnButton("collection");
+        solo.clickOnButton("Collection");
         solo.assertCurrentActivity("Wrong activity", CollectionActivity.class);
         solo.goBack();
     }
@@ -83,7 +83,7 @@ public class MainActivityTest {
     @Test
     public void CheckMap(){
         solo.assertCurrentActivity("Wrong activty", MainActivity.class);
-        solo.clickOnButton("MAP");
+        solo.clickOnButton("Map");
         solo.assertCurrentActivity("Wrong activity",MapsActivity.class);
         solo.goBack();
     }
@@ -91,7 +91,7 @@ public class MainActivityTest {
     @Test
     public void checkScanButton(){
         solo.assertCurrentActivity("Wrong activty", MainActivity.class);
-        solo.clickOnButton("scan");
+        solo.clickOnButton("Add QR Code");
         solo.assertCurrentActivity("Wrong activity", ScannedBarcodeActivity.class);
         solo.goBack();
     }

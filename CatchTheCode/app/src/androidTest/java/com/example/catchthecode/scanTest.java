@@ -47,7 +47,7 @@ public class scanTest {
 
     @Test
     public void checkScan(){
-        solo.clickOnButton("scan_qr_code");
+        solo.clickOnButton("Add QR Code");
         solo.assertCurrentActivity("Wrong activity", ScannedBarcodeActivity.class);
         if (solo.searchText("No Barcode Detected")) {
             solo.clickOnButton("Scan");
@@ -57,7 +57,7 @@ public class scanTest {
         }else{
             solo.clickOnButton("Scan");
             solo.assertCurrentActivity("Wrong activity", TestAct.class);
-            solo.clickOnButton("Back");
+            solo.clickOnButton("Confirm");
             solo.assertCurrentActivity("Wrong activity", ScannedBarcodeActivity.class);
         }
 
