@@ -186,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
                             String regex = "^[a-zA-Z0-9_]+$";
                             String number = contactInfo.getText().toString();
                             String userName = Username.getText().toString();
-                            if (userName.matches(regex) && userName.length()<=15 && number.length()<=12 && number.length()>=8){
+                            if (userName.matches(regex) && userName.length()<=15 && number.length()<=12 && number.length()>=8 && number.matches("\\d+")){
                                 db.collection("users")
                                         .whereEqualTo("username", userName)
                                         .get()
@@ -223,6 +223,10 @@ public class MainActivity extends AppCompatActivity {
                             }
                             else if (userName.length() > 15){
                                 Toast.makeText(getApplicationContext(),"Name too long", Toast.LENGTH_LONG).show();
+                            }
+                            else if (!number.matches("\\d+")){
+                                Toast.makeText(getApplicationContext(),"Phone number must only contain digit", Toast.LENGTH_LONG).show();
+
                             }
                             else{
                                 Toast.makeText(getApplicationContext(),"Phone number must be between 8 to 12 digits", Toast.LENGTH_LONG).show();
