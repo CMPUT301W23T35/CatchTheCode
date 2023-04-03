@@ -1,17 +1,20 @@
 package com.example.catchthecode;
 
 import static android.content.ContentValues.TAG;
-
 import android.os.Bundle;
 import android.util.Log;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-
 import java.util.ArrayList;
+
+/**
+ The DBUpdate class is responsible for updating the scores of users in the Firestore database.
+ It retrieves the list of users and their associated QR codes from the "users" collection,
+ and then iterates over each user to calculate their highest, lowest, and total scores.
+ It then updates the user's scores in the "users" collection.
+ */
 
 public class DBUpdate extends AppCompatActivity {
 
@@ -91,7 +94,5 @@ public class DBUpdate extends AppCompatActivity {
             }
         });
         finish();
-
-
     }
 }

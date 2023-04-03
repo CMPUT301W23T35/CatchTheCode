@@ -74,7 +74,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
 
 
-
         View locationButton = ((View) this.findViewById(Integer.parseInt("1")).getParent()).findViewById(Integer.parseInt("2"));
 
         // get Intent extra
@@ -113,9 +112,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             if (task.isSuccessful()) {
                 for (QueryDocumentSnapshot document : task.getResult()) {
                     // throw exception if the document does not contain the required fields
-//                    if (!document.contains("latitude") || !document.contains("longitude") || !document.contains("score")) {
-//                        continue;
-//                    }
                     // if the object is null, continue
                     // Log.d("QR", document.getId() + " => " + document.getData());
                     if (document.get("latitude") == null || document.get("longitude") == null || document.get("score") == null) {

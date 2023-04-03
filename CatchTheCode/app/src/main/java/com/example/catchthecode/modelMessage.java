@@ -7,8 +7,6 @@ import java.util.UUID;
  * Represents a message object with a sending date, a receiving date, a sender, a receiver, and a unique ID.
  */
 
-
-
 public class modelMessage {
     private Date sendingDate;
     private Date receivingDate;

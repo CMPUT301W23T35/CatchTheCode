@@ -49,7 +49,10 @@ import java.util.List;
 import java.util.Map;
 
 
-
+/**
+ The QRCodeActivity class displays the details of a specific QR code, including its name, image,
+ comments, and the users who have scanned it.
+ */
 public class QRCodeActivity extends AppCompatActivity {
 
 
@@ -102,7 +105,6 @@ public class QRCodeActivity extends AppCompatActivity {
                         } catch (Exception e) {
                             throw new RuntimeException(e);
                         }
-//                        current.setImageview();
                         SHACode[0] = current.getSHA256();
                         spaceImage.setText(current.getQrVR());
                     }
@@ -130,19 +132,6 @@ public class QRCodeActivity extends AppCompatActivity {
 
                 }
 
-//        sref.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
-//            @Override
-//            public void onComplete(@NonNull Task<Uri> task) {
-//                if (task.isSuccessful()) {
-//                    Uri downUri = task.getResult();
-//                    String imageUrl = downUri.toString();
-//
-//                    Toast.makeText(QRCodeActivity.this, imageUrl , Toast.LENGTH_SHORT).show();
-//                }else{
-//                    Toast.makeText(QRCodeActivity.this, ""+task.getException(), Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
                 // to find the user who contains the code
                 ArrayList<String> userList = new ArrayList<String>();
                 /**
@@ -198,18 +187,14 @@ public class QRCodeActivity extends AppCompatActivity {
                     // other user's qr code
                     deleteButton.setClickable(false);
                     commentButton.setText("VIEW COMMENTS");
-//                    commentButton.setClickable(false);
                     deleteButton.setVisibility(View.INVISIBLE);
-//                    commentButton.setVisibility(View.INVISIBLE);
-//                    commentImage.setVisibility(View.INVISIBLE);
                 } else {
                     deleteButton.setClickable(true);
                     deleteButton.setVisibility(View.VISIBLE);
                     commentButton.setClickable(true);
                     commentButton.setVisibility(View.VISIBLE);
-//                    commentImage.setVisibility(View.VISIBLE);
                 }
-//                Button deleteButton = findViewById(R.id.buttonDelete);
+
                 // Delete button in the collection_comment.xml.
                 deleteButton.setOnClickListener(new View.OnClickListener() {
                     /**
@@ -243,9 +228,6 @@ public class QRCodeActivity extends AppCompatActivity {
                                         Log.e(TAG, "Error deleting field: " + e.getMessage());
                                     }
                                 });
-
-
-
                     }
                 });
 
@@ -270,19 +252,6 @@ public class QRCodeActivity extends AppCompatActivity {
                                         String latitude = (String) document.getData().get("latitude");
                                         Log.e(TAG, "longitude: " + longitude);
                                         Log.e(TAG, "latitude: " + latitude);
-                                        // if(longitude == "noLon" || latitude == "noLat") {
-                                        //     Toast.makeText(QRCodeActivity.this, "No location information", Toast.LENGTH_SHORT).show();
-                                        //     return;
-                                        // }
-                                        // else{
-                                        //     double lon = Double.parseDouble(longitude);
-                                        //     double lat = Double.parseDouble(latitude);
-                                        //     Intent intent = new Intent(QRCodeActivity.this, MapsActivity.class);
-                                        //     intent.putExtra("lon", lon);
-                                        //     intent.putExtra("lat", lat);
-                                        //     startActivity(intent);
-                                        // }
-
                                         try{
                                             double lon = Double.parseDouble(longitude);
                                             double lat = Double.parseDouble(latitude);
@@ -302,12 +271,8 @@ public class QRCodeActivity extends AppCompatActivity {
                                 }
                             }
                         });
-                        //Intent intent = new Intent(QRCodeActivity.this, MapActivity.class);
-                        //startActivity(intent);
                     }
                 });
-
-
             }
         });
     }
