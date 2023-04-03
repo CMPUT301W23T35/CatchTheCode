@@ -1,5 +1,10 @@
 package com.example.catchthecode;
 
+import static org.junit.Assert.assertFalse;
+
+import android.widget.EditText;
+import android.widget.ListView;
+
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.rule.ActivityTestRule;
 
@@ -36,8 +41,8 @@ public class SearchTest {
         solo.assertCurrentActivity("Not in mainactivity", MainActivity.class);
         solo.clickOnButton("Search");
         solo.assertCurrentActivity("Wrong activity", SearchActivity.class);
-        //solo.clickOnButton("Geo-Search");
-        //solo.assertCurrentActivity("Not in proper activity", SearchGeoActivity.class);
+        solo.clickOnButton("Geo-Search");
+        solo.assertCurrentActivity("Not in proper activity", SearchGeoActivity.class);
 
 
     }
@@ -47,8 +52,13 @@ public class SearchTest {
         solo.assertCurrentActivity("Not in mainactivity", MainActivity.class);
         solo.clickOnButton("Search");
         solo.assertCurrentActivity("Wrong activity", SearchActivity.class);
-        //solo.clickOnButton("Name-Search");
-        //solo.assertCurrentActivity("Not in proper activity", SearchFriendsActivity.class);
+        solo.clickOnButton("Name-Search");
+        solo.assertCurrentActivity("Not in proper activity", SearchFriendsActivity.class);
+        solo.enterText((EditText) solo.getView(R.id.searchEditText), "Definitely can't find this name");
+        solo.clickOnButton("Search");
+        ListView view = (ListView) solo.getView(R.id.resultsList);
+        assert view.getCount() == 0;
+
     }
 
     @After

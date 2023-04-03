@@ -39,7 +39,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 /**
-
  Represents a scoreboard activity and its functionalities
  */
 public class ScoreBoardActivity extends AppCompatActivity {
@@ -54,18 +53,11 @@ public class ScoreBoardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.score_board);
-
-
-        //Intent intent1 = new Intent(ScoreBoardActivity.this, DBUpdate.class);
-        //startActivity(intent1);
         Intent intent = getIntent();
-
-
 
 
         updateDatabase().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
-                //getSupportActionBar().setTitle("Ranking Board"); // sets the title of the ranking type.
                 // Set the ActionBar
                 ActionBar actionBar = getSupportActionBar();
                 if (actionBar != null) {
@@ -96,6 +88,9 @@ public class ScoreBoardActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                     if (task.isSuccessful()) {
+                                        for (int j =0; j<3;j++){
+                                            playerViews[j].setText("");
+                                        }
                                         int i = 0;
                                         for (QueryDocumentSnapshot document : task.getResult()) {
                                             // skip all the user with score 0
@@ -105,16 +100,17 @@ public class ScoreBoardActivity extends AppCompatActivity {
                                             if (i < 3) {
                                                 String playerId = document.getString("username");
                                                 long playerScore = document.getLong("highest");
-                                                //users.put(counter,playerId+":"+String.valueOf(playerScore));
                                                 playerViews[i].setText("Player " + playerId + " has a code of " + String.valueOf(playerScore) + " points");
                                                 i++;
                                             } else {
                                                 Log.d(TAG, "Reached", task.getException());
                                                 String playerId = document.getString("username");
                                                 long playerScore = document.getLong("highest");
+
                                                 listUsers2.add("Player " + playerId + " has a code of " + String.valueOf(playerScore) + " points");
-                                                i++;
-                                            }
+
+                                                    i++;
+                                                }
                                         }
                                         final ListView playerList = findViewById(R.id.userList);
                                         //Log.d(TAG, listUsers.get(1));
@@ -133,7 +129,6 @@ public class ScoreBoardActivity extends AppCompatActivity {
                             Query query = userRef.orderBy("score", Query.Direction.DESCENDING);
                             query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                                 /**
-
                                  This method is called when a Firestore query is complete, and it updates the UI based on the results.
                                  If the query is successful, it iterates through the query results and populates the top 3 player scores into
                                  the text views, and the rest of the players scores into the list view. It then sets the adapter for the list view.
@@ -145,6 +140,9 @@ public class ScoreBoardActivity extends AppCompatActivity {
                                     List<String> listUsers = new ArrayList<String>();
                                     if (task.isSuccessful()) {
                                         int i = 0;
+                                        for (int j =0; j<3;j++){
+                                            playerViews[j].setText("");
+                                        }
                                         for (QueryDocumentSnapshot document : task.getResult()) {
                                             // skip all the user with score 0
                                             if (document.getLong("score") == 0) {
@@ -191,14 +189,19 @@ public class ScoreBoardActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                     List<String> listUsers = new ArrayList<String>();
                                     if (task.isSuccessful()) {
+                                        // Empty view for better use
+                                        for (int j =0; j<3;j++){
+                                            playerViews[j].setText("");
+                                        }
                                         int i = 0;
                                         for (QueryDocumentSnapshot document : task.getResult()) {
                                             ArrayList<String> qrLists = (ArrayList<String>) document.get("qrLists");
                                             if (qrLists != null) {
                                                 int size = qrLists.size();
                                                 String playerId = document.getString("username");
-                                                listUsers.add("Player " + playerId + " has " + String.valueOf(size) + " QR codes");
-                                            }
+                                                if (size != 0) {
+                                                    listUsers.add("Player " + playerId + " has " + String.valueOf(size) + " QR codes");
+                                                } }
                                         }
 
                                         // Sort the list by QR code count using a custom comparator
@@ -215,19 +218,20 @@ public class ScoreBoardActivity extends AppCompatActivity {
                                         for (int j = 0; j < 3 && j < listUsers.size(); j++) {
                                             String userInfo = listUsers.get(j);
                                             playerViews[j].setText(userInfo);
-                                        }
 
-                                        // Populate the rest of the players scores into the list view using an adapter
-                                        final ListView playerList = findViewById(R.id.userList);
-                                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(ScoreBoardActivity.this, simple_list_item_1, listUsers.subList(3,listUsers.size()));
-                                        playerList.setAdapter(adapter);
+
+                                        }
+                                        if (listUsers.size()>3) {
+                                            // Populate the rest of the players scores into the list view using an adapter
+                                            final ListView playerList = findViewById(R.id.userList);
+                                            ArrayAdapter<String> adapter = new ArrayAdapter<String>(ScoreBoardActivity.this, simple_list_item_1, listUsers.subList(3, listUsers.size()));
+                                            playerList.setAdapter(adapter);
+                                        }
                                     } else {
                                         Log.d(TAG, "Error getting players: ", task.getException());
                                     }
                                 }
                             });
-
-
                         }
                     }
 
@@ -240,7 +244,6 @@ public class ScoreBoardActivity extends AppCompatActivity {
                 Query query = userRef.orderBy("score", Query.Direction.DESCENDING);
                 query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     /**
-
                      This method is called when a Firestore query is complete, and it updates the UI based on the results.
                      If the query is successful, it iterates through the query results and populates the top 3 player scores into
                      the text views, and the rest of the players scores into the list view. It then sets the adapter for the list view.
@@ -282,17 +285,7 @@ public class ScoreBoardActivity extends AppCompatActivity {
                 // handle error
             }
         });
-
-
-
-
-
-
-
-
-
     }
-
 
 
     private Task<Void> updateDatabase() {
@@ -371,7 +364,6 @@ public class ScoreBoardActivity extends AppCompatActivity {
                 Log.e(TAG, "Error getting user documents: ", task.getException());
             }
         });
-
         return taskCompletionSource.getTask();
     }
 }

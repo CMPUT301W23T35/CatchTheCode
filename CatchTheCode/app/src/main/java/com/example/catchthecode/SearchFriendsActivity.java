@@ -44,7 +44,6 @@ import java.util.Map;
  This class runs the search friends list page. (search_friends.xml)
  */
 public class SearchFriendsActivity extends AppCompatActivity {
-
     /**
      * Called when the activity is starting.
      * @param savedInstanceState If the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently supplied in {@link #onSaveInstanceState}.
@@ -66,45 +65,6 @@ public class SearchFriendsActivity extends AppCompatActivity {
                 String name = text.getText().toString();
                 // Search for friend in DB;
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
-                // db.collection("users")
-                //         .whereEqualTo("username", name)
-                //         .get()
-                //         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                //             @Override
-                //             public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                //                 if (task.isSuccessful()) {
-                //                     // Get the list of users that match the search criteria
-                //                     ArrayList<String> userList = new ArrayList<>();
-                //                     for (QueryDocumentSnapshot document : task.getResult()) {
-                //                         String userId = document.getString("userid");
-                //                         userList.add("User id: "+userId);
-                //                     }
-                //                     // Now update the page so that it gets displayed a list of users
-                //                     ArrayAdapter<String> adapter = new ArrayAdapter<>(SearchFriendsActivity.this, android.R.layout.simple_list_item_1, userList);
-                //                     listOfUsers.setAdapter(adapter);
-                //                     if (userList.isEmpty()){
-                //                         Toast.makeText(SearchFriendsActivity.this, "User " + name + " not found", Toast.LENGTH_SHORT).show();
-                //                     }
-
-                //                     // Now, make the listview be responsive to clicks
-                //                     listOfUsers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                //                         @Override
-                //                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //                             // Get the clicked user ID from the adapter
-                //                             String clickedUserId = (String) parent.getItemAtPosition(position);
-                //                             // Start the new activity to display the clicked user's page
-                //                             Intent intent = new Intent(SearchFriendsActivity.this, FriendPageActivity.class);
-                //                             // Assuming the user ID is after "User id: " in the string
-                //                             intent.putExtra("userid", clickedUserId.substring(9));
-                //                             startActivity(intent);
-                //                         }
-                //                     });
-
-                //                 } else {
-                //                     Log.d(TAG, "Error getting documents: ", task.getException());
-                //                 }
-                //             }
-                //         });
 
                 // get all username and userid from the database
                 db.collection("users")
@@ -118,8 +78,10 @@ public class SearchFriendsActivity extends AppCompatActivity {
                                     for (QueryDocumentSnapshot document : task.getResult()) {
                                         String userId = document.getString("userid");
                                         String username = document.getString("username");
+                                        // Support both upper and lower case
+                                        String username_temp = username.toLowerCase();
                                         // if username contains name, add to list
-                                        if (username.contains(name)) {
+                                        if (username_temp.contains(name)) {
                                             userList.add("UserName: " + username);
                                         }
                                     }
@@ -165,7 +127,6 @@ public class SearchFriendsActivity extends AppCompatActivity {
                                 }
                             }
                         });
-
             }
         });
     }

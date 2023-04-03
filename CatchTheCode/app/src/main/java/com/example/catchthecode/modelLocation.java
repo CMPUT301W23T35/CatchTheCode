@@ -1,10 +1,6 @@
 package com.example.catchthecode;
 import android.location.Location;
 
-
-/* This class is used to store the location of the QR code.
- * 
- */
 /**
  This class is used to store the location of the QR code along with the QR code itself.
  */

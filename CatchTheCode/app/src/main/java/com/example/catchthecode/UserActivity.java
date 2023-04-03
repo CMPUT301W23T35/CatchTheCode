@@ -33,18 +33,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 /**
-
  This class represents the user activity and corresponding activities.
-
  It shows the users' friends by following the friend_page.xml layout.
  */
 public class UserActivity extends AppCompatActivity {
     /**
-
      Called when the activity is starting.
-
      It initializes the user's information and updates it when needed.
-
      @param savedInstanceState the data most recently supplied in onSaveInstanceState(Bundle)
      */
     @Override
@@ -57,8 +52,6 @@ public class UserActivity extends AppCompatActivity {
         TextView id = findViewById(R.id.playerID);
         TextView info = findViewById(R.id.info);
 
-        //Intent intent1 = new Intent(UserActivity.this, DBUpdate.class);
-        //startActivity(intent1);
         updateDatabase().addOnCompleteListener(task -> {
             if (task.isSuccessful()){
                 // do as normal
@@ -234,6 +227,7 @@ public class UserActivity extends AppCompatActivity {
                                 Log.d(TAG, "Error ", task1.getException());
                             }
                         });
+
                 // To get the current ranking of me as a player, we decide to first sort the collections
                 // of players then check what is 'my' standing. We don't want to keep a copy of highest ranking
                 // as a field because it would require updating each time a single player scans a code
@@ -270,6 +264,13 @@ public class UserActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        recreate();
+    }
+
     /**
      * update the database with the lastest information
      * @return Task<Void></Void>
@@ -352,6 +353,4 @@ public class UserActivity extends AppCompatActivity {
         });
         return taskCompletionSource.getTask();
     }
-
-
 }

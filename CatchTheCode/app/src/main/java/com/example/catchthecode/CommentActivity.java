@@ -2,11 +2,9 @@
 package com.example.catchthecode;
 
 import static android.content.ContentValues.TAG;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,7 +16,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -32,19 +29,23 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.Source;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ This activity displays the comments associated with a particular QR code.
+ It allows the user to add a new comment and view existing comments.
+ The comments are stored in the Firestore database.
+ */
 public class CommentActivity extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference qrRef = db.collection("QRs");
 
     /**
-     * Called when the activity is starting.
-     * @param savedInstanceState If the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently supplied in {@link #onSaveInstanceState}.
-     * @see AppCompatActivity#onCreate(Bundle)
+     Called when the activity is starting.
+     @param savedInstanceState If the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently supplied in {@link #onSaveInstanceState}.
+     @see AppCompatActivity#onCreate(Bundle)
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +60,6 @@ public class CommentActivity extends AppCompatActivity {
         EditText editTextComment = findViewById(R.id.enter_comment_box);
 
 
-
         qrRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable
@@ -70,20 +70,6 @@ public class CommentActivity extends AppCompatActivity {
                     if (((String) doc.getData().get("readable_name")).equals(name)) {
                         if (doc.getData().get("comments") == null) {
                             commentList = new ArrayList<String>();
-//                            qrRef.document(doc.getId()).update(
-//                                            "qrLists", FieldValue.arrayUnion(name))
-//                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-//                                        @Override
-//                                        public void onSuccess(Void unused) {
-//                                            Log.e(TAG, "qrList field created successfully");;
-//                                        }
-//                                    })
-//                                    .addOnFailureListener(new OnFailureListener() {
-//                                        @Override
-//                                        public void onFailure(@NonNull Exception e) {
-//                                            Log.e(TAG, "comments field failed to create");
-//                                        }
-//                                    });
                         } else {
 
                             commentList = (List<String>) doc.getData().get("comments");
@@ -95,16 +81,6 @@ public class CommentActivity extends AppCompatActivity {
             }
         });
 
-
-//        qrRef.document(name).get(Source.SERVER).addOnCompleteListener(task -> {
-//            if (task.isSuccessful()) {
-//                List<String> commentList = (List<String>) task.getResult().get("comments");
-//                ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, commentList);
-//                listView.setAdapter(adapter);
-//            } else {
-//                Log.d("CollectionActivity", "Error getting documents: ", task.getException());
-//            }
-//        });
 
         if (allowComment.equals("0")) {
             addCommentButton.setVisibility(View.INVISIBLE);
@@ -125,48 +101,17 @@ public class CommentActivity extends AppCompatActivity {
                 InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
                 inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
                 addToUserCommentCollection(qrRef, id, currentComment);
-//                qrRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
-//                    @Override
-//                    public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable
-//                    FirebaseFirestoreException error) {
-////                        List<String> commentList = new ArrayList<String>();
-//                        for(QueryDocumentSnapshot doc: queryDocumentSnapshots)
-//                        {
-////                            if (((String) doc.getData().get("readable_name")).equals(name)) {
-//                                if (doc.getData().get("comments") == null) {
-//                                    qrRef.document(doc.getId()).update(
-//                                                    "comments", FieldValue.arrayUnion(currentComment))
-//                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-//                                                @Override
-//                                                public void onSuccess(Void unused) {
-//                                                    Log.e(TAG, "qrList field created successfully");;
-//                                                }
-//                                            })
-//                                            .addOnFailureListener(new OnFailureListener() {
-//                                                @Override
-//                                                public void onFailure(@NonNull Exception e) {
-//                                                    Log.e(TAG, "comments field failed to create");
-//                                                }
-//                                            });
-////                                } else {
-//
-////                                }
-//                            }
-//                        }
-//                    }
-//                });
-
             }
         });
-
     }
 
     /**
-     * add the comment to the current QR code
-     * @param qrRef collection reference to the QR code reference in firebase
-     * @param id the id(SHA256) of the current QR code selcted
-     * @param comment the string of comment
+     Add the comment to the comments collection for a given user ID.
+     @param qrRef A reference to the QRs collection in Firestore.
+     @param id The ID of the user to add the comment to.
+     @param comment The comment to add to the user's comments collection.
      */
+
     private void addToUserCommentCollection(CollectionReference qrRef, String id, String comment) {
         // check if name is already in the current user's array
         qrRef.document(id).get(Source.SERVER).addOnCompleteListener(task -> {
@@ -189,14 +134,6 @@ public class CommentActivity extends AppCompatActivity {
                             });
                 } else {
                     qrRef.document(id).update("comments", FieldValue.arrayUnion(comment))
-//                    List<String> qrList = (List<String>) task.getResult().get("qrLists");
-//                    boolean duplicate = false;
-//                    for (int i = 0; i < qrList.size(); i++) {
-//                        if (name == qrList.get(i)) duplicate = true;
-//                    }
-//                    if (!duplicate) {
-//                        userRef.document(androidId).update(
-//                                        "qrLists", FieldValue.arrayUnion(name))
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void unused) {
@@ -211,9 +148,6 @@ public class CommentActivity extends AppCompatActivity {
                                 });
                     }
                 }
-//            } else {
-//                Log.d("CollectionActivity", "Error getting documents: ", task.getException());
-//            }
         });
     }
 }

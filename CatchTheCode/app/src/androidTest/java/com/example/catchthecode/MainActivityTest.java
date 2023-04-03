@@ -43,27 +43,40 @@ public class MainActivityTest {
         Activity activity = rule.getActivity();
     }
 
+    /**
+     * Check whether activity correctly switched
+     */
     @Test
     public void checkActivity() {
         solo.assertCurrentActivity("Wrong activty", MainActivity.class);
     }
 
+
+    /**
+     * Check whether activity correctly switched
+     */
     @Test
     public void checkMyProfile() {
         solo.assertCurrentActivity("Wrong activty", MainActivity.class);
-        solo.clickOnButton("my profile");
+        solo.clickOnButton("My Profile");
         solo.assertCurrentActivity("Wrong activty", UserActivity.class);
         solo.goBack();
     }
 
+    /**
+     * Check whether activity correctly switched
+     */
     @Test
     public void checkCollectionButton() {
         solo.assertCurrentActivity("Wrong activty", MainActivity.class);
-        solo.clickOnButton("collection");
+        solo.clickOnButton("Collection");
         solo.assertCurrentActivity("Wrong activity", CollectionActivity.class);
         solo.goBack();
     }
 
+    /**
+     * Check whether activity correctly switched
+     */
     @Test
     public void checkSearch() {
         solo.assertCurrentActivity("Wrong activty", MainActivity.class);
@@ -72,6 +85,9 @@ public class MainActivityTest {
         solo.goBack();
     }
 
+    /**
+     * Check whether activity correctly switched
+     */
     @Test
     public void checkBoard() {
         solo.assertCurrentActivity("Wrong activty", MainActivity.class);
@@ -80,21 +96,32 @@ public class MainActivityTest {
         solo.goBack();
     }
 
+    /**
+     * Check whether activity correctly switched
+     */
     @Test
     public void CheckMap(){
         solo.assertCurrentActivity("Wrong activty", MainActivity.class);
-        solo.clickOnButton("MAP");
+        solo.clickOnButton("Map");
         solo.assertCurrentActivity("Wrong activity",MapsActivity.class);
         solo.goBack();
     }
 
+
+    /**
+     * Check whether activity correctly switched
+     */
     @Test
     public void checkScanButton(){
         solo.assertCurrentActivity("Wrong activty", MainActivity.class);
-        solo.clickOnButton("scan");
+        solo.clickOnButton("Add QR Code");
         solo.assertCurrentActivity("Wrong activity", ScannedBarcodeActivity.class);
         solo.goBack();
     }
+
+    /**
+     * Check whether activity correctly switched
+     */
     @After
     public void tearDown() throws Exception{
         solo.finishOpenedActivities();
