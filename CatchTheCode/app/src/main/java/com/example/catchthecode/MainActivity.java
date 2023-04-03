@@ -5,9 +5,11 @@
 package com.example.catchthecode;
 
 import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,13 +18,14 @@ import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
- import com.example.catchthecode.CollectionActivity;
- import com.example.catchthecode.MapsActivity;
- import com.example.catchthecode.ScannedBarcodeActivity;
- import com.example.catchthecode.ScoreBoardActivity;
- import com.example.catchthecode.SearchActivity;
- import com.example.catchthecode.UserActivity;
- import com.google.android.gms.tasks.OnFailureListener;
+
+import com.example.catchthecode.CollectionActivity;
+import com.example.catchthecode.MapsActivity;
+import com.example.catchthecode.ScannedBarcodeActivity;
+import com.example.catchthecode.ScoreBoardActivity;
+import com.example.catchthecode.SearchActivity;
+import com.example.catchthecode.UserActivity;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -31,6 +34,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import android.location.Location;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -171,46 +175,58 @@ public class MainActivity extends AppCompatActivity {
                         EditText contactInfo = view.findViewById(R.id.contactInfoText);
                         EditText Username = view.findViewById(R.id.enterUserName);
                         builder.setPositiveButton("Save", null); // Set a null click listener to keep the dialog open
-                        builder.setNegativeButton("Cancel", (dialog, which) -> {
-                            // Do nothing, simply ignore it.
-                        });
+                        //builder.setNegativeButton("Cancel", (dialog, which) -> {
+                        // Do nothing, simply ignore it.
+                        //});
                         AlertDialog alertDialog = builder.create();
                         alertDialog.show();
 
                         // Override the positive button click listener after showing the dialog
                         alertDialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(v -> {
+                            String regex = "^[a-zA-Z0-9_]+$";
                             String number = contactInfo.getText().toString();
                             String userName = Username.getText().toString();
-                            // Check if the entered username already exists in the database
-                            db.collection("users")
-                                    .whereEqualTo("username", userName)
-                                    .get()
-                                    .addOnCompleteListener(task -> {
-                                        if (task.isSuccessful()) {
-                                            if (!task.getResult().isEmpty()) {
-                                                // Username already exists, display a toast message and prompt for another name
-                                                Toast.makeText(this, "Duplicate username, please enter another name", Toast.LENGTH_SHORT).show();
+                            if (userName.matches(regex) && userName.length()<=15 && number.length()<=12 && number.length()>=8){
+                                db.collection("users")
+                                        .whereEqualTo("username", userName)
+                                        .get()
+                                        .addOnCompleteListener(task -> {
+                                            if (task.isSuccessful()) {
+                                                if (!task.getResult().isEmpty()) {
+                                                    // Username already exists, display a toast message and prompt for another name
+                                                    Toast.makeText(this, "Duplicate username, please enter another name", Toast.LENGTH_SHORT).show();
+                                                } else {
+                                                    // Username is unique, add user to the database and dismiss the dialog
+                                                    Map<String, Object> user = new HashMap<>();
+                                                    user.put("userid", androidId);
+                                                    user.put("contactInfo", number);
+                                                    user.put("username", userName);
+                                                    db.collection("users").document(androidId).set(user)
+                                                            .addOnSuccessListener(Void -> {
+                                                                //id.setText(userName);
+                                                                //info.setText("Phone number is"+number);`
+                                                                Log.d(TAG, "User added successfully");
+                                                                alertDialog.dismiss();
+                                                            })
+                                                            .addOnFailureListener(error -> {
+                                                                Log.d(TAG, "Failed to add user");
+                                                            });
+                                                }
                                             } else {
-                                                // Username is unique, add user to the database and dismiss the dialog
-                                                Map<String, Object> user = new HashMap<>();
-                                                user.put("userid", androidId);
-                                                user.put("contactInfo", number);
-                                                user.put("username", userName);
-                                                db.collection("users").document(androidId).set(user)
-                                                        .addOnSuccessListener(Void -> {
-                                                            //id.setText(userName);
-                                                            //info.setText("Phone number is"+number);`
-                                                            Log.d(TAG, "User added successfully");
-                                                            alertDialog.dismiss();
-                                                        })
-                                                        .addOnFailureListener(error -> {
-                                                            Log.d(TAG, "Failed to add user");
-                                                        });
+                                                Log.e(TAG, "Error checking username: ", task.getException());
                                             }
-                                        } else {
-                                            Log.e(TAG, "Error checking username: ", task.getException());
-                                        }
-                                    });
+                                        });
+                            }
+                            // Check if the entered username already exists in the database
+                            else if (userName.matches(regex) == false){
+                                Toast.makeText(getApplicationContext(),"Name must only include digit, underscore and letterss", Toast.LENGTH_LONG).show();
+                            }
+                            else if (userName.length() > 15){
+                                Toast.makeText(getApplicationContext(),"Name too long", Toast.LENGTH_LONG).show();
+                            }
+                            else{
+                                Toast.makeText(getApplicationContext(),"Phone number must be between 8 to 12 digits", Toast.LENGTH_LONG).show();
+                            }
                         });
 
                     }
@@ -232,7 +248,7 @@ public class MainActivity extends AppCompatActivity {
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if (documentSnapshot.exists()) {
                     // This way, you get the name of a user called james
-                    // "First" is the key.
+                    // "First" is the key. Look at the
                 }
             }
         });

@@ -44,6 +44,7 @@ import java.util.Map;
  This class runs the search friends list page. (search_friends.xml)
  */
 public class SearchFriendsActivity extends AppCompatActivity {
+
     /**
      * Called when the activity is starting.
      * @param savedInstanceState If the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently supplied in {@link #onSaveInstanceState}.
@@ -62,7 +63,7 @@ public class SearchFriendsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Handle button click
-                String name = text.getText().toString();
+                final String name = text.getText().toString().toLowerCase();
                 // Search for friend in DB;
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -127,6 +128,7 @@ public class SearchFriendsActivity extends AppCompatActivity {
                                 }
                             }
                         });
+
             }
         });
     }
