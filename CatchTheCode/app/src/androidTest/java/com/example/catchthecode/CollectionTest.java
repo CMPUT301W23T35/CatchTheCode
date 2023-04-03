@@ -30,8 +30,14 @@ import org.junit.Test;
 
 import java.util.Collection;
 
+/**
+ The CollectionTest class contains unit tests for the CollectionActivity.
+ It uses Robotium Solo for UI testing.
+ */
+
 public class CollectionTest {
     private Solo solo;
+
     @Rule
     public ActivityTestRule<MainActivity> rule =
             new ActivityTestRule<>(MainActivity.class, true, true);
@@ -47,7 +53,8 @@ public class CollectionTest {
     }
 
     /**
-     * Check whether activity correctly switched
+     * Checks whether the CollectionActivity is launched correctly after clicking on the
+     * "collection" button in the MainActivity.
      */
     @Test
     public void checkSwitch() throws InterruptedException {
@@ -57,6 +64,10 @@ public class CollectionTest {
         solo.assertCurrentActivity("Failed to switch to ShowActivity", CollectionActivity.class);
     }
 
+    /**
+     * Checks whether the CollectionActivity is launched correctly after clicking on the
+     * "collection" button in the UserActivity.
+     */
     @Test
     public void checkCollection(){
         solo.clickOnButton("My Profile");
@@ -64,6 +75,7 @@ public class CollectionTest {
         solo.clickOnButton("Collection");
         solo.assertCurrentActivity("Wrong activity", CollectionActivity.class);
     }
+
     @After
     public void tearDown() throws Exception{
         solo.finishOpenedActivities();

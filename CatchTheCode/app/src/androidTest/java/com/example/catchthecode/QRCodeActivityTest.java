@@ -20,6 +20,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static java.lang.Thread.sleep;
 
+/**
+ This class is used to test the functionality of QRCodeActivity.
+ */
 public class QRCodeActivityTest {
     private Solo solo;
 
@@ -44,7 +47,7 @@ public class QRCodeActivityTest {
         Activity activity = rule.getActivity();
     }
     /**
-     * Check whether activity correctly switched
+     * Check whether activity correctly switched.
      */
     @Test
     public void checkSwitch() throws InterruptedException {
@@ -82,6 +85,9 @@ public class QRCodeActivityTest {
         }
     }
 
+    /**
+     * This test method checks if the CommentActivity can be opened.
+     */
     @Test
     public void checkCommentActivity() throws InterruptedException {
         //Asserts that the current activity is the MainActivity. Otherwise, show “Wrong Activity”
@@ -97,6 +103,10 @@ public class QRCodeActivityTest {
         }
     }
 
+    /**
+     * This test method checks if the AddComment function works.
+     * @throws InterruptedException
+     */
     @Test
     public void checkAddComment() throws InterruptedException {
         solo.assertCurrentActivity("Wrong Activity", MainActivity.class);

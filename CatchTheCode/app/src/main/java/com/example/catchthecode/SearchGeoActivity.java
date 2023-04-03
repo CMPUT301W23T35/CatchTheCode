@@ -12,11 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 /**
  * This class runs the search geolocation list page. (search_geo.xml)
  */
-
-
 public class SearchGeoActivity extends AppCompatActivity {
     /**
-
      Called when the activity is starting. It initializes the activity and sets up the UI.
      @param savedInstanceState If the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently supplied.
      @see AppCompatActivity#onCreate(Bundle)
@@ -25,9 +22,6 @@ public class SearchGeoActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_geo);
-        //getSupportActionBar().setTitle("Geolocation Search"); // setup the Title on the top left.
-        //android:id="@+id/searchLatitude" represents the latitude search bar.
-        //android:id="@+id/searchLongitude" represents the longitude search bar.
 
         // add a button listener to the search button "@+id/searchButton"
         // pass the latitude and longitude to the MapsActivity
@@ -43,7 +37,7 @@ public class SearchGeoActivity extends AppCompatActivity {
                 EditText searchLongitude = findViewById(R.id.searchLongitude);
                 String stringLatitude = searchLatitude.getText().toString();
                 String stringLongitude = searchLongitude.getText().toString();
-                //Log.d("QR", "lat: " + stringLatitude + " lon: " + stringLongitude);
+
                 // if those two strings are not in the correct format, throw exception
                 double latitude = 0;
                 double longitude = 0;
@@ -63,11 +57,5 @@ public class SearchGeoActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-        // pass them to the MapsActivity
-        // MapsActivity mapsActivity = new MapsActivity();
-        //mapsActivity.searchGeo(latitude, longitude);
-
     }
 }
