@@ -4,10 +4,12 @@ import static android.content.ContentValues.TAG;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import android.nfc.Tag;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.rule.ActivityTestRule;
@@ -41,7 +43,7 @@ public class ScoreBoardTest {
         solo.assertCurrentActivity("Wrong activity", ScoreBoardActivity.class);
     }
     @Test
-    public void checkOrder() {
+    public void checkTotal() {
         solo.clickOnButton("Board");
         solo.assertCurrentActivity("Wrong activity", ScoreBoardActivity.class);
         View b1 =  solo.getView(R.id.my_spinner);
@@ -49,10 +51,69 @@ public class ScoreBoardTest {
         TextView text1 = (TextView) solo.getView(R.id.text1);
         TextView text2 = (TextView) solo.getView(R.id.text2);
         TextView text3 = (TextView) solo.getView(R.id.text3);
-        int FP = Integer.parseInt(text1.getText().toString().split(" ")[3]);
-        int SP = Integer.parseInt(text2.getText().toString().split(" ")[3]);
+        int FP = 0;
+        int SP = 0;
+        int TP = 0;
+        if (text1.getText().toString().split(" ").length >= 3) {
+            FP = Integer.parseInt(text1.getText().toString().split(" ")[3]);
+        }
+        if (text2.getText().toString().split(" ").length >= 3) {
+            SP = Integer.parseInt(text2.getText().toString().split(" ")[3]);
+        }
         assertTrue(FP>=SP);
-        int TP = Integer.parseInt(text3.getText().toString().split(" ")[3]);
+        if (text3.getText().toString().split(" ").length >= 3) {
+            TP = Integer.parseInt(text3.getText().toString().split(" ")[3]);
+        }
+        assertTrue(SP>=TP);
+    }
+    @Test
+    public void checkSingle() {
+        solo.clickOnButton("Board");
+        solo.assertCurrentActivity("Wrong activity", ScoreBoardActivity.class);
+        View b1 =  solo.getView(R.id.my_spinner);
+        solo.clickOnView(b1);
+        solo.clickOnText("by unique");
+        TextView text1 = (TextView) solo.getView(R.id.text1);
+        TextView text2 = (TextView) solo.getView(R.id.text2);
+        TextView text3 = (TextView) solo.getView(R.id.text3);
+        int FP = 0;
+        int SP = 0;
+        int TP = 0;
+        if (text1.getText().toString().split(" ").length >= 3) {
+            FP = Integer.parseInt(text1.getText().toString().split(" ")[3]);
+        }
+        if (text2.getText().toString().split(" ").length >= 3) {
+            SP = Integer.parseInt(text2.getText().toString().split(" ")[3]);
+        }
+        assertTrue(FP>=SP);
+        if (text3.getText().toString().split(" ").length >= 3) {
+            TP = Integer.parseInt(text3.getText().toString().split(" ")[3]);
+        }
+        assertTrue(SP>=TP);
+    }
+    @Test
+    public void checkCount() {
+        solo.clickOnButton("Board");
+        solo.assertCurrentActivity("Wrong activity", ScoreBoardActivity.class);
+        View b1 =  solo.getView(R.id.my_spinner);
+        solo.clickOnView(b1);
+        solo.clickOnText("by count");
+        TextView text1 = (TextView) solo.getView(R.id.text1);
+        TextView text2 = (TextView) solo.getView(R.id.text2);
+        TextView text3 = (TextView) solo.getView(R.id.text3);
+        int FP = 0;
+        int SP = 0;
+        int TP = 0;
+        if (text1.getText().toString().split(" ").length >= 3) {
+            FP = Integer.parseInt(text1.getText().toString().split(" ")[3]);
+        }
+        if (text2.getText().toString().split(" ").length >= 3) {
+            SP = Integer.parseInt(text2.getText().toString().split(" ")[3]);
+        }
+        assertTrue(FP>=SP);
+        if (text3.getText().toString().split(" ").length >= 3) {
+            TP = Integer.parseInt(text3.getText().toString().split(" ")[3]);
+        }
         assertTrue(SP>=TP);
     }
     @After
