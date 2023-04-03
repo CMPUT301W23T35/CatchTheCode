@@ -26,7 +26,6 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.auth.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -56,6 +55,7 @@ public class UserActivity extends AppCompatActivity {
         String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
         TextView id = findViewById(R.id.playerID);
         TextView info = findViewById(R.id.info);
+        TextView displayScore = findViewById(R.id.totalPoints);
 
         //Intent intent1 = new Intent(UserActivity.this, DBUpdate.class);
         //startActivity(intent1);
@@ -73,6 +73,8 @@ public class UserActivity extends AppCompatActivity {
                                 DocumentSnapshot documentSnapshot = querySnapshot.getDocuments().get(0);
                                 String name = documentSnapshot.getString("username");
                                 String contactInfo = documentSnapshot.getString("contactInfo");
+                                Long scores = documentSnapshot.getLong("score");
+                                displayScore.setText(String.valueOf(Math.toIntExact(scores)));
 
                                 // Sometimes user can have their id stored but not for the contact info, so we do the following
                                 if (contactInfo == null || contactInfo.isEmpty() || name == null || name.isEmpty()) {

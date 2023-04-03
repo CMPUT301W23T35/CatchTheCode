@@ -43,6 +43,7 @@ public class FriendPageActivity extends AppCompatActivity {
         // Make
         TextView id = findViewById(R.id.playerID);
         TextView info = findViewById(R.id.info);
+        TextView displayScore = findViewById(R.id.totalPoints);
 
         updateDatabase().addOnCompleteListener(taskNew -> {
             if (taskNew.isSuccessful()) {
@@ -55,6 +56,8 @@ public class FriendPageActivity extends AppCompatActivity {
                             DocumentSnapshot documentSnapshot = querySnapshot.getDocuments().get(0);
                             String name = documentSnapshot.getString("username");
                             String contactInfo = documentSnapshot.getString("contactInfo");
+                            Long scores = documentSnapshot.getLong("score");
+                            displayScore.setText(String.valueOf(Math.toIntExact(scores)));
                             id.setText(name);
                             info.setText(contactInfo);
                         });
