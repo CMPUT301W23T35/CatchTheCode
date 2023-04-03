@@ -28,7 +28,7 @@ public class CollectionTest {
 
     @Test
     public void checkCollection(){
-        solo.clickOnButton("my profile");
+        solo.clickOnButton("My Profile");
         solo.assertCurrentActivity("Wrong activity", UserActivity.class);
         solo.clickOnButton("Collection");
         solo.assertCurrentActivity("Wrong activity", CollectionActivity.class);
