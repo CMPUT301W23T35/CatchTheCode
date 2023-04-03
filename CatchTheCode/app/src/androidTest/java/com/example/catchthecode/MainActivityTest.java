@@ -43,11 +43,18 @@ public class MainActivityTest {
         Activity activity = rule.getActivity();
     }
 
+    /**
+     * Check whether activity correctly switched
+     */
     @Test
     public void checkActivity() {
         solo.assertCurrentActivity("Wrong activty", MainActivity.class);
     }
 
+
+    /**
+     * Check whether activity correctly switched
+     */
     @Test
     public void checkMyProfile() {
         solo.assertCurrentActivity("Wrong activty", MainActivity.class);
@@ -56,6 +63,9 @@ public class MainActivityTest {
         solo.goBack();
     }
 
+    /**
+     * Check whether activity correctly switched
+     */
     @Test
     public void checkCollectionButton() {
         solo.assertCurrentActivity("Wrong activty", MainActivity.class);
@@ -64,6 +74,9 @@ public class MainActivityTest {
         solo.goBack();
     }
 
+    /**
+     * Check whether activity correctly switched
+     */
     @Test
     public void checkSearch() {
         solo.assertCurrentActivity("Wrong activty", MainActivity.class);
@@ -72,6 +85,9 @@ public class MainActivityTest {
         solo.goBack();
     }
 
+    /**
+     * Check whether activity correctly switched
+     */
     @Test
     public void checkBoard() {
         solo.assertCurrentActivity("Wrong activty", MainActivity.class);
@@ -80,6 +96,9 @@ public class MainActivityTest {
         solo.goBack();
     }
 
+    /**
+     * Check whether activity correctly switched
+     */
     @Test
     public void CheckMap(){
         solo.assertCurrentActivity("Wrong activty", MainActivity.class);
@@ -88,6 +107,10 @@ public class MainActivityTest {
         solo.goBack();
     }
 
+
+    /**
+     * Check whether activity correctly switched
+     */
     @Test
     public void checkScanButton(){
         solo.assertCurrentActivity("Wrong activty", MainActivity.class);
@@ -95,6 +118,10 @@ public class MainActivityTest {
         solo.assertCurrentActivity("Wrong activity", ScannedBarcodeActivity.class);
         solo.goBack();
     }
+
+    /**
+     * Check whether activity correctly switched
+     */
     @After
     public void tearDown() throws Exception{
         solo.finishOpenedActivities();

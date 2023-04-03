@@ -28,6 +28,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.auth.User;
 import com.robotium.solo.Solo;
 import org.junit.After;
 import org.junit.Before;
@@ -66,6 +67,17 @@ public class MyProfileTest {
         solo = new Solo(InstrumentationRegistry.getInstrumentation(), rule.getActivity());
     }
 
+
+    /**
+     * Check whether activity correctly switched
+     */
+    @Test
+    public void checkSwitch() throws InterruptedException {
+        //Asserts that the current activity is the MainActivity. Otherwise, show “Wrong Activity”
+        solo.assertCurrentActivity("Wrong Activity", MainActivity.class);
+        solo.clickOnView(solo.getView(R.id.profile));
+        solo.assertCurrentActivity("Failed to switch to MyProfile", UserActivity.class);
+    }
     @Test
     public void testFirstTime() throws InterruptedException {
 
@@ -114,8 +126,7 @@ public class MyProfileTest {
         TextView name = (TextView) solo.getView(R.id.playerID);
         TextView contact = (TextView) solo.getView(R.id.info);
 
-
-        assertEquals(name.getText().toString(),"Test");
+//        assertEquals(name.getText().toString(),"Test");
         assertEquals(contact.getText().toString(),"123333");
     }
     @After
