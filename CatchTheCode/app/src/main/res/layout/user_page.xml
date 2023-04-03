@@ -44,7 +44,7 @@
         android:id="@+id/hRankingNums"
         android:layout_width="32dp"
         android:layout_height="38dp"
-        android:layout_marginLeft="2dp"
+        android:layout_marginLeft="-1dp"
         android:layout_marginTop="3dp"
         android:text="0"
         android:textAlignment="textStart"
@@ -98,10 +98,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.086" />
 
+
     <TextView
         android:id="@+id/playerID"
-        android:layout_width="260dp"
-        android:layout_height="58dp"
+        android:layout_width="264dp"
+        android:layout_height="92dp"
+        android:layout_marginTop="5dp"
         android:background="#0800BCD4"
         android:clickable="false"
         android:text="Player001"
@@ -110,11 +112,10 @@
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.834"
+        app:layout_constraintHorizontal_bias="0.891"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.17" />
-
+        app:layout_constraintVertical_bias="0.136" />
 
     <Button
         android:id="@+id/modify_profile_button"
@@ -152,6 +153,7 @@
         android:id="@+id/imageView6"
         android:layout_width="49dp"
         android:layout_height="47dp"
+        android:layout_marginTop="-1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/playerID"
         app:layout_constraintHorizontal_bias="0.0"
