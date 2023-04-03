@@ -26,7 +26,6 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.auth.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -56,6 +55,7 @@ public class UserActivity extends AppCompatActivity {
         String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
         TextView id = findViewById(R.id.playerID);
         TextView info = findViewById(R.id.info);
+        TextView displayScore = findViewById(R.id.totalPoints);
 
         //Intent intent1 = new Intent(UserActivity.this, DBUpdate.class);
         //startActivity(intent1);
@@ -73,6 +73,8 @@ public class UserActivity extends AppCompatActivity {
                                 DocumentSnapshot documentSnapshot = querySnapshot.getDocuments().get(0);
                                 String name = documentSnapshot.getString("username");
                                 String contactInfo = documentSnapshot.getString("contactInfo");
+                                Long scores = documentSnapshot.getLong("score");
+                                displayScore.setText(String.valueOf(Math.toIntExact(scores)));
 
                                 // Sometimes user can have their id stored but not for the contact info, so we do the following
                                 if (contactInfo == null || contactInfo.isEmpty() || name == null || name.isEmpty()) {
@@ -147,7 +149,11 @@ public class UserActivity extends AppCompatActivity {
                             //Do nothing
                         });
 
-
+    /*@Override
+    public void onActivityReenter(int resultCode, Intent data) {
+        super.onActivityReenter(resultCode, data);
+        recreate();
+    }*/
                 // This updates user information
                 Button modifyButton = findViewById(R.id.modify_profile_button);
                 modifyButton.setOnClickListener(new View.OnClickListener() {
@@ -179,7 +185,7 @@ public class UserActivity extends AppCompatActivity {
                             String number = contactInfo.getText().toString();
                             String userName = Username.getText().toString();
                             // Check if the entered username already exists in the database
-                            if (userName.matches(regex) && userName.length()<=15 && number.length()<=12 && number.length()>=8){
+                            if (userName.matches(regex) && userName.length()<=15 && number.length()<=12 && number.length()>=8 && number.matches("\\d+")){
                                 db.collection("users")
                                         .whereEqualTo("username", userName)
                                         .get()
@@ -218,6 +224,10 @@ public class UserActivity extends AppCompatActivity {
                             }
                             else if (userName.length() > 15){
                                 Toast.makeText(getApplicationContext(),"Name too long", Toast.LENGTH_LONG).show();
+                            }
+                            else if (!number.matches("\\d+")){
+                                Toast.makeText(getApplicationContext(),"Phone number must only contain digit", Toast.LENGTH_LONG).show();
+
                             }
                             else{
                                 Toast.makeText(getApplicationContext(),"Phone number must be between 8 to 12 digits", Toast.LENGTH_LONG).show();
