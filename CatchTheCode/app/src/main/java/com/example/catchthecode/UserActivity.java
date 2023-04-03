@@ -93,7 +93,7 @@ public class UserActivity extends AppCompatActivity {
                                                 .addOnSuccessListener(Void -> {
                                                     Log.d(TAG, "User added successfully");
                                                     id.setText(name);
-                                                    info.setText("Phone number is" + number);
+                                                    info.setText(number);
                                                 })
                                                 .addOnFailureListener(error -> {
                                                     Log.d(TAG, "Failed to add user");
@@ -107,7 +107,7 @@ public class UserActivity extends AppCompatActivity {
                                     alertDialog.show();
                                 } else {
                                     id.setText(name);
-                                    info.setText("Phone number is" + contactInfo);
+                                    info.setText(contactInfo);
 
                                 }
 
@@ -128,7 +128,7 @@ public class UserActivity extends AppCompatActivity {
                                     db.collection("users").document(androidId).set(user)
                                             .addOnSuccessListener(Void -> {
                                                 id.setText(Username.getText().toString());
-                                                info.setText("Phone number is" + number);
+                                                info.setText(number);
                                                 Log.d(TAG, "User added successfully");
                                             })
                                             .addOnFailureListener(error -> {
@@ -163,6 +163,9 @@ public class UserActivity extends AppCompatActivity {
                         builder.setView(view1);
                         EditText contactInfo = view1.findViewById(R.id.contactInfoText);
                         EditText Username = view1.findViewById(R.id.enterUserName);
+                        // fill in the text fields with the current information
+                        contactInfo.setText(info.getText().toString());
+                        Username.setText(id.getText().toString());
                         builder.setPositiveButton("Save", null); // Set a null click listener to keep the dialog open
                         builder.setNegativeButton("Cancel", (dialog, which) -> {
                             // Do nothing, simply ignore it.
@@ -180,7 +183,8 @@ public class UserActivity extends AppCompatActivity {
                                     .get()
                                     .addOnCompleteListener(task -> {
                                         if (task.isSuccessful()) {
-                                            if (!task.getResult().isEmpty()) {
+                                            // check whether the username already exists and check whether the current Android ID is the same as the one in the database
+                                            if (!task.getResult().isEmpty() && !task.getResult().getDocuments().get(0).getString("userid").equals(androidId)) {
                                                 // Username already exists, display a toast message and prompt for another name
                                                 Toast.makeText(UserActivity.this, "Duplicate username, please enter another name", Toast.LENGTH_SHORT).show();
                                             } else {
@@ -200,7 +204,7 @@ public class UserActivity extends AppCompatActivity {
                                                             Log.d(TAG, "Failed to add user");
                                                         });
                                                 id.setText(userName);
-                                                info.setText("Phone number is " + number);
+                                                info.setText(number);
                                             }
                                         } else {
                                             Log.e(TAG, "Error checking username: ", task.getException());
@@ -266,6 +270,13 @@ public class UserActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        recreate();
+    }
+
     /**
      * update the database with the lastest information
      * @return Task<Void></Void>

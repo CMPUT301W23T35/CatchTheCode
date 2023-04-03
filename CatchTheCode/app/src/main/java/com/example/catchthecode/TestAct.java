@@ -146,11 +146,18 @@ public class TestAct extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(),"Success!", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(getApplicationContext(),"Success!", Toast.LENGTH_SHORT).show();
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
                                 Log.d(TAG, "Document exists!");
                                 addToUserCollection(userRef, name, finalTest);
+                                // update the document with new location information
+                                // only if the document in database has "nolon" for longitude and "nolat" for latitude
+                                if (document.getString("longitude").equals("noLon") && document.getString("latitude").equals("noLat")){
+                                    // update the document
+                                    qrRef.document(name).update("longitude", finalTest.getLongitude());
+                                    qrRef.document(name).update("latitude", finalTest.getLatitude());
+                                }
                             } else {
                                 Log.d(TAG, "Document does not exist!");
                                 // if the document does not exist
@@ -162,12 +169,14 @@ public class TestAct extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(),"Ops! Something went wrong...", Toast.LENGTH_SHORT).show();
                             Log.d(TAG, "Failed with: ", task.getException());
                         }
+                        if (!wPic[0]){
+                            finish();
+                        }
                     }
                 });
 
             }
         });
-
         /*woLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -176,7 +185,6 @@ public class TestAct extends AppCompatActivity {
                 chooseImage();
             }
         });*/
-
     }
 
 
@@ -270,6 +278,7 @@ public class TestAct extends AppCompatActivity {
                 // the object has been filled with all necessary attributes, time to upload them
                 uploadPhoto(test, image_uri);
                 Log.d(TAG, "after upload");
+                finish();
             }
         }
     }
@@ -291,17 +300,6 @@ public class TestAct extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
-                    //DocumentSnapshot document = task.getResult();
-                    /*if (document.exists()) {
-                        Log.d(TAG, "Document exists!");
-                        addToUserCollection(userRef, name, input);
-                    } else {
-                        Log.d(TAG, "Document does not exist!");
-                        // if the document does not exist
-                        // create the document
-                        addToQRCollection(qrRef, name, input);
-                        addToUserCollection(userRef, name, input);
-                    }*/
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
                     input.getImage().compress(Bitmap.CompressFormat.JPEG, 50, baos);
                     byte[] data = baos.toByteArray();

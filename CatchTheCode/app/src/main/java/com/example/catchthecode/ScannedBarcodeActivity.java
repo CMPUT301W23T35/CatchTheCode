@@ -39,7 +39,7 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
     private BarcodeDetector barcodeDetector;
     private CameraSource cameraSource;
     private static final int REQUEST_CAMERA_PERMISSION = 201;
-    Button btnAction;
+    //Button btnAction;
     Button btnScan;
     String intentData = "";
     boolean isEmail = false;
@@ -64,7 +64,7 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
     private void initViews() {
         txtBarcodeValue = findViewById(R.id.txtBarcodeValue);
         surfaceView = findViewById(R.id.surfaceView);
-        btnAction = findViewById(R.id.btnAction);
+        //btnAction = findViewById(R.id.btnAction);
         btnScan = findViewById(R.id.btnScan);
 
 
@@ -76,9 +76,9 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
             }
         });
 
-        btnAction.setOnClickListener(new View.OnClickListener() {
+        /*btnAction.setOnClickListener(new View.OnClickListener() {
             @Override
-            /*public void onClick(View v) {
+            *//*public void onClick(View v) {
                 if (intentData.length() > 0) {
                     if (isEmail) {
                     }
@@ -86,7 +86,7 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
                else {
                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(intentData)));
                }
-           }*/
+           }*//*
 
 
                 // TODO: need to store it somewhere
@@ -112,7 +112,7 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
             }
 
         }
-    });
+    });*/
 }
     /**
 
@@ -179,7 +179,7 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
      */
     private void initialiseDetectorsAndSources() {
 
-        Toast.makeText(getApplicationContext(), "Barcode scanner started", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(), "Barcode scanner started", Toast.LENGTH_SHORT).show();
 
         barcodeDetector = new BarcodeDetector.Builder(this)
                 .setBarcodeFormats(Barcode.ALL_FORMATS)

@@ -82,7 +82,7 @@ public class ScoreBoardActivity extends AppCompatActivity {
                 TextView[] playerViews = new TextView[] {text1,text2,text3};
 
                 Spinner spinner = findViewById(R.id.my_spinner);
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, new String[]{"Total ranking", "highest ranking", "code count"});
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, new String[]{"by total", "by unique", "by count"});
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinner.setAdapter(adapter);
 
@@ -98,6 +98,10 @@ public class ScoreBoardActivity extends AppCompatActivity {
                                     if (task.isSuccessful()) {
                                         int i = 0;
                                         for (QueryDocumentSnapshot document : task.getResult()) {
+                                            // skip all the user with score 0
+                                            if (document.getLong("highest") == 0) {
+                                                continue;
+                                            }
                                             if (i < 3) {
                                                 String playerId = document.getString("username");
                                                 long playerScore = document.getLong("highest");
@@ -142,6 +146,10 @@ public class ScoreBoardActivity extends AppCompatActivity {
                                     if (task.isSuccessful()) {
                                         int i = 0;
                                         for (QueryDocumentSnapshot document : task.getResult()) {
+                                            // skip all the user with score 0
+                                            if (document.getLong("score") == 0) {
+                                                continue;
+                                            }
                                             if (i < 3) {
                                                 String playerId = document.getString("username");
                                                 long playerScore = document.getLong("score");
@@ -189,6 +197,7 @@ public class ScoreBoardActivity extends AppCompatActivity {
                                             if (qrLists != null) {
                                                 int size = qrLists.size();
                                                 String playerId = document.getString("username");
+                                                //listUsers.add(String.valueOf(size));
                                                 listUsers.add("Player " + playerId + " has " + String.valueOf(size) + " QR codes");
                                             }
                                         }
@@ -208,11 +217,12 @@ public class ScoreBoardActivity extends AppCompatActivity {
                                             String userInfo = listUsers.get(j);
                                             playerViews[j].setText(userInfo);
                                         }
-
-                                        // Populate the rest of the players scores into the list view using an adapter
-                                        final ListView playerList = findViewById(R.id.userList);
-                                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(ScoreBoardActivity.this, simple_list_item_1, listUsers.subList(3,listUsers.size()));
-                                        playerList.setAdapter(adapter);
+                                        if (listUsers.size()>3) {
+                                            // Populate the rest of the players scores into the list view using an adapter
+                                            final ListView playerList = findViewById(R.id.userList);
+                                            ArrayAdapter<String> adapter = new ArrayAdapter<String>(ScoreBoardActivity.this, simple_list_item_1, listUsers.subList(3, listUsers.size()));
+                                            playerList.setAdapter(adapter);
+                                        }
                                     } else {
                                         Log.d(TAG, "Error getting players: ", task.getException());
                                     }
