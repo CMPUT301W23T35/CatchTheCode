@@ -9,6 +9,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import java.util.ArrayList;
 
+/**
+ The DBUpdate class is responsible for updating the scores of users in the Firestore database.
+ It retrieves the list of users and their associated QR codes from the "users" collection,
+ and then iterates over each user to calculate their highest, lowest, and total scores.
+ It then updates the user's scores in the "users" collection.
+ */
+
 public class DBUpdate extends AppCompatActivity {
 
     private FirebaseFirestore db;
