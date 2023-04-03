@@ -21,6 +21,11 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ The FriendPageActivity class represents the activity for displaying the user page of a friend.
+ It displays the user ID, contact information, and the number of codes scanned by the friend.
+ */
+
 public class FriendPageActivity extends AppCompatActivity {
 
     /**
