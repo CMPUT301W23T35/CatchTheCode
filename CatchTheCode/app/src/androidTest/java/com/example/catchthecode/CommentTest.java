@@ -19,6 +19,10 @@ import static java.lang.Thread.sleep;
 
 import java.util.logging.Handler;
 
+/**
+ The CommentTest class is used to test the comment functionality of the application
+ */
+
 public class CommentTest {
     private Solo solo;
 
@@ -44,6 +48,7 @@ public class CommentTest {
     }
     /**
      * Check whether activity correctly switched
+     * @throws InterruptedException
      */
     @Test
     public void checkSwitch() throws InterruptedException {
@@ -61,7 +66,8 @@ public class CommentTest {
     }
 
     /**
-     * Check whether activity correctly switched
+     * Check whether the comment is added correctly
+     * @throws InterruptedException
      */
     @Test
     public void checkAddComment() throws InterruptedException {

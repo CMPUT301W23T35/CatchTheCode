@@ -9,16 +9,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 /**
-
  The SearchActivity class extends AppCompatActivity and overrides onCreate to create the activity
-
  and set the content view to the searching_page layout. It also initializes the views and connects
-
  the button listeners.
  */
 public class SearchActivity extends AppCompatActivity {
     /**
-
      Overrides the onCreate method to create the activity and set the content view to the searching_page layout.
      It also calls the initViews method to initialize the views and connect the button listeners.
      @param savedInstanceState a Bundle object containing the activity's previously saved state, or null if there was none.
@@ -31,16 +27,13 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     /**
-
      The initViews method initializes the views and connects the button listeners. It finds the Geo Search
-
      button and sets its OnClickListener to start the SearchGeoActivity. It also finds the Name Search
-
      button and sets its OnClickListener to start the SearchFriendsActivity.
      */
     private void initViews() {
-        Button btnGeoSearch;
 
+        Button btnGeoSearch;
         btnGeoSearch = findViewById(R.id.geo_search_button);
 
         btnGeoSearch.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +63,5 @@ public class SearchActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 }

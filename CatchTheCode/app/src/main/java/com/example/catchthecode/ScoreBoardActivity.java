@@ -39,7 +39,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 /**
-
  Represents a scoreboard activity and its functionalities
  */
 public class ScoreBoardActivity extends AppCompatActivity {
@@ -54,18 +53,11 @@ public class ScoreBoardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.score_board);
-
-
-        //Intent intent1 = new Intent(ScoreBoardActivity.this, DBUpdate.class);
-        //startActivity(intent1);
         Intent intent = getIntent();
-
-
 
 
         updateDatabase().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
-                //getSupportActionBar().setTitle("Ranking Board"); // sets the title of the ranking type.
                 // Set the ActionBar
                 ActionBar actionBar = getSupportActionBar();
                 if (actionBar != null) {
@@ -137,7 +129,6 @@ public class ScoreBoardActivity extends AppCompatActivity {
                             Query query = userRef.orderBy("score", Query.Direction.DESCENDING);
                             query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                                 /**
-
                                  This method is called when a Firestore query is complete, and it updates the UI based on the results.
                                  If the query is successful, it iterates through the query results and populates the top 3 player scores into
                                  the text views, and the rest of the players scores into the list view. It then sets the adapter for the list view.
@@ -241,8 +232,6 @@ public class ScoreBoardActivity extends AppCompatActivity {
                                     }
                                 }
                             });
-
-
                         }
                     }
 
@@ -255,7 +244,6 @@ public class ScoreBoardActivity extends AppCompatActivity {
                 Query query = userRef.orderBy("score", Query.Direction.DESCENDING);
                 query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     /**
-
                      This method is called when a Firestore query is complete, and it updates the UI based on the results.
                      If the query is successful, it iterates through the query results and populates the top 3 player scores into
                      the text views, and the rest of the players scores into the list view. It then sets the adapter for the list view.
@@ -297,17 +285,7 @@ public class ScoreBoardActivity extends AppCompatActivity {
                 // handle error
             }
         });
-
-
-
-
-
-
-
-
-
     }
-
 
 
     private Task<Void> updateDatabase() {
@@ -386,7 +364,6 @@ public class ScoreBoardActivity extends AppCompatActivity {
                 Log.e(TAG, "Error getting user documents: ", task.getException());
             }
         });
-
         return taskCompletionSource.getTask();
     }
 }

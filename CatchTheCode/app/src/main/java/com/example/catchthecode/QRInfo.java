@@ -50,12 +50,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
-//TODO: refactor the name to "QRInfo"
 
 /**
  * This class represents the QR code information.
  */
-public class TestAct extends AppCompatActivity {
+public class QRInfo extends AppCompatActivity {
 
     FusedLocationProviderClient fusedLocationProviderClient;
     private static final int MY_REQUEST_CODE = 1122;
@@ -81,9 +80,6 @@ public class TestAct extends AppCompatActivity {
         setContentView(R.layout.scan_success1);
         ImageView qr = findViewById(R.id.qrimg);
         String content = getIntent().getStringExtra("key");
-
-        //TextView tv = findViewById(R.id.test_tv);
-        //tv.setText(content);
 
         try {
             test = new QRcode(content, qr);
@@ -115,8 +111,6 @@ public class TestAct extends AppCompatActivity {
             }
         });
 
-        //Button wLocation = findViewById(R.id.withLoc);
-        //Button woLocation = findViewById(R.id.withoutLoc);
         Button confirm_button = findViewById(R.id.confirm_button);
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
@@ -135,7 +129,6 @@ public class TestAct extends AppCompatActivity {
                 Log.d(TAG, "3 "+finalTest.getLongitude());
                 // fill the image
                 if (wPic[0]) {
-                    //chooseImage();
 
                     // take a picture and then auto upload it
                     openCamera();
@@ -177,16 +170,7 @@ public class TestAct extends AppCompatActivity {
 
             }
         });
-        /*woLocation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // the user want to save the picture only
-                // fill the image
-                chooseImage();
-            }
-        });*/
     }
-
 
 
     private void chooseImage() {
@@ -205,7 +189,7 @@ public class TestAct extends AppCompatActivity {
                         public void onSuccess(Location location) {
 
                             if (location != null){
-                                Geocoder geocoder = new Geocoder(TestAct.this, Locale.getDefault());
+                                Geocoder geocoder = new Geocoder(QRInfo.this, Locale.getDefault());
                                 List<Address> addresses = null;
 
                                 try {
@@ -238,25 +222,6 @@ public class TestAct extends AppCompatActivity {
     }
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        /*if (resultCode == RESULT_OK){
-            if (requestCode == SELECT_PICTURE) {
-                Uri selectedUri = data.getData();
-                Bitmap img = null;
-                // turn the uri into bitmap form, and fill the QRcode object with it
-                try {
-                    img = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedUri);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                test.setImage(img);
-                //ImageView qrimg = findViewById(R.id.qrimg);
-                //qrimg.setImageBitmap(test.getImage());
-
-                // the object has been filled with all necessary attributes, time to upload them
-                uploadQR(test, selectedUri);
-                Log.d(TAG, "after upload");
-            }
-        }*/
 
         // upload the photo right after taking it
         if (resultCode == RESULT_OK) {
@@ -290,11 +255,9 @@ public class TestAct extends AppCompatActivity {
     private void uploadPhoto(QRcode input, Uri uri) {
 
         String name = String.valueOf(input.getSHA256());
-//        String name = String.valueOf(input.getqrName());
         StorageReference storeFile = sr.child(name + "." +getExtension(uri));
 
         // add to the QRS database
-
         // check if qr exist in the qrRef
         qrRef.document(name).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -322,8 +285,6 @@ public class TestAct extends AppCompatActivity {
                 }
             }
         });
-
-
     }
 
     /***
@@ -373,7 +334,6 @@ public class TestAct extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Void unused) {
                                     Log.e(TAG, input.getSHA256());
-//                                    Log.e(TAG, "qr added to user list");
                                 }
                             })
                             .addOnFailureListener(new OnFailureListener() {
@@ -406,7 +366,7 @@ public class TestAct extends AppCompatActivity {
                                     }
                                 });
                     } else {
-                        Toast.makeText(TestAct.this, "You have already scanned this code.", Toast.LENGTH_SHORT);
+                        Toast.makeText(QRInfo.this, "You have already scanned this code.", Toast.LENGTH_SHORT);
                     }
                 }
             } else {

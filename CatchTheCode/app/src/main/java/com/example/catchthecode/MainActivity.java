@@ -5,11 +5,9 @@
 package com.example.catchthecode;
 
 import static android.content.ContentValues.TAG;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,7 +16,6 @@ import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-
  import com.example.catchthecode.CollectionActivity;
  import com.example.catchthecode.MapsActivity;
  import com.example.catchthecode.ScannedBarcodeActivity;
@@ -34,7 +31,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import android.location.Location;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -236,7 +232,7 @@ public class MainActivity extends AppCompatActivity {
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if (documentSnapshot.exists()) {
                     // This way, you get the name of a user called james
-                    // "First" is the key. Look at the
+                    // "First" is the key.
                 }
             }
         });

@@ -1,16 +1,12 @@
 package com.example.catchthecode;
 
 import static android.content.ContentValues.TAG;
-
 import android.os.Bundle;
 import android.util.Log;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-
 import java.util.ArrayList;
 
 public class DBUpdate extends AppCompatActivity {
@@ -91,7 +87,5 @@ public class DBUpdate extends AppCompatActivity {
             }
         });
         finish();
-
-
     }
 }
