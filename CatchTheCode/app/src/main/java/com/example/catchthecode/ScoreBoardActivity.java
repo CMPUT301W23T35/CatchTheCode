@@ -96,6 +96,9 @@ public class ScoreBoardActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                     if (task.isSuccessful()) {
+                                        for (int j =0; j<3;j++){
+                                            playerViews[j].setText("");
+                                        }
                                         int i = 0;
                                         for (QueryDocumentSnapshot document : task.getResult()) {
                                             // skip all the user with score 0
@@ -105,16 +108,17 @@ public class ScoreBoardActivity extends AppCompatActivity {
                                             if (i < 3) {
                                                 String playerId = document.getString("username");
                                                 long playerScore = document.getLong("highest");
-                                                //users.put(counter,playerId+":"+String.valueOf(playerScore));
                                                 playerViews[i].setText("Player " + playerId + " has a code of " + String.valueOf(playerScore) + " points");
                                                 i++;
                                             } else {
                                                 Log.d(TAG, "Reached", task.getException());
                                                 String playerId = document.getString("username");
                                                 long playerScore = document.getLong("highest");
+
                                                 listUsers2.add("Player " + playerId + " has a code of " + String.valueOf(playerScore) + " points");
-                                                i++;
-                                            }
+
+                                                    i++;
+                                                }
                                         }
                                         final ListView playerList = findViewById(R.id.userList);
                                         //Log.d(TAG, listUsers.get(1));
@@ -145,6 +149,9 @@ public class ScoreBoardActivity extends AppCompatActivity {
                                     List<String> listUsers = new ArrayList<String>();
                                     if (task.isSuccessful()) {
                                         int i = 0;
+                                        for (int j =0; j<3;j++){
+                                            playerViews[j].setText("");
+                                        }
                                         for (QueryDocumentSnapshot document : task.getResult()) {
                                             // skip all the user with score 0
                                             if (document.getLong("score") == 0) {
@@ -191,15 +198,19 @@ public class ScoreBoardActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                     List<String> listUsers = new ArrayList<String>();
                                     if (task.isSuccessful()) {
+                                        // Empty view for better use
+                                        for (int j =0; j<3;j++){
+                                            playerViews[j].setText("");
+                                        }
                                         int i = 0;
                                         for (QueryDocumentSnapshot document : task.getResult()) {
                                             ArrayList<String> qrLists = (ArrayList<String>) document.get("qrLists");
                                             if (qrLists != null) {
                                                 int size = qrLists.size();
                                                 String playerId = document.getString("username");
-                                                //listUsers.add(String.valueOf(size));
-                                                listUsers.add("Player " + playerId + " has " + String.valueOf(size) + " QR codes");
-                                            }
+                                                if (size != 0) {
+                                                    listUsers.add("Player " + playerId + " has " + String.valueOf(size) + " QR codes");
+                                                } }
                                         }
 
                                         // Sort the list by QR code count using a custom comparator
@@ -216,6 +227,8 @@ public class ScoreBoardActivity extends AppCompatActivity {
                                         for (int j = 0; j < 3 && j < listUsers.size(); j++) {
                                             String userInfo = listUsers.get(j);
                                             playerViews[j].setText(userInfo);
+
+
                                         }
                                         if (listUsers.size()>3) {
                                             // Populate the rest of the players scores into the list view using an adapter
