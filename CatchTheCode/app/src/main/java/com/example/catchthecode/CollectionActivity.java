@@ -2,7 +2,6 @@
 package com.example.catchthecode;
 
 import static android.content.ContentValues.TAG;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,9 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.TaskCompletionSource;
 import com.google.android.gms.tasks.Tasks;
@@ -27,29 +24,36 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.Source;
-
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class defines the collection page of the app.
- * It shows the user the current QR code this user has collected.
+ The CollectionActivity class displays the user's current QR code collection and rank.
+ The class extends the AppCompatActivity class.
+ The class includes methods to update the user's QR code collection and rank.
  */
 
 public class CollectionActivity extends AppCompatActivity {
+    /**
+     * The REQUEST constant is used to identify the intent that started the activity.
+     */
     final static int REQUEST = 999;
     /**
      * Called when the activity is starting.
      * @param savedInstanceState If the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently supplied in {@link #onSaveInstanceState}.
      * @see AppCompatActivity#onCreate(Bundle)
      */
-    Handler handler; // handler for loading image.
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.collection_page);
 
+        /**
+         * Asynchronously updates the user's QR code collection and rank in the database.
+         * @return a Task object representing the completion of the update process
+         */
         // call DBUpdate to update the database
         //DBUpdate dbUpdate = new DBUpdate();
         updateDatabase().addOnCompleteListener(taskNew -> {
@@ -98,51 +102,10 @@ public class CollectionActivity extends AppCompatActivity {
                     }
                 });
 
-                // Get the list of QR codes the user has collected from field qrLists and display them in a list view
-                // db.collection("users").document(androidId).get(Source.SERVER).addOnCompleteListener(task -> {
-                //     if (task.isSuccessful()) {
-                //         List<String> qrList = (List<String>) task.getResult().get("qrLists");
-                //         if (qrList == null) {
-                //             qrList = new ArrayList<>();
-                //         }
-                //         // convert it to human readable name with getqrName() from QRs collection in the database
-                //         List<String> qrNameList = new ArrayList<>();
-                //         List<Integer> qrScoreList = new ArrayList<>();
-                //         for (String qr : qrList) {
-                //             db.collection("QRs").document(qr).get(Source.SERVER).addOnCompleteListener(task1 -> {
-                //                 if (task1.isSuccessful()) {
-                //                     //Log.d("CollectionActivity", task1.getResult().get("readable_name").toString());
-                //                     qrNameList.add(task1.getResult().get("readable_name").toString());
-                //                     qrScoreList.add(Integer.parseInt(task1.getResult().get("score").toString()));
-                //                     Log.d("CollectionActivity", qrNameList.toString());
-                //                     ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, qrNameList);
-                //                     listView.setAdapter(adapter);
-                //                     ArrayAdapter<Integer> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, qrScoreList);
-                //                     listScoreView.setAdapter(adapter1);
-                //                     // sort the list by score and sort the name list accordingly
-                //                     for (int i = 0; i < qrScoreList.size(); i++) {
-                //                         for (int j = i + 1; j < qrScoreList.size(); j++) {
-                //                             if (qrScoreList.get(i) < qrScoreList.get(j)) {
-                //                                 int temp = qrScoreList.get(i);
-                //                                 qrScoreList.set(i, qrScoreList.get(j));
-                //                                 qrScoreList.set(j, temp);
-                //                                 String temp1 = qrNameList.get(i);
-                //                                 qrNameList.set(i, qrNameList.get(j));
-                //                                 qrNameList.set(j, temp1);
-                //                             }
-                //                         }
-                //                     }
-                //                 } else {
-                //                     Log.d("CollectionActivity", "Error getting documents: ", task1.getException());
-                //                 }
-                //             });
-                //         }
 
-                //     } else {
-                //         Log.d("CollectionActivity", "Error getting documents: ", task.getException());
-                //     }
-                // });
-
+                /**
+                 This method sets up a spinner to sort the QR codes by highest or lowest score
+                 */
                 Spinner spinner = findViewById(R.id.collection_spinner);
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, new String[]{"Highest first", "Lowest first"});
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -272,6 +235,15 @@ public class CollectionActivity extends AppCompatActivity {
 
 
     }
+
+    /**
+     Called when an activity you launched exits, giving you the requestCode you started it with, the resultCode it returned, and any additional data from it.
+     @param requestCode The integer request code originally supplied to startActivityForResult(), allowing you to identify who this result came from.
+     @param resultCode The integer result code returned by the child activity through its setResult().
+     @param data An Intent, which can return result data to the caller (various data can be attached to Intent "extras").
+     If the requestCode and resultCode match the expected values, update the database with the new data obtained from the Intent, and recreate the activity to reflect the changes.
+     If the update is successful, recreate the activity to show the updated information. Otherwise, do nothing.
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -291,8 +263,12 @@ public class CollectionActivity extends AppCompatActivity {
     }
 
     /**
-     * update the database with the lastest information
-     * @return Task<Void></Void>
+     Updates the user scores in the Firestore database based on their QR code data.
+     Retrieves all user documents in the "users" collection, and for each user, retrieves their
+     associated QR codes and updates their highest score, lowest score, and total score in the
+     "users" collection.
+     If a user has no QR codes, their highest score, lowest score, and total score are all set to 0.
+     @Returns a Task<Void> that completes when all updates have been made.
      */
     private Task<Void> updateDatabase() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -370,7 +346,6 @@ public class CollectionActivity extends AppCompatActivity {
                 Log.e(TAG, "Error getting user documents: ", task.getException());
             }
         });
-
         return taskCompletionSource.getTask();
     }
 }

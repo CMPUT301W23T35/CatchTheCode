@@ -21,6 +21,10 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
+
+/**
+ * Test class for the ScoreBoardActivity.
+ */
 public class ScoreBoardTest {
     private Solo solo;
     @Rule
@@ -37,11 +41,18 @@ public class ScoreBoardTest {
         solo = new Solo(InstrumentationRegistry.getInstrumentation(), rule.getActivity());
     }
 
+    /**
+     * Tests if clicking the Board button opens the ScoreBoardActivity.
+     */
     @Test
     public void checkBoard() {
         solo.clickOnButton("Board");
         solo.assertCurrentActivity("Wrong activity", ScoreBoardActivity.class);
     }
+
+    /**
+     * Tests if the scores are ordered in descending order of total points.
+     */
     @Test
     public void checkTotal() {
         solo.clickOnButton("Board");
@@ -66,6 +77,10 @@ public class ScoreBoardTest {
         }
         assertTrue(SP>=TP);
     }
+
+    /**
+     * Tests if the scores are ordered in descending order of total points.
+     */
     @Test
     public void checkSingle() {
         solo.clickOnButton("Board");
@@ -91,6 +106,15 @@ public class ScoreBoardTest {
         }
         assertTrue(SP>=TP);
     }
+
+    /**
+     * This test checks the count of items displayed in the ScoreBoardActivity.
+     * It clicks on the "Board" button to navigate to the ScoreBoardActivity, selects the "by count" option from the spinner,
+     * and retrieves the count of items displayed in the text views.
+     * Then, it compares the counts of the first and second text views, and the second and third text views.
+     * The test passes if the counts are in decreasing order.
+     * @throws Exception if an error occurs during the test
+     */
     @Test
     public void checkCount() {
         solo.clickOnButton("Board");
@@ -116,6 +140,11 @@ public class ScoreBoardTest {
         }
         assertTrue(SP>=TP);
     }
+
+    /**
+     This method is called after each test to finish all opened activities.
+     @throws Exception if an error occurs while finishing the activities
+     */
     @After
     public void tearDown() throws Exception{
         solo.finishOpenedActivities();

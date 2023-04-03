@@ -5,7 +5,6 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -75,49 +74,9 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        /*btnAction.setOnClickListener(new View.OnClickListener() {
-            @Override
-            *//*public void onClick(View v) {
-                if (intentData.length() > 0) {
-                    if (isEmail) {
-                    }
-                       //tartActivity(new Intent(ScannedBarcodeActivity.this, EmailActivity.class).putExtra("email_address", intentData));
-               else {
-                   startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(intentData)));
-               }
-           }*//*
-
-
-                // TODO: need to store it somewhere
-                //  intentdata has the string representation of the scanned qr code
-
-            public void onClick(View v){
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-                    if (checkSelfPermission(Manifest.permission.CAMERA) ==
-                            PackageManager.PERMISSION_DENIED ||
-                            checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
-                            PackageManager.PERMISSION_DENIED){
-
-                        String[] permission = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
-                        requestPermissions(permission, REQUEST_CAMERA_PERMISSION);
-                }
-                else {
-                    // permission already granted
-                        openCamera();
-                }
-            }
-            else {
-                // system os is less then marshmallow
-            }
-
-        }
-    });*/
 }
     /**
-
      Open the device's camera and set up a BarcodeDetector and CameraSource to scan QR codes.
-
      If a QR code is scanned successfully, the scanned data is stored in intentData.
      */
     private void openCamera(){
@@ -170,17 +129,11 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
 
 
     /**
-
      This method initializes the barcode detector and camera source, starts the camera preview,
-
      and detects barcodes in real-time using the camera source. It displays a toast message to inform
-
      the user that the barcode scanner has started.
      */
     private void initialiseDetectorsAndSources() {
-
-        //Toast.makeText(getApplicationContext(), "Barcode scanner started", Toast.LENGTH_SHORT).show();
-
         barcodeDetector = new BarcodeDetector.Builder(this)
                 .setBarcodeFormats(Barcode.ALL_FORMATS)
                 .build();
@@ -207,7 +160,6 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
                         ActivityCompat.requestPermissions(ScannedBarcodeActivity.this, new
                                 String[]{Manifest.permission.CAMERA}, REQUEST_CAMERA_PERMISSION);
                     }
-
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -216,7 +168,6 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
             }
 
             /**
-
              Called when the surface's layout or format has been changed.
              @param holder The SurfaceHolder whose surface has changed.
              @param format The new PixelFormat of the surface.
@@ -252,11 +203,9 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
         barcodeDetector.setProcessor(new Detector.Processor<Barcode>() {
             @Override
             public void release() {
-//                Toast.makeText(getApplicationContext(), "To prevent memory leaks barcode scanner has been stopped", Toast.LENGTH_SHORT).show();
             }
 
             /**
-
              This method is called when barcode detections are received by the detector.
              It sets the detected barcode value to the TextView and launches an activity when the scan button is clicked.
              @param detections the detected items by the detector.
@@ -272,7 +221,6 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
                          */
                         @Override
                         public void run() {
-
                             if (barcodes.valueAt(0).email != null) {
                                 txtBarcodeValue.removeCallbacks(null);
                                 try {
@@ -286,7 +234,6 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
                                 // redundant
                             } else {
                                 isEmail = false;
-
                                 try {
                                     intentData = "Score: " + Integer.toString(getScore(barcodes.valueAt(0).displayValue));
                                 } catch (NoSuchAlgorithmException e) {
@@ -294,24 +241,13 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
                                 }
                                 txtBarcodeValue.setText(intentData);
                             }
-                            /*
-                            btnScan.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
-
-                                    Intent intent = new Intent(ScannedBarcodeActivity.this, ScanSuccessMsg.class);
-                                    startActivity(intent);
-
-                                }
-                            });
-                            */
                             // inflation testing
 
                             Button enter = findViewById(R.id.btnScan);
                             enter.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    Intent intent = new Intent(ScannedBarcodeActivity.this, TestAct.class);
+                                    Intent intent = new Intent(ScannedBarcodeActivity.this, QRInfo.class);
 
                                     String value = barcodes.valueAt(0).displayValue;
                                     intent.putExtra("key", value);
@@ -319,9 +255,18 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
                                 }
                             });
                         }
-
                     });
 
+                }
+                else{
+                    txtBarcodeValue.setText("No barcode detected");
+                    btnScan.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(ScannedBarcodeActivity.this, ScanFailMsg.class);
+                            startActivity(intent);
+                        }
+                    });
                 }
             }
         });
@@ -338,6 +283,7 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         initialiseDetectorsAndSources();
+
     }
     /**
 
@@ -347,21 +293,7 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
      @throws NoSuchAlgorithmException if the hashing algorithm used by the QRcode class is not available
      */
     protected int getScore(String code) throws NoSuchAlgorithmException {
-
-        /*// maybe an email address, maybe an url
-        // TODO: hash function needed
-        Log.d("myTag", code);
-
-        int hash = 7;
-        for (int i = 0; i < code.length(); i++) {
-            hash = hash * 31 + code.charAt(i);
-            hash = hash % 100;
-        }
-        return hash;*/
-
         QRcode input = new QRcode(code);
         return input.getqrScore();
     }
-
-
 }

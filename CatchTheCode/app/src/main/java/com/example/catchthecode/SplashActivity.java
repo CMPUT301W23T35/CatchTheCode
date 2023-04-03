@@ -10,6 +10,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+/**
+ * The SplashActivity class is responsible for showing a splash screen for 3 seconds before
+ * We DID NOT implement this due to technical difficulties.
+ */
 public class SplashActivity extends AppCompatActivity {
     private Handler handler;
 

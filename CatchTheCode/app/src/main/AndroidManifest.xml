@@ -105,7 +105,7 @@
             android:label="" />
         -->
         <activity
-            android:name=".TestAct"
+            android:name=".QRInfo"
             android:exported="false"
             android:label="" />
         <activity
