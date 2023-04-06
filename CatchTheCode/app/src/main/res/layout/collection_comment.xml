@@ -33,7 +33,7 @@
 
     <TextView
         android:id="@+id/textViewName"
-        android:layout_width="181dp"
+        android:layout_width="280dp"
         android:layout_height="29dp"
         android:gravity="center"
         android:text="Name of the Code"
