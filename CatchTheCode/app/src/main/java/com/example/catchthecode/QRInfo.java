@@ -145,9 +145,8 @@ public class QRInfo extends AppCompatActivity {
                                 Log.d(TAG, "Document exists!");
                                 addToUserCollection(userRef, name, finalTest);
                                 // update the document with new location information
-                                // only if the document in database has "nolon" for longitude and "nolat" for latitude
-                                if (document.getString("longitude").equals("noLon") && document.getString("latitude").equals("noLat")){
-                                    // update the document
+                                // if the user want to save the location
+                                if (wLoc[0]){
                                     qrRef.document(name).update("longitude", finalTest.getLongitude());
                                     qrRef.document(name).update("latitude", finalTest.getLatitude());
                                 }
